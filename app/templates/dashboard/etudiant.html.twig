@@ -1,0 +1,54 @@
+{% extends 'layout/_shell_etudiant.html.twig' %}
+{% set active_nav = 'dashboard' %}
+{% block page_title %}Dashboard{% endblock %}
+{% block page_subtitle %}Bienvenue, Marie{% endblock %}
+{% block content %}
+
+<div class="kpi-grid-3">
+  <div class="card"><div class="stat-card-body"><div class="kpi-label">Formations suivies</div><div class="stat-big-value">4</div></div></div>
+  <div class="card"><div class="stat-card-body-primary"><div class="kpi-label">Moyenne générale</div><div class="stat-big-value-primary">14,5<span style="font-size:16px;font-weight:500;color:var(--color-primary-hover);">/20</span></div></div></div>
+  <div class="card"><div class="stat-card-body">
+    <div class="kpi-label">Prochaine formation</div>
+    <div style="font-size:15px;font-weight:600;margin-top:8px;">Cybersécurité Fondamentaux</div>
+    <div style="font-size:12px;color:var(--text-muted);margin-top:2px;">Débute le 20/07/2026</div>
+  </div></div>
+</div>
+
+<div class="section-title" style="font-size:20px;margin-top:32px;">Mes formations en cours</div>
+<div class="formation-grid">
+  <div class="card">
+    <div class="card-media" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
+    <div class="card-body">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">
+        <div class="card-title" style="font-size:15px;">Développement Web Full-Stack</div>
+        <span class="badge badge-success">Confirmée</span>
+      </div>
+      <div style="font-size:13px;color:var(--text-secondary);margin-top:8px;">Julien Roy</div>
+      <div style="font-size:14px;font-weight:600;margin-top:10px;color:var(--success-500);">15/20</div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-media" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
+    <div class="card-body">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">
+        <div class="card-title" style="font-size:15px;">Data Analyse &amp; Visualisation</div>
+        <span class="badge badge-success">Confirmée</span>
+      </div>
+      <div style="font-size:13px;color:var(--text-secondary);margin-top:8px;">Isabelle Moreau</div>
+      <div style="font-size:14px;font-weight:600;margin-top:10px;color:var(--text-muted);">Pas encore noté</div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-media" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
+    <div class="card-body">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">
+        <div class="card-title" style="font-size:15px;">Management de Projet Agile</div>
+        <span class="badge badge-neutral">Terminée</span>
+      </div>
+      <div style="font-size:13px;color:var(--text-secondary);margin-top:8px;">Nadia Benali</div>
+      <div style="font-size:14px;font-weight:600;margin-top:10px;color:var(--success-500);">14/20</div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

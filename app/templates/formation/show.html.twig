@@ -1,0 +1,54 @@
+{% extends 'layout/_shell_admin.html.twig' %}
+{% set active_nav = 'formations' %}
+{% block page_title %}Fiche formation{% endblock %}
+{% block page_subtitle %}Détail, capacité et liste des inscrits{% endblock %}
+{% block content %}
+
+<div class="detail-header">
+  <div>
+    <div style="display:flex;gap:8px;margin-bottom:8px;">
+      <span class="tag tag-sm" style="cursor:default;">Développement</span>
+      <span class="badge badge-success">Ouverte</span>
+    </div>
+    <div class="detail-name" style="font-size:22px;">Développement Web Full-Stack</div>
+  </div>
+  <div class="detail-actions">
+    <a class="btn btn-secondary" href="/admin/formations">Retour</a>
+    <button class="btn btn-secondary" type="button">Modifier</button>
+    <button class="btn btn-destructive" type="button">Supprimer</button>
+  </div>
+</div>
+
+<div class="grid-2col">
+  <div class="card">
+    <div class="card-body">
+      <div class="card-title">Description</div>
+      <div style="font-size:14px;color:var(--text-secondary);line-height:1.6;margin-top:10px;">Un parcours complet pour maîtriser le développement web moderne : HTML, CSS, JavaScript, un framework front-end et une API back-end. Projets pratiques et code reviews chaque semaine.</div>
+      <div style="font-size:13px;color:var(--text-muted);margin-top:16px;">Formateur responsable : <strong style="color:var(--text-primary);">Julien Roy</strong></div>
+      <div style="font-size:13px;color:var(--text-muted);margin-top:4px;">Du 01/06/2026 au 24/08/2026</div>
+    </div>
+  </div>
+  <div class="card"><div class="stat-card-body">
+    <div class="kpi-label">Prix</div><div class="stat-big-value">1 490 €</div>
+    <div class="kpi-label" style="margin-top:14px;">Capacité</div>
+    <div class="track"><div class="track-fill" style="width:83%;"></div></div>
+    <div class="capacity-label">20/24 places</div>
+  </div></div>
+</div>
+
+<div class="card" style="margin-top:24px;">
+  <div class="table-wrap">
+    <table class="table">
+      <thead><tr><th>Étudiant</th><th>Date d'inscription</th><th>Statut</th><th>Note</th></tr></thead>
+      <tbody>
+        <tr><td>Sophie Martin</td><td>18/05/2026</td><td><span class="badge badge-success">Confirmée</span></td><td>—</td></tr>
+        <tr><td>Nathan Petit</td><td>22/05/2026</td><td><span class="badge badge-error">Annulée</span></td><td>—</td></tr>
+        <tr><td>Marie Dupont</td><td>16/05/2026</td><td><span class="badge badge-success">Confirmée</span></td><td>15/20</td></tr>
+        <tr><td>Hugo Fontaine</td><td>20/05/2026</td><td><span class="badge badge-success">Confirmée</span></td><td>—</td></tr>
+        <tr><td>Léa Dubois</td><td>24/05/2026</td><td><span class="badge badge-success">Confirmée</span></td><td>17/20</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% endblock %}

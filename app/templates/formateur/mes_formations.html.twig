@@ -1,0 +1,24 @@
+{% extends 'layout/_shell_formateur.html.twig' %}
+{% set active_nav = 'formations' %}
+{% block page_title %}Mes formations{% endblock %}
+{% block page_subtitle %}Formations dont vous êtes responsable{% endblock %}
+{% block content %}
+
+<div class="formation-grid">
+  <div class="card">
+    <div class="card-media" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
+    <div class="card-body">
+      <div style="display:flex;justify-content:space-between;gap:8px;">
+        <div class="card-title" style="font-size:15px;">Développement Web Full-Stack</div>
+        <span class="badge badge-success">Ouverte</span>
+      </div>
+      <div style="margin-top:8px;"><span class="tag tag-sm" style="cursor:default;">Développement</span></div>
+      <div style="font-size:13px;color:var(--text-secondary);margin-top:10px;">12 semaines</div>
+      <div class="track"><div class="track-fill" style="width:83%;"></div></div>
+      <div class="capacity-label">20/24 places</div>
+      <div style="margin-top:12px;"><a class="btn btn-secondary btn-block" href="/formateur/notes">Voir les inscrits</a></div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

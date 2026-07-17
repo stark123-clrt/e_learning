@@ -1,0 +1,57 @@
+{% extends 'layout/_shell_admin.html.twig' %}
+{% set active_nav = 'etudiants' %}
+{% block page_title %}Fiche étudiant{% endblock %}
+{% block page_subtitle %}Détail du profil et des inscriptions{% endblock %}
+{% block content %}
+
+<div class="detail-header">
+  <div class="detail-header-identity">
+    <div class="avatar avatar-lg" aria-hidden="true">SM</div>
+    <div>
+      <div class="detail-name">Sophie Martin</div>
+      <div class="detail-badges">
+        <span class="badge badge-success">Actif</span>
+        <span class="tag tag-sm" style="cursor:default;">L3</span>
+      </div>
+    </div>
+  </div>
+  <div class="detail-actions">
+    <a class="btn btn-secondary" href="/admin/etudiants">Retour</a>
+    <button class="btn btn-secondary" type="button">Modifier</button>
+    <button class="btn btn-destructive" type="button">Supprimer</button>
+  </div>
+</div>
+
+<div class="grid-2col">
+  <div class="card">
+    <div class="card-body">
+      <div class="card-title">Informations personnelles</div>
+      <div class="info-list">
+        <div><span class="label">Email : </span>sophie.martin@email.fr</div>
+        <div><span class="label">Créé le : </span>12/09/2025</div>
+      </div>
+    </div>
+  </div>
+  <div class="card"><div class="stat-card-body-primary">
+    <div class="kpi-label">Moyenne générale</div>
+    <div class="stat-big-value-primary">15,0<span style="font-size:16px;font-weight:500;">/20</span></div>
+  </div></div>
+</div>
+
+<div class="card" style="margin-top:24px;">
+  <div class="card-body">
+    <div class="card-title">Inscriptions</div>
+    <div style="display:flex;flex-direction:column;margin-top:12px;">
+      <div class="list-row">
+        <div style="font-size:14px;">Développement Web Full-Stack</div>
+        <div class="row-actions-inline"><span style="font-size:13px;color:var(--text-muted);">—</span><span class="badge badge-success">Confirmée</span></div>
+      </div>
+      <div class="list-row">
+        <div style="font-size:14px;">Management de Projet Agile</div>
+        <div class="row-actions-inline"><span style="font-size:13px;color:var(--text-muted);">15/20</span><span class="badge badge-success">Confirmée</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

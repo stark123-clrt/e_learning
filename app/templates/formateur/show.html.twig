@@ -1,0 +1,53 @@
+{% extends 'layout/_shell_admin.html.twig' %}
+{% set active_nav = 'formateurs' %}
+{% block page_title %}Fiche formateur{% endblock %}
+{% block page_subtitle %}Détail du profil et des formations{% endblock %}
+{% block content %}
+
+<div class="detail-header">
+  <div class="detail-header-identity">
+    <div class="avatar avatar-lg" aria-hidden="true">JR</div>
+    <div>
+      <div class="detail-name">Julien Roy</div>
+      <div class="detail-badges">
+        <span class="badge badge-success">Actif</span>
+        <span class="tag tag-sm" style="cursor:default;">Développement Web</span>
+      </div>
+    </div>
+  </div>
+  <div class="detail-actions">
+    <a class="btn btn-secondary" href="/admin/formateurs">Retour</a>
+    <button class="btn btn-secondary" type="button">Modifier</button>
+    <button class="btn btn-destructive" type="button">Supprimer</button>
+  </div>
+</div>
+
+<div class="grid-2col" style="margin-bottom:24px;">
+  <div class="card">
+    <div class="card-body">
+      <div class="card-title">Informations personnelles</div>
+      <div class="info-list">
+        <div><span class="label">Email : </span>julien.roy@email.fr</div>
+        <div><span class="label">Créé le : </span>02/09/2024</div>
+      </div>
+    </div>
+  </div>
+  <div class="card"><div class="stat-card-body">
+    <div class="kpi-label">Note moyenne donnée</div>
+    <div class="stat-big-value">14,6<span style="font-size:16px;font-weight:500;">/20</span></div>
+  </div></div>
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <div class="card-title">Formations en cours</div>
+    <div style="display:flex;flex-direction:column;margin-top:12px;">
+      <div class="list-row">
+        <div style="font-size:14px;">Développement Web Full-Stack</div>
+        <div style="font-size:13px;color:var(--text-muted);">20/24 places</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

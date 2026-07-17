@@ -1,0 +1,43 @@
+{% extends 'layout/_shell_etudiant.html.twig' %}
+{% set active_nav = 'profil' %}
+{% block page_title %}Profil{% endblock %}
+{% block page_subtitle %}Vos informations personnelles{% endblock %}
+{% block content %}
+
+<div class="card" style="max-width:480px;">
+  <div class="card-body">
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px;">
+      <div class="avatar avatar-lg" aria-hidden="true">MD</div>
+      <div><div style="font-family:var(--font-display);font-weight:700;font-size:18px;">Marie Dupont</div><div style="font-size:13px;color:var(--text-muted);">Inscrite depuis le 03/01/2026</div></div>
+    </div>
+    <form style="display:flex;flex-direction:column;gap:14px;">
+      <div class="field">
+        <label class="field-label" for="e-nom">Nom</label>
+        <input class="input" type="text" id="e-nom" value="Dupont">
+      </div>
+      <div class="field">
+        <label class="field-label" for="e-prenom">Prénom</label>
+        <input class="input" type="text" id="e-prenom" value="Marie">
+      </div>
+      <div class="field">
+        <label class="field-label" for="e-email">Email</label>
+        <input class="input" type="email" id="e-email" value="marie.dupont@email.fr">
+      </div>
+      <div class="field">
+        <label class="field-label" for="e-niveau">Niveau</label>
+        <select class="select" id="e-niveau">
+          <option>L1</option><option selected>L2</option><option>L3</option><option>M1</option><option>M2</option>
+        </select>
+      </div>
+      <div class="field">
+        <label class="field-label" for="e-password">Nouveau mot de passe</label>
+        <input class="input" type="password" id="e-password" placeholder="••••••••">
+      </div>
+    </form>
+    <div style="display:flex;justify-content:flex-end;margin-top:16px;">
+      <button class="btn btn-primary" type="button">Enregistrer</button>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

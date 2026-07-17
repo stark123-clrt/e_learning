@@ -1,0 +1,22 @@
+{% extends 'layout/_shell_formateur.html.twig' %}
+{% set active_nav = 'moyennes' %}
+{% block page_title %}Moyennes{% endblock %}
+{% block page_subtitle %}Moyennes par formation{% endblock %}
+{% block content %}
+
+<div class="formation-grid">
+  <div class="card">
+    <div class="card-body">
+      <div class="card-title" style="font-size:15px;">Développement Web Full-Stack</div>
+      <div style="font-size:13px;color:var(--text-muted);margin-top:4px;">Moyenne générale : <strong style="color:var(--text-primary);">16/20</strong></div>
+      <div class="histogram-row">
+        <div class="histogram-col"><div class="histogram-count">0</div><div class="bar" style="height:4%;"></div><div class="histogram-label">0-9</div></div>
+        <div class="histogram-col"><div class="histogram-count">0</div><div class="bar" style="height:4%;"></div><div class="histogram-label">10-13</div></div>
+        <div class="histogram-col"><div class="histogram-count">1</div><div class="bar" style="height:60%;"></div><div class="histogram-label">14-16</div></div>
+        <div class="histogram-col"><div class="histogram-count">1</div><div class="bar" style="height:60%;"></div><div class="histogram-label">17-20</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

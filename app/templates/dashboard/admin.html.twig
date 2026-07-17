@@ -1,0 +1,97 @@
+{% extends 'layout/_shell_admin.html.twig' %}
+{% set active_nav = 'dashboard' %}
+{% block page_title %}Dashboard{% endblock %}
+{% block page_subtitle %}Vue d'ensemble de la plateforme{% endblock %}
+{% block content %}
+
+<div class="kpi-grid">
+  <div class="card"><div class="kpi-card-body">
+    <div class="kpi-icon-wrap" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+    <div><div class="kpi-label">Total étudiants</div><div class="kpi-value">8</div><div class="kpi-trend">↑ 1 ce mois</div></div>
+  </div></div>
+  <div class="card"><div class="kpi-card-body">
+    <div class="kpi-icon-wrap" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><polyline points="17 11 19 13 23 9"/></svg></div>
+    <div><div class="kpi-label">Total formateurs</div><div class="kpi-value">6</div><div class="kpi-trend">↑ 1 ce mois</div></div>
+  </div></div>
+  <div class="card"><div class="kpi-card-body">
+    <div class="kpi-icon-wrap" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
+    <div><div class="kpi-label">Total formations</div><div class="kpi-value">8</div><div class="kpi-trend">↑ 2 ce mois</div></div>
+  </div></div>
+  <div class="card"><div class="kpi-card-body">
+    <div class="kpi-icon-wrap" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg></div>
+    <div><div class="kpi-label">Total inscriptions</div><div class="kpi-value">15</div><div class="kpi-trend">↑ 5 ce mois</div></div>
+  </div></div>
+</div>
+
+<div class="grid-3col" style="margin-top:24px;">
+  <div class="card" style="grid-column:span 1;">
+    <div class="card-body">
+      <div class="card-title">Inscriptions par formation</div>
+      <div class="bar-chart-row">
+        <div class="bar-col"><div style="font-size:12px;font-weight:600;">4</div><div class="bar" style="height:80%;"></div><div class="bar-label">Full-Stack</div></div>
+        <div class="bar-col"><div style="font-size:12px;font-weight:600;">3</div><div class="bar" style="height:60%;"></div><div class="bar-label">Mgmt Agile</div></div>
+        <div class="bar-col"><div style="font-size:12px;font-weight:600;">2</div><div class="bar" style="height:40%;"></div><div class="bar-label">Data Analyse</div></div>
+        <div class="bar-col"><div style="font-size:12px;font-weight:600;">1</div><div class="bar" style="height:20%;"></div><div class="bar-label">Data Science</div></div>
+        <div class="bar-col"><div style="font-size:12px;font-weight:600;">1</div><div class="bar" style="height:20%;"></div><div class="bar-label">UX Design</div></div>
+        <div class="bar-col"><div style="font-size:12px;font-weight:600;">1</div><div class="bar" style="height:20%;"></div><div class="bar-label">Cybersécurité</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <div class="card-title">Formations par catégorie</div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:14px;margin-top:12px;">
+        <div class="donut" style="background:conic-gradient(var(--indigo-500) 0 25%, var(--success-500) 25% 50%, var(--warning-500) 50% 62.5%, #A855F7 62.5% 87.5%, var(--gray-500) 87.5% 100%);" role="img" aria-label="Répartition des formations par catégorie"></div>
+        <div class="donut-legend">
+          <div class="donut-legend-row"><span class="dot" style="background:var(--indigo-500);"></span><span class="label">Développement</span><span class="count">· 2</span></div>
+          <div class="donut-legend-row"><span class="dot" style="background:var(--success-500);"></span><span class="label">Data</span><span class="count">· 2</span></div>
+          <div class="donut-legend-row"><span class="dot" style="background:var(--warning-500);"></span><span class="label">Design</span><span class="count">· 1</span></div>
+          <div class="donut-legend-row"><span class="dot" style="background:#A855F7;"></span><span class="label">Réseaux</span><span class="count">· 2</span></div>
+          <div class="donut-legend-row"><span class="dot" style="background:var(--gray-500);"></span><span class="label">Management</span><span class="count">· 1</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-narrow">
+    <div class="card"><div class="stat-card-body">
+      <div class="kpi-label">Prix moyen des formations</div>
+      <div class="stat-big-value">1 385 €</div>
+    </div></div>
+    <div class="card"><div class="stat-card-body-primary">
+      <div class="kpi-label">Note moyenne générale</div>
+      <div class="stat-big-value-primary">15,2<span style="font-size:16px;color:var(--color-primary-hover);font-weight:500;">/20</span></div>
+    </div></div>
+  </div>
+</div>
+
+<div class="grid-2col" style="margin-top:24px;">
+  <div class="card">
+    <div class="card-body">
+      <div class="card-title">Top 5 des formations les plus inscrites</div>
+      <div style="display:flex;flex-direction:column;gap:14px;margin-top:14px;">
+        <div style="display:flex;align-items:center;gap:12px;"><div class="rank-badge">1</div><div style="flex:1;min-width:0;"><div style="font-size:13px;font-weight:500;">Développement Web Full-Stack</div><div class="track"><div class="track-fill" style="width:100%;"></div></div></div><div style="font-size:13px;font-weight:600;">4</div></div>
+        <div style="display:flex;align-items:center;gap:12px;"><div class="rank-badge">2</div><div style="flex:1;min-width:0;"><div style="font-size:13px;font-weight:500;">Management de Projet Agile</div><div class="track"><div class="track-fill" style="width:75%;"></div></div></div><div style="font-size:13px;font-weight:600;">3</div></div>
+        <div style="display:flex;align-items:center;gap:12px;"><div class="rank-badge">3</div><div style="flex:1;min-width:0;"><div style="font-size:13px;font-weight:500;">Data Analyse &amp; Visualisation</div><div class="track"><div class="track-fill" style="width:50%;"></div></div></div><div style="font-size:13px;font-weight:600;">2</div></div>
+        <div style="display:flex;align-items:center;gap:12px;"><div class="rank-badge">4</div><div style="flex:1;min-width:0;"><div style="font-size:13px;font-weight:500;">Data Science avec Python</div><div class="track"><div class="track-fill" style="width:25%;"></div></div></div><div style="font-size:13px;font-weight:600;">1</div></div>
+        <div style="display:flex;align-items:center;gap:12px;"><div class="rank-badge">5</div><div style="flex:1;min-width:0;"><div style="font-size:13px;font-weight:500;">UX/UI Design</div><div class="track"><div class="track-fill" style="width:25%;"></div></div></div><div style="font-size:13px;font-weight:600;">1</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <div class="card-title">Top 5 des meilleurs étudiants</div>
+      <div style="display:flex;flex-direction:column;gap:12px;margin-top:14px;">
+        <div style="display:flex;align-items:center;gap:12px;"><div class="rank-badge">1</div><div class="avatar avatar-sm" aria-hidden="true">LD</div><div style="flex:1;font-size:13px;font-weight:500;">Léa Dubois</div><div style="font-size:13px;font-weight:700;color:var(--success-500);">17/20</div></div>
+        <div style="display:flex;align-items:center;gap:12px;"><div class="rank-badge">2</div><div class="avatar avatar-sm" aria-hidden="true">CR</div><div style="flex:1;font-size:13px;font-weight:500;">Chloé Roux</div><div style="font-size:13px;font-weight:700;color:var(--success-500);">17/20</div></div>
+        <div style="display:flex;align-items:center;gap:12px;"><div class="rank-badge">3</div><div class="avatar avatar-sm" aria-hidden="true">SM</div><div style="flex:1;font-size:13px;font-weight:500;">Sophie Martin</div><div style="font-size:13px;font-weight:700;color:var(--success-500);">15/20</div></div>
+        <div style="display:flex;align-items:center;gap:12px;"><div class="rank-badge">4</div><div class="avatar avatar-sm" aria-hidden="true">MD</div><div style="flex:1;font-size:13px;font-weight:500;">Marie Dupont</div><div style="font-size:13px;font-weight:700;color:var(--success-500);">14,5/20</div></div>
+        <div style="display:flex;align-items:center;gap:12px;"><div class="rank-badge">5</div><div class="avatar avatar-sm" aria-hidden="true">HF</div><div style="flex:1;font-size:13px;font-weight:500;">Hugo Fontaine</div><div style="font-size:13px;font-weight:700;color:var(--success-500);">13/20</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

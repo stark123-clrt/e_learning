@@ -1,0 +1,31 @@
+{% extends 'layout/_shell_etudiant.html.twig' %}
+{% set active_nav = 'catalogue' %}
+{% block page_title %}Détail de la formation{% endblock %}
+{% block page_subtitle %}Consultez le programme et inscrivez-vous{% endblock %}
+{% block content %}
+
+<a class="btn btn-secondary" href="/etudiant/catalogue">Retour au catalogue</a>
+
+<div class="grid-2col" style="margin-top:16px;">
+  <div class="card" style="grid-column:span 1;">
+    <div class="card-media" style="height:160px;" aria-hidden="true"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
+    <div class="card-body">
+      <div style="margin-bottom:8px;"><span class="tag tag-sm" style="cursor:default;">Data</span></div>
+      <div class="detail-name" style="font-size:22px;">Data Science avec Python</div>
+      <div style="font-size:14px;color:var(--text-secondary);line-height:1.6;margin-top:12px;">Apprenez à collecter, nettoyer et analyser des données avec Python, Pandas et scikit-learn. Ce parcours couvre les statistiques appliquées, la visualisation de données et une introduction au machine learning à travers des projets concrets.</div>
+      <div style="display:flex;align-items:center;gap:10px;margin-top:16px;">
+        <div class="avatar avatar-sm" aria-hidden="true">IM</div>
+        <span style="font-size:13px;color:var(--text-secondary);">Isabelle Moreau</span>
+      </div>
+    </div>
+  </div>
+  <div class="card"><div class="stat-card-body">
+    <div class="stat-big-value">1 690 €</div>
+    <div style="font-size:13px;color:var(--text-muted);margin-top:4px;">10 semaines</div>
+    <div class="track"><div class="track-fill" style="width:70%;"></div></div>
+    <div class="capacity-label">6 places restantes</div>
+    <div style="margin-top:16px;"><a class="btn btn-primary btn-block" href="/etudiant/inscriptions" style="height:44px;">S'inscrire</a></div>
+  </div></div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'layout/_shell_formateur.html.twig' %}
+{% set active_nav = 'notes' %}
+{% block page_title %}Notes{% endblock %}
+{% block page_subtitle %}Saisie des notes de vos étudiants{% endblock %}
+{% block content %}
+
+<div class="card">
+  <div class="card-body">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+      <div class="card-title">Développement Web Full-Stack — saisie des notes</div>
+      <div style="font-size:14px;color:var(--text-secondary);">Moyenne : <strong style="color:var(--text-primary);">16/20</strong></div>
+    </div>
+    <form style="display:flex;flex-direction:column;gap:12px;margin-top:16px;">
+      <div style="display:flex;align-items:center;gap:16px;padding:10px 0;border-bottom:1px solid var(--border);">
+        <label style="flex:1;font-size:14px;color:var(--text-primary);" for="note-sm">Sophie Martin</label>
+        <input class="input input-number" type="number" id="note-sm" min="0" max="20" placeholder="—">
+      </div>
+      <div style="display:flex;align-items:center;gap:16px;padding:10px 0;border-bottom:1px solid var(--border);">
+        <label style="flex:1;font-size:14px;color:var(--text-primary);" for="note-md">Marie Dupont</label>
+        <input class="input input-number" type="number" id="note-md" min="0" max="20" value="15">
+      </div>
+      <div style="display:flex;align-items:center;gap:16px;padding:10px 0;border-bottom:1px solid var(--border);">
+        <label style="flex:1;font-size:14px;color:var(--text-primary);" for="note-hf">Hugo Fontaine</label>
+        <input class="input input-number" type="number" id="note-hf" min="0" max="20" placeholder="—">
+      </div>
+      <div style="display:flex;align-items:center;gap:16px;padding:10px 0;">
+        <label style="flex:1;font-size:14px;color:var(--text-primary);" for="note-ld">Léa Dubois</label>
+        <input class="input input-number" type="number" id="note-ld" min="0" max="20" value="17">
+      </div>
+    </form>
+    <div style="display:flex;justify-content:flex-end;margin-top:16px;">
+      <button class="btn btn-primary" type="button">Enregistrer les notes</button>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

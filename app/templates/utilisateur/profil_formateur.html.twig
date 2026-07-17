@@ -1,0 +1,29 @@
+{% extends 'layout/_shell_formateur.html.twig' %}
+{% set active_nav = 'profil' %}
+{% block page_title %}Profil{% endblock %}
+{% block page_subtitle %}Vos informations personnelles{% endblock %}
+{% block content %}
+
+<div class="card" style="max-width:480px;">
+  <div class="card-body">
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px;">
+      <div class="avatar avatar-lg" aria-hidden="true">JR</div>
+      <div><div style="font-family:var(--font-display);font-weight:700;font-size:18px;">Julien Roy</div><div style="font-size:13px;color:var(--text-muted);">Développement web</div></div>
+    </div>
+    <form style="display:flex;flex-direction:column;gap:14px;">
+      <div class="field">
+        <label class="field-label" for="f-email">Email</label>
+        <input class="input" type="email" id="f-email" value="julien.roy@email.fr" readonly>
+      </div>
+      <div class="field">
+        <label class="field-label" for="f-specialite">Spécialité</label>
+        <input class="input" type="text" id="f-specialite" value="Développement web" readonly>
+      </div>
+    </form>
+    <div style="display:flex;justify-content:flex-end;margin-top:16px;">
+      <button class="btn btn-primary" type="button">Enregistrer</button>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
