@@ -1,0 +1,8 @@
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.21.0.3. Set the 'ServerName' directive globally to suppress this message
+[Thu Jul 16 21:38:20.546241 2026] [mpm_prefork:notice] [pid 1:tid 1] AH00163: Apache/2.4.68 (Debian) PHP/8.4.23 configured -- resuming normal operations
+[Thu Jul 16 21:38:20.546346 2026] [core:notice] [pid 1:tid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Thu Jul 16 21:38:48.694631 2026] [php:notice] [pid 17:tid 17] [client 192.168.65.1:55607] [error] Uncaught PHP Exception Symfony\\Component\\HttpKernel\\Exception\\NotFoundHttpException: "No route found for "GET http://localhost:8080/"" at RouterListener.php line 156
+[Fri Jul 17 00:37:55.993478 2026] [mpm_prefork:notice] [pid 1:tid 1] AH00170: caught SIGWINCH, shutting down gracefully
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.21.0.3. Set the 'ServerName' directive globally to suppress this message
+[Fri Jul 17 00:38:06.161736 2026] [mpm_prefork:notice] [pid 1:tid 1] AH00163: Apache/2.4.68 (Debian) PHP/8.4.23 configured -- resuming normal operations
+[Fri Jul 17 00:38:06.161880 2026] [core:notice] [pid 1:tid 1] AH00094: Command line: 'apache2 -D FOREGROUND'

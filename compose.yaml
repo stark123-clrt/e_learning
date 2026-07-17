@@ -1,0 +1,28 @@
+services:
+  app:
+    container_name: elearning-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./app:/var/www/html
+      - ./logs:/var/log/apache2
+    ports:
+      - "8080:80"
+    depends_on:
+      - mongodb
+    environment:
+      MONGODB_URI: mongodb://mongodb:27017
+      MONGODB_DB: elearning
+
+  mongodb:
+    image: mongo:7
+    container_name: elearning-mongodb
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+
+volumes:
+  mongodb_data:
