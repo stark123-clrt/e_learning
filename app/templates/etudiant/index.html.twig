@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des étudiants{% endblock %}
+
+{% block body %}
+
+<div class="container mt-4">
+
+    <h1>Liste des étudiants</h1>
+
+    <table border="1" cellpadding="8">
+
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Email</th>
+                <th>Niveau</th>
+                <th>Actif</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+        {% for etudiant in etudiants %}
+
+            <tr>
+                <td>{{ etudiant.nom }}</td>
+                <td>{{ etudiant.prenom }}</td>
+                <td>{{ etudiant.email }}</td>
+                <td>{{ etudiant.niveau }}</td>
+
+                <td>
+                    {% if etudiant.actif %}
+                        Oui
+                    {% else %}
+                        Non
+                    {% endif %}
+                </td>
+
+            </tr>
+
+        {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</div>
+
+{% endblock %}

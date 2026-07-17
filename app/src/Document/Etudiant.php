@@ -4,7 +4,7 @@ namespace App\Document;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 
-#[ODM\Document]
+#[ODM\Document(collection: 'etudiants')]
 #[ODM\Index(keys: ['email' => 1], options: ['unique' => true])]
 class Etudiant
 {
@@ -12,27 +12,19 @@ class Etudiant
     private ?string $id = null;
 
     #[ODM\Field(type: 'string')]
-    private string $nom;
+    private string $nom = '';
 
     #[ODM\Field(type: 'string')]
-    private string $prenom;
+    private string $prenom = '';
 
     #[ODM\Field(type: 'string')]
-    private string $email;
+    private string $email = '';
 
     #[ODM\Field(type: 'string')]
-    private string $niveau;
+    private string $niveau = '';
 
-    #[ODM\Field(type: 'date_immutable')]
-    private \DateTimeImmutable $dateCreation;
-
-    #[ODM\Field(type: 'string')]
-    private string $statut = 'ACTIF';
-
-    public function __construct()
-    {
-        $this->dateCreation = new \DateTimeImmutable();
-    }
+    #[ODM\Field(type: 'bool')]
+    private bool $actif = true;
 
     public function getId(): ?string
     {
@@ -82,31 +74,19 @@ class Etudiant
 
     public function setNiveau(string $niveau): self
     {
-        $this->niveau = $niveau;
+        $this->niveau = trim($niveau);
 
         return $this;
     }
 
-    public function getDateCreation(): \DateTimeImmutable
+    public function isActif(): bool
     {
-        return $this->dateCreation;
+        return $this->actif;
     }
 
-    public function setDateCreation(\DateTimeImmutable $dateCreation): self
+    public function setActif(bool $actif): self
     {
-        $this->dateCreation = $dateCreation;
-
-        return $this;
-    }
-
-    public function getStatut(): string
-    {
-        return $this->statut;
-    }
-
-    public function setStatut(string $statut): self
-    {
-        $this->statut = $statut;
+        $this->actif = $actif;
 
         return $this;
     }

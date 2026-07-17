@@ -4,7 +4,8 @@ namespace App\Document;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 
-#[ODM\Document]
+//#[ODM\Document]
+#[ODM\Document(collection: 'formations')]
 #[ODM\Index(keys: ['titre' => 1])]
 #[ODM\Index(keys: ['categorie' => 1])]
 class Formation

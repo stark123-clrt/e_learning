@@ -1,0 +1,220 @@
+[{
+  "_id": {
+    "$oid": "6a4b5aa02d1c7f707fa9a566"
+  },
+  "titre": "MongoDB - Les fondamentaux",
+  "categorie": "Base de données",
+  "prix": 450,
+  "idFormateur": {
+    "$oid": "6a4b58c52d1c7f707fa9a55c"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a4b5aa02d1c7f707fa9a567"
+  },
+  "titre": "MongoDB avancé",
+  "categorie": "Base de données",
+  "prix": 700,
+  "idFormateur": {
+    "$oid": "6a4b58c52d1c7f707fa9a55d"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a4b5aa02d1c7f707fa9a568"
+  },
+  "titre": "SQL et modélisation",
+  "categorie": "Base de données",
+  "prix": 500,
+  "idFormateur": {
+    "$oid": "6a4b58c52d1c7f707fa9a55e"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a4b5aa02d1c7f707fa9a569"
+  },
+  "titre": "Développement PHP",
+  "categorie": "Développement Web",
+  "prix": 550,
+  "idFormateur": {
+    "$oid": "6a4b58c52d1c7f707fa9a55f"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a4b5aa02d1c7f707fa9a56a"
+  },
+  "titre": "Laravel",
+  "categorie": "Développement Web",
+  "prix": 700,
+  "idFormateur": {
+    "$oid": "6a4b58c52d1c7f707fa9a560"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a4b5aa02d1c7f707fa9a56b"
+  },
+  "titre": "JavaScript moderne",
+  "categorie": "Développement Web",
+  "prix": 600,
+  "idFormateur": {
+    "$oid": "6a4b58c52d1c7f707fa9a561"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a4b5aa02d1c7f707fa9a56c"
+  },
+  "titre": "Python pour débutants",
+  "categorie": "Programmation",
+  "prix": 450,
+  "idFormateur": {
+    "$oid": "6a4b58c52d1c7f707fa9a562"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a4b5aa02d1c7f707fa9a56d"
+  },
+  "titre": "Python avancé",
+  "categorie": "Programmation",
+  "prix": 650,
+  "idFormateur": {
+    "$oid": "6a4b58c52d1c7f707fa9a563"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a4b5aa02d1c7f707fa9a56e"
+  },
+  "titre": "Java orienté objet",
+  "categorie": "Programmation",
+  "prix": 600,
+  "idFormateur": {
+    "$oid": "6a4b58c52d1c7f707fa9a564"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a4b5aa02d1c7f707fa9a56f"
+  },
+  "titre": "C# et .NET",
+  "categorie": "Programmation",
+  "prix": 650,
+  "idFormateur": {
+    "$oid": "6a4b58c52d1c7f707fa9a565"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a4b5aa02d1c7f707fa9a570"
+  },
+  "titre": "Introduction à l'IA",
+  "categorie": "Intelligence Artificielle",
+  "prix": 750,
+  "idFormateur": {
+    "$oid": "6a4b58c52d1c7f707fa9a55c"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a4b5aa02d1c7f707fa9a571"
+  },
+  "titre": "Machine Learning",
+  "categorie": "Intelligence Artificielle",
+  "prix": 900,
+  "idFormateur": {
+    "$oid": "6a4b58c52d1c7f707fa9a55d"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a4b5aa02d1c7f707fa9a572"
+  },
+  "titre": "Cybersécurité",
+  "categorie": "Sécurité",
+  "prix": 800,
+  "idFormateur": {
+    "$oid": "6a4b58c52d1c7f707fa9a55e"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a4b5aa02d1c7f707fa9a573"
+  },
+  "titre": "Sécurité des bases de données",
+  "categorie": "Sécurité",
+  "prix": 700,
+  "idFormateur": {
+    "$oid": "6a4b58c52d1c7f707fa9a55f"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a4b5aa02d1c7f707fa9a574"
+  },
+  "titre": "Docker et conteneurs",
+  "categorie": "DevOps",
+  "prix": 650,
+  "idFormateur": {
+    "$oid": "6a4b58c52d1c7f707fa9a560"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a4b5aa02d1c7f707fa9a575"
+  },
+  "titre": "Kubernetes",
+  "categorie": "DevOps",
+  "prix": 850,
+  "idFormateur": {
+    "$oid": "6a4b58c52d1c7f707fa9a561"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a4b5aa02d1c7f707fa9a576"
+  },
+  "titre": "Cloud Computing",
+  "categorie": "Cloud",
+  "prix": 800,
+  "idFormateur": {
+    "$oid": "6a4b58c52d1c7f707fa9a562"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a4b5aa02d1c7f707fa9a577"
+  },
+  "titre": "Big Data avec Spark",
+  "categorie": "Big Data",
+  "prix": 900,
+  "idFormateur": {
+    "$oid": "6a4b58c52d1c7f707fa9a563"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a4b5aa02d1c7f707fa9a578"
+  },
+  "titre": "Administration réseaux",
+  "categorie": "Réseaux",
+  "prix": 700,
+  "idFormateur": {
+    "$oid": "6a4b58c52d1c7f707fa9a564"
+  }
+},
+{
+  "_id": {
+    "$oid": "6a4b5aa02d1c7f707fa9a579"
+  },
+  "titre": "Git et GitHub",
+  "categorie": "Outils",
+  "prix": 350,
+  "idFormateur": {
+    "$oid": "6a4b58c52d1c7f707fa9a565"
+  }
+}]

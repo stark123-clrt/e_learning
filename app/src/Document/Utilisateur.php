@@ -4,7 +4,8 @@ namespace App\Document;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 
-#[ODM\Document]
+//#[ODM\Document]
+#[ODM\Document(collection: 'utilisateurs')]
 #[ODM\Index(keys: ['email' => 1], options: ['unique' => true])]
 class Utilisateur
 {

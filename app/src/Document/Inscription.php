@@ -4,7 +4,8 @@ namespace App\Document;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 
-#[ODM\Document]
+//#[ODM\Document]
+#[ODM\Document(collection: 'inscriptions')]
 #[ODM\Index(keys: ['etudiant' => 1])]
 #[ODM\Index(keys: ['formation' => 1])]
 #[ODM\Index(

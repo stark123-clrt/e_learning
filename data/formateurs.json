@@ -1,0 +1,90 @@
+[{
+  "_id": {
+    "$oid": "6a4b58c52d1c7f707fa9a55c"
+  },
+  "nom": "Martin",
+  "prenom": "Sophie",
+  "email": "sophie.martin@elearning.fr",
+  "specialite": "Bases de données"
+},
+{
+  "_id": {
+    "$oid": "6a4b58c52d1c7f707fa9a55d"
+  },
+  "nom": "Bernard",
+  "prenom": "Thomas",
+  "email": "thomas.bernard@elearning.fr",
+  "specialite": "Développement Web"
+},
+{
+  "_id": {
+    "$oid": "6a4b58c52d1c7f707fa9a55e"
+  },
+  "nom": "Dubois",
+  "prenom": "Claire",
+  "email": "claire.dubois@elearning.fr",
+  "specialite": "Intelligence Artificielle"
+},
+{
+  "_id": {
+    "$oid": "6a4b58c52d1c7f707fa9a55f"
+  },
+  "nom": "Robert",
+  "prenom": "Julien",
+  "email": "julien.robert@elearning.fr",
+  "specialite": "Cybersécurité"
+},
+{
+  "_id": {
+    "$oid": "6a4b58c52d1c7f707fa9a560"
+  },
+  "nom": "Richard",
+  "prenom": "Nadia",
+  "email": "nadia.richard@elearning.fr",
+  "specialite": "Cloud Computing"
+},
+{
+  "_id": {
+    "$oid": "6a4b58c52d1c7f707fa9a561"
+  },
+  "nom": "Petit",
+  "prenom": "Marc",
+  "email": "marc.petit@elearning.fr",
+  "specialite": "Big Data"
+},
+{
+  "_id": {
+    "$oid": "6a4b58c52d1c7f707fa9a562"
+  },
+  "nom": "Durand",
+  "prenom": "Isabelle",
+  "email": "isabelle.durand@elearning.fr",
+  "specialite": "Java"
+},
+{
+  "_id": {
+    "$oid": "6a4b58c52d1c7f707fa9a563"
+  },
+  "nom": "Leroy",
+  "prenom": "Karim",
+  "email": "karim.leroy@elearning.fr",
+  "specialite": "Python"
+},
+{
+  "_id": {
+    "$oid": "6a4b58c52d1c7f707fa9a564"
+  },
+  "nom": "Moreau",
+  "prenom": "Julie",
+  "email": "julie.moreau@elearning.fr",
+  "specialite": "DevOps"
+},
+{
+  "_id": {
+    "$oid": "6a4b58c52d1c7f707fa9a565"
+  },
+  "nom": "Simon",
+  "prenom": "Alexandre",
+  "email": "alexandre.simon@elearning.fr",
+  "specialite": "Réseaux"
+}]
