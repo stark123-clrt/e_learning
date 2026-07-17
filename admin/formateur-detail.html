@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Julien Roy — Formateurs — e-learning</title>
+<link rel="stylesheet" href="../assets/css/tokens.css">
+<link rel="stylesheet" href="../assets/css/components.css">
+<link rel="stylesheet" href="../assets/css/layout.css">
+</head>
+<body>
+<div class="app-shell">
+
+  <aside class="sidebar" data-sidebar>
+    <div class="brand-row">
+      <div class="brand-mark" aria-hidden="true">e</div>
+      <div>
+        <div class="brand-name">e-learning</div>
+        <div class="brand-role">Administrateur</div>
+      </div>
+    </div>
+    <nav class="nav-list" aria-label="Navigation principale">
+      <a class="nav-item" href="dashboard.html"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Dashboard</span></a>
+      <a class="nav-item" href="etudiants.html"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span>Étudiants</span></a>
+      <a class="nav-item active" href="formateurs.html"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><polyline points="17 11 19 13 23 9"/></svg><span>Formateurs</span></a>
+      <a class="nav-item" href="formations.html"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span>Formations</span></a>
+      <a class="nav-item" href="inscriptions.html"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg><span>Inscriptions</span></a>
+      <a class="nav-item" href="statistiques.html"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg><span>Statistiques</span></a>
+      <a class="nav-item" href="comptes.html"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>Comptes</span></a>
+      <a class="nav-item logout" href="../login.html"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg><span>Déconnexion</span></a>
+    </nav>
+    <div class="user-row">
+      <div class="avatar avatar-md" aria-hidden="true">CL</div>
+      <div style="min-width:0;">
+        <div class="user-name">Camille Lefevre</div>
+        <div class="user-role">Administrateur</div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-backdrop" data-sidebar-backdrop></div>
+
+  <div class="main-col">
+    <header class="topbar">
+      <div class="topbar-titles">
+        <button class="menu-toggle" data-menu-toggle type="button" aria-label="Ouvrir le menu" aria-expanded="false">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <div>
+          <div class="page-title">Fiche formateur</div>
+          <div class="page-subtitle">Détail du profil et des formations</div>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <div class="avatar avatar-sm" aria-hidden="true">CL</div>
+      </div>
+    </header>
+
+    <main class="content">
+
+      <div class="detail-header">
+        <div class="detail-header-identity">
+          <div class="avatar avatar-lg" aria-hidden="true">JR</div>
+          <div>
+            <div class="detail-name">Julien Roy</div>
+            <div class="detail-badges">
+              <span class="badge badge-success">Actif</span>
+              <span class="tag tag-sm" style="cursor:default;">Développement Web</span>
+            </div>
+          </div>
+        </div>
+        <div class="detail-actions">
+          <a class="btn btn-secondary" href="formateurs.html">Retour</a>
+          <button class="btn btn-secondary" type="button">Modifier</button>
+          <button class="btn btn-destructive" type="button">Supprimer</button>
+        </div>
+      </div>
+
+      <div class="grid-2col" style="margin-bottom:24px;">
+        <div class="card">
+          <div class="card-body">
+            <div class="card-title">Informations personnelles</div>
+            <div class="info-list">
+              <div><span class="label">Email : </span>julien.roy@email.fr</div>
+              <div><span class="label">Créé le : </span>02/09/2024</div>
+            </div>
+          </div>
+        </div>
+        <div class="card"><div class="stat-card-body">
+          <div class="kpi-label">Note moyenne donnée</div>
+          <div class="stat-big-value">14,6<span style="font-size:16px;font-weight:500;">/20</span></div>
+        </div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="card-title">Formations en cours</div>
+          <div style="display:flex;flex-direction:column;margin-top:12px;">
+            <div class="list-row">
+              <div style="font-size:14px;">Développement Web Full-Stack</div>
+              <div style="font-size:13px;color:var(--text-muted);">20/24 places</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+<script src="../assets/js/app.js"></script>
+</body>
+</html>
