@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class EtudiantController extends AbstractController
 {
-    #[Route('/etudiant', name: 'app_etudiant')]
+    #[Route('/admin/etudiants', name: 'app_etudiant')]
     public function index(DocumentManager $dm): Response
     {
         $etudiants = $dm

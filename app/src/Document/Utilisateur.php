@@ -3,11 +3,13 @@
 namespace App\Document;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 //#[ODM\Document]
 #[ODM\Document(collection: 'utilisateurs')]
 #[ODM\Index(keys: ['email' => 1], options: ['unique' => true])]
-class Utilisateur
+class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ODM\Id]
     private ?string $id = null;
@@ -98,5 +100,24 @@ class Utilisateur
     {
         $this->profilId = $profilId;
         return $this;
+    }
+
+    public function getUserIdentifier(): string
+    {
+        return $this->email;
+    }
+
+    public function getRoles(): array
+    {
+        return array_unique(['ROLE_' . strtoupper($this->role), 'ROLE_USER']);
+    }
+
+    public function getPassword(): ?string
+    {
+        return $this->motDePasse;
+    }
+
+    public function eraseCredentials(): void
+    {
     }
 }

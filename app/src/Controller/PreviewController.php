@@ -8,31 +8,13 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class PreviewController extends AbstractController
 {
-    #[Route('/', name: 'app_preview_home')]
+    #[Route('/', name: 'app_home')]
     public function home(): Response
     {
         return $this->render('home/index.html.twig');
     }
 
-    #[Route('/login', name: 'app_preview_login')]
-    public function login(): Response
-    {
-        return $this->render('security/login.html.twig');
-    }
-
-    #[Route('/inscription-compte', name: 'app_preview_register')]
-    public function register(): Response
-    {
-        return $this->render('security/register.html.twig');
-    }
-
-    #[Route('/admin/etudiants', name: 'app_preview_admin_etudiants')]
-    public function adminEtudiants(): Response
-    {
-        return $this->render('etudiant/index.html.twig');
-    }
-
-    #[Route('/etudiant/1', name: 'app_preview_etudiant_show')]
+    #[Route('/admin/etudiants/1', name: 'app_preview_etudiant_show')]
     public function etudiantShow(): Response
     {
         return $this->render('etudiant/show.html.twig');
@@ -74,13 +56,7 @@ final class PreviewController extends AbstractController
         return $this->render('utilisateur/profil_etudiant.html.twig');
     }
 
-    #[Route('/admin/formateurs', name: 'app_preview_admin_formateurs')]
-    public function adminFormateurs(): Response
-    {
-        return $this->render('formateur/index.html.twig');
-    }
-
-    #[Route('/formateur/1', name: 'app_preview_formateur_show')]
+    #[Route('/admin/formateurs/1', name: 'app_preview_formateur_show')]
     public function formateurShow(): Response
     {
         return $this->render('formateur/show.html.twig');
@@ -110,28 +86,10 @@ final class PreviewController extends AbstractController
         return $this->render('utilisateur/profil_formateur.html.twig');
     }
 
-    #[Route('/admin/formations', name: 'app_preview_admin_formations')]
-    public function adminFormations(): Response
-    {
-        return $this->render('formation/index.html.twig');
-    }
-
-    #[Route('/formation/1', name: 'app_preview_formation_show')]
+    #[Route('/admin/formations/1', name: 'app_preview_formation_show')]
     public function formationShow(): Response
     {
         return $this->render('formation/show.html.twig');
-    }
-
-    #[Route('/admin/inscriptions', name: 'app_preview_admin_inscriptions')]
-    public function adminInscriptions(): Response
-    {
-        return $this->render('inscription/index.html.twig');
-    }
-
-    #[Route('/admin/comptes', name: 'app_preview_admin_comptes')]
-    public function adminComptes(): Response
-    {
-        return $this->render('utilisateur/index.html.twig');
     }
 
     #[Route('/admin/statistiques', name: 'app_preview_admin_statistiques')]

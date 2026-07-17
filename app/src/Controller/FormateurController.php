@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class FormateurController extends AbstractController
 {
-    #[Route('/formateur', name: 'app_formateur')]
+    #[Route('/admin/formateurs', name: 'app_formateur')]
     public function index(): Response
     {
         return $this->render('formateur/index.html.twig', [

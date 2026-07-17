@@ -10,31 +10,36 @@
       <div style="font-family:var(--font-display);font-weight:700;font-size:20px;">e-learning</div>
       <div style="font-size:13px;color:var(--text-muted);">Créer un compte étudiant</div>
     </div>
-    <form style="display:flex;flex-direction:column;gap:14px;" action="#" method="post">
+    {% if errors is defined and errors|length %}
+      <div style="background:var(--error-50);color:var(--error-500);padding:10px 14px;border-radius:var(--radius-sm);font-size:13px;margin-bottom:14px;">
+        <ul style="margin:0;padding-left:18px;">
+          {% for message in errors %}<li>{{ message }}</li>{% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+    <form style="display:flex;flex-direction:column;gap:14px;" action="{{ path('app_register') }}" method="post">
       <div style="display:flex;gap:14px;">
         <div class="field" style="flex:1;">
           <label class="field-label" for="nom">Nom</label>
-          <input class="input" type="text" id="nom" name="nom" placeholder="Martin" autocomplete="family-name" required>
+          <input class="input" type="text" id="nom" name="nom" placeholder="Martin" value="{{ data.nom|default('') }}" autocomplete="family-name" required>
         </div>
         <div class="field" style="flex:1;">
           <label class="field-label" for="prenom">Prénom</label>
-          <input class="input" type="text" id="prenom" name="prenom" placeholder="Sophie" autocomplete="given-name" required>
+          <input class="input" type="text" id="prenom" name="prenom" placeholder="Sophie" value="{{ data.prenom|default('') }}" autocomplete="given-name" required>
         </div>
       </div>
       <div style="display:flex;gap:14px;">
         <div class="field" style="flex:2;">
           <label class="field-label" for="email">Email</label>
-          <input class="input" type="email" id="email" name="email" placeholder="vous@email.fr" autocomplete="username" required>
+          <input class="input" type="email" id="email" name="email" placeholder="vous@email.fr" value="{{ data.email|default('') }}" autocomplete="username" required>
         </div>
         <div class="field" style="flex:1;">
           <label class="field-label" for="niveau">Niveau</label>
           <select class="select" id="niveau" name="niveau" required>
-            <option value="" selected disabled>—</option>
-            <option value="L1">L1</option>
-            <option value="L2">L2</option>
-            <option value="L3">L3</option>
-            <option value="M1">M1</option>
-            <option value="M2">M2</option>
+            <option value="" {% if not data.niveau|default('') %}selected{% endif %} disabled>—</option>
+            {% for niveau in ['L1', 'L2', 'L3', 'M1', 'M2'] %}
+              <option value="{{ niveau }}" {% if data.niveau|default('') == niveau %}selected{% endif %}>{{ niveau }}</option>
+            {% endfor %}
           </select>
         </div>
       </div>
@@ -52,6 +57,7 @@
         <input type="checkbox" required style="margin-top:3px;">
         <span>J'accepte les <a href="#cgu">conditions d'utilisation</a> de la plateforme.</span>
       </label>
+      <input type="hidden" name="_csrf_token" value="{{ csrf_token('register') }}">
       <button type="submit" class="btn btn-primary btn-block" style="height:44px;margin-top:4px;">Créer mon compte</button>
     </form>
     <div style="font-size:13px;color:var(--text-muted);text-align:center;margin-top:24px;">
