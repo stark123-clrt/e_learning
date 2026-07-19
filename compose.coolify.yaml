@@ -1,12 +1,8 @@
 services:
   app:
-    container_name: elearning-app
     build:
       context: .
-      dockerfile: Dockerfile
-    volumes:
-      - ./app:/var/www/html
-      - ./logs:/var/log/apache2
+      dockerfile: Dockerfile.coolify
     expose:
       - "80"
     environment:
