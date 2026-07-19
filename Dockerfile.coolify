@@ -1,8 +1,6 @@
 FROM php:8.4-apache
 
 ENV APP_ENV=dev
-# Compile en un seul thread pour limiter la mémoire utilisée (évite l'OOM sur petit VPS)
-ENV MAKEFLAGS="-j1"
 
 RUN apt-get update \
     && apt-get install -y \
@@ -13,8 +11,8 @@ RUN apt-get update \
         libwebp-dev \
         libssl-dev \
         pkg-config \
-    && docker-php-ext-install zip gd \
-    && pecl install mongodb \
+    && MAKEFLAGS="-j$(nproc)" docker-php-ext-install zip gd \
+    && MAKEFLAGS="-j$(nproc)" pecl install mongodb \
     && docker-php-ext-enable mongodb \
     && rm -rf /var/lib/apt/lists/*
 
