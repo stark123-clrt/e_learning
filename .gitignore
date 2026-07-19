@@ -1,3 +1,5 @@
 .DS_Store
 app/.env.local
 app/.env.*.local
+.env
+.env.local

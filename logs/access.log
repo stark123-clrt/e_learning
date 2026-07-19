@@ -330,3 +330,4 @@
 172.21.0.1 - - [19/Jul/2026:15:16:31 +0000] "GET /etudiant/inscription/6a5ce8b42a2cbf445e2d9a31 HTTP/1.1" 302 1233 "-" "curl/8.19.0"
 172.21.0.1 - - [19/Jul/2026:15:16:36 +0000] "GET /login HTTP/1.1" 200 43636 "-" "curl/8.19.0"
 172.21.0.1 - - [19/Jul/2026:15:16:42 +0000] "POST /login HTTP/1.1" 302 1615 "-" "curl/8.19.0"
+172.21.0.1 - - [19/Jul/2026:15:16:48 +0000] "GET /formateur/formation/6a5ce8b42a2cbf445e2d9a31/etudiants HTTP/1.1" 403 220904 "-" "curl/8.19.0"
