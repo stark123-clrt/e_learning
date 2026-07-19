@@ -9,26 +9,24 @@
     <table class="table">
       <thead><tr><th>Formation</th><th>Date</th><th>Statut</th><th>Note</th><th>Actions</th></tr></thead>
       <tbody>
-        <tr>
-          <td>Développement Web Full-Stack</td><td>16/05/2026</td>
-          <td><span class="badge badge-success">Confirmée</span></td><td>15/20</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>Data Analyse &amp; Visualisation</td><td>05/06/2026</td>
-          <td><span class="badge badge-success">Confirmée</span></td><td>—</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>Management de Projet Agile</td><td>10/03/2026</td>
-          <td><span class="badge badge-neutral">Terminée</span></td><td>14/20</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>Cybersécurité Fondamentaux</td><td>01/07/2026</td>
-          <td><span class="badge badge-warning">En attente</span></td><td>—</td>
-          <td><button class="btn btn-destructive btn-sm" type="button">Annuler</button></td>
-        </tr>
+        {% for inscription in inscriptions %}
+          <tr>
+            <td>{{ inscription.formation.titre }}</td>
+            <td>{{ inscription.dateInscription|date('d/m/Y') }}</td>
+            <td><span class="badge {{ inscription.statut == 'ACTIVE' ? 'badge-success' : 'badge-neutral' }}">{{ inscription.statut|capitalize }}</span></td>
+            <td>{{ inscription.note is not null ? inscription.note ~ '/20' : '—' }}</td>
+            <td>
+              <form action="{{ path('annuler_inscription', {id: inscription.id}) }}" method="post" style="display:inline;">
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('annuler_inscription') }}">
+                <button class="btn btn-destructive btn-sm" type="submit">Annuler</button>
+              </form>
+            </td>
+          </tr>
+        {% else %}
+          <tr>
+            <td colspan="5" class="text-center">Vous n'êtes inscrit à aucune formation pour le moment.</td>
+          </tr>
+        {% endfor %}
       </tbody>
     </table>
   </div>

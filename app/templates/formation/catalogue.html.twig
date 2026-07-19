@@ -22,71 +22,23 @@
 
 <div class="formation-grid">
 
-  <div class="card">
-    <div class="card-media" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
-    <div class="card-body">
-      <div class="card-title" style="font-size:15px;">Développement Web Full-Stack</div>
-      <div style="margin-top:8px;"><span class="tag tag-sm" style="cursor:default;">Développement</span></div>
-      <div style="font-size:13px;color:var(--text-secondary);margin-top:10px;">12 semaines · 4 places restantes</div>
-      <div style="font-size:15px;font-weight:700;margin-top:6px;">1 490 €</div>
-      <div style="margin-top:12px;"><button class="btn btn-secondary btn-block" type="button" disabled>Déjà inscrit</button></div>
+  {% for formation in formations %}
+    <div class="card">
+      <div class="card-media" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
+      <div class="card-body">
+        <div class="card-title" style="font-size:15px;">{{ formation.titre }}</div>
+        <div style="margin-top:8px;"><span class="tag tag-sm" style="cursor:default;">{{ formation.categorie }}</span></div>
+        <div style="font-size:13px;color:var(--text-secondary);margin-top:10px;">{{ formation.duree }} semaines · {{ formation.capaciteMax }} places max</div>
+        <div style="font-size:15px;font-weight:700;margin-top:6px;">{{ formation.prix|number_format(0, ',', ' ') }} €</div>
+        <div style="margin-top:12px;"><a class="btn btn-primary btn-block" href="{{ path('etudiant_inscription', {id: formation.id}) }}">S'inscrire</a></div>
+      </div>
     </div>
-  </div>
-
-  <div class="card">
-    <div class="card-media" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
-    <div class="card-body">
-      <div class="card-title" style="font-size:15px;">Data Science avec Python</div>
-      <div style="margin-top:8px;"><span class="tag tag-sm" style="cursor:default;">Data</span></div>
-      <div style="font-size:13px;color:var(--text-secondary);margin-top:10px;">10 semaines · 6 places restantes</div>
-      <div style="font-size:15px;font-weight:700;margin-top:6px;">1 690 €</div>
-      <div style="margin-top:12px;"><a class="btn btn-primary btn-block" href="/etudiant/catalogue/1">S'inscrire</a></div>
+  {% else %}
+    <div class="empty-state">
+      <div class="empty-title">Aucune formation disponible</div>
+      <div class="empty-text">Revenez plus tard, de nouvelles formations seront bientôt ouvertes.</div>
     </div>
-  </div>
-
-  <div class="card">
-    <div class="card-media" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
-    <div class="card-body">
-      <div class="card-title" style="font-size:15px;">Cybersécurité Fondamentaux</div>
-      <div style="margin-top:8px;"><span class="tag tag-sm" style="cursor:default;">Réseaux</span></div>
-      <div style="font-size:13px;color:var(--text-secondary);margin-top:10px;">8 semaines · 0 place restante</div>
-      <div style="font-size:15px;font-weight:700;margin-top:6px;">1 290 €</div>
-      <div style="margin-top:12px;"><button class="btn btn-secondary btn-block" type="button" disabled>Déjà inscrit</button></div>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-media" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
-    <div class="card-body">
-      <div class="card-title" style="font-size:15px;">UX/UI Design</div>
-      <div style="margin-top:8px;"><span class="tag tag-sm" style="cursor:default;">Design</span></div>
-      <div style="font-size:13px;color:var(--text-secondary);margin-top:10px;">9 semaines · 7 places restantes</div>
-      <div style="font-size:15px;font-weight:700;margin-top:6px;">1 390 €</div>
-      <div style="margin-top:12px;"><a class="btn btn-primary btn-block" href="/etudiant/catalogue/1">S'inscrire</a></div>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-media" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
-    <div class="card-body">
-      <div class="card-title" style="font-size:15px;">Data Analyse &amp; Visualisation</div>
-      <div style="margin-top:8px;"><span class="tag tag-sm" style="cursor:default;">Data</span></div>
-      <div style="font-size:13px;color:var(--text-secondary);margin-top:10px;">7 semaines · 3 places restantes</div>
-      <div style="font-size:15px;font-weight:700;margin-top:6px;">1 190 €</div>
-      <div style="margin-top:12px;"><button class="btn btn-secondary btn-block" type="button" disabled>Déjà inscrit</button></div>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-media" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
-    <div class="card-body">
-      <div class="card-title" style="font-size:15px;">Sécurité des Réseaux Avancée</div>
-      <div style="margin-top:8px;"><span class="tag tag-sm" style="cursor:default;">Réseaux</span></div>
-      <div style="font-size:13px;color:var(--text-secondary);margin-top:10px;">8 semaines · 0 place restante</div>
-      <div style="font-size:15px;font-weight:700;margin-top:6px;">1 450 €</div>
-      <div style="margin-top:12px;"><button class="btn btn-secondary btn-block" type="button" disabled>Complet</button></div>
-    </div>
-  </div>
+  {% endfor %}
 
 </div>
 

@@ -20,22 +20,10 @@ final class PreviewController extends AbstractController
         return $this->render('etudiant/show.html.twig');
     }
 
-    #[Route('/etudiant/catalogue', name: 'app_preview_etudiant_catalogue')]
-    public function etudiantCatalogue(): Response
-    {
-        return $this->render('formation/catalogue.html.twig');
-    }
-
     #[Route('/etudiant/catalogue/1', name: 'app_preview_etudiant_catalogue_show')]
     public function etudiantCatalogueShow(): Response
     {
         return $this->render('formation/catalogue_show.html.twig');
-    }
-
-    #[Route('/etudiant/inscriptions', name: 'app_preview_etudiant_inscriptions')]
-    public function etudiantInscriptions(): Response
-    {
-        return $this->render('inscription/mes_inscriptions.html.twig');
     }
 
     #[Route('/etudiant/notes', name: 'app_preview_etudiant_notes')]

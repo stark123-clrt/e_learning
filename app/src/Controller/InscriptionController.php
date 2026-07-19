@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Document\Inscription;
 use App\Document\Formation;
 use App\Document\Etudiant;
+use App\Document\Utilisateur;
 use Doctrine\ODM\MongoDB\DocumentManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -37,8 +38,13 @@ final class InscriptionController extends AbstractController
         DocumentManager $dm
     ): Response {
 
-        $etudiant = $this->getUser();
+        $etudiant = $this->getEtudiantCourant($dm);
 
+        if ($etudiant === null) {
+            $this->addFlash('danger', 'Votre profil étudiant est introuvable.');
+
+            return $this->redirectToRoute('etudiant_catalogue');
+        }
 
         // Vérifier si déjà inscrit
         $existe = $dm
@@ -89,8 +95,8 @@ final class InscriptionController extends AbstractController
 
         $inscription->setEtudiant($etudiant);
         $inscription->setFormation($formation);
-        $inscription->setDateInscription(new \DateTime());
-        $inscription->setStatut('active');
+        $inscription->setDateInscription(new \DateTimeImmutable());
+        $inscription->setStatut('ACTIVE');
 
 
         $dm->persist($inscription);
@@ -113,21 +119,25 @@ final class InscriptionController extends AbstractController
 
 
     // ETUDIANT : annuler une inscription
-    #[Route('/etudiant/inscription/annuler/{id}', name:'annuler_inscription')]
+    #[Route('/etudiant/inscription/annuler/{id}', name:'annuler_inscription', methods: ['POST'])]
     #[IsGranted('ROLE_ETUDIANT')]
     public function annuler(
         Inscription $inscription,
-        DocumentManager $dm
+        DocumentManager $dm,
+        Request $request
     ): Response {
 
+        if (!$this->isCsrfTokenValid('annuler_inscription', (string) $request->request->get('_csrf_token'))) {
+            throw $this->createAccessDeniedException('Jeton CSRF invalide.');
+        }
 
-        $etudiant = $this->getUser();
-
+        $etudiant = $this->getEtudiantCourant($dm);
 
         // Sécurité :
-        // un étudiant ne peut supprimer que ses inscriptions
+        // un étudiant ne peut annuler que ses propres inscriptions
 
-        if ($inscription->getEtudiant() !== $etudiant) {
+        if ($etudiant === null || $inscription->getEtudiant() === null
+            || $inscription->getEtudiant()->getId() !== $etudiant->getId()) {
 
             throw $this->createAccessDeniedException();
         }
@@ -151,6 +161,23 @@ final class InscriptionController extends AbstractController
     }
 
 
+    // ETUDIANT : consulter ses propres inscriptions
+    #[Route('/etudiant/inscriptions', name: 'etudiant_inscriptions')]
+    #[IsGranted('ROLE_ETUDIANT')]
+    public function mesInscriptions(DocumentManager $dm): Response
+    {
+        $etudiant = $this->getEtudiantCourant($dm);
+
+        $inscriptions = $etudiant !== null
+            ? $dm->getRepository(Inscription::class)->findBy(['etudiant' => $etudiant])
+            : [];
+
+        return $this->render('inscription/mes_inscriptions.html.twig', [
+            'inscriptions' => $inscriptions,
+        ]);
+    }
+
+
 
 
     // FORMATEUR : voir les étudiants d'une formation
@@ -163,6 +190,14 @@ final class InscriptionController extends AbstractController
         DocumentManager $dm
     ): Response {
 
+        // Sécurité :
+        // un formateur ne peut consulter que les étudiants de ses propres formations
+        $utilisateur = $this->getUser();
+        $formateurId = $utilisateur instanceof Utilisateur ? $utilisateur->getProfilId() : null;
+
+        if ($formation->getFormateur() === null || $formation->getFormateur()->getId() !== $formateurId) {
+            throw $this->createAccessDeniedException();
+        }
 
         $inscriptions = $dm
             ->getRepository(Inscription::class)
@@ -175,8 +210,20 @@ final class InscriptionController extends AbstractController
         return $this->render(
             'formateur/etudiants.html.twig',
             [
+                'formation' => $formation,
                 'inscriptions'=>$inscriptions
             ]
         );
+    }
+
+    private function getEtudiantCourant(DocumentManager $dm): ?Etudiant
+    {
+        $utilisateur = $this->getUser();
+
+        if (!$utilisateur instanceof Utilisateur || $utilisateur->getProfilId() === null) {
+            return null;
+        }
+
+        return $dm->getRepository(Etudiant::class)->find($utilisateur->getProfilId());
     }
 }

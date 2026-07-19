@@ -44,7 +44,7 @@ final class FormationController extends AbstractController
             ]);
 
 
-        return $this->render('etudiant/catalogue.html.twig', [
+        return $this->render('formation/catalogue.html.twig', [
             'formations'=>$formations
         ]);
     }
