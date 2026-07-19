@@ -1,6 +1,6 @@
 FROM php:8.4-apache
 
-ENV APP_ENV=prod
+ENV APP_ENV=dev
 
 RUN apt-get update \
     && apt-get install -y \
@@ -34,7 +34,7 @@ WORKDIR /var/www/html
 
 COPY app/ ./
 
-RUN composer install --no-dev --optimize-autoloader --no-interaction --no-scripts \
+RUN composer install --optimize-autoloader --no-interaction --no-scripts \
     && php bin/console importmap:install \
     && mkdir -p var/cache var/log \
     && chown -R www-data:www-data /var/www/html/var
