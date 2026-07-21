@@ -1,5 +1,5 @@
-{% extends 'layout/_shell_admin.html.twig' %}
-{% set active_nav = 'formations' %}
+{% extends shell %}
+{% set active_nav = navActif %}
 {% block page_title %}Cours — {{ formation.titre }}{% endblock %}
 {% block page_subtitle %}Gérer les vidéos de la formation{% endblock %}
 {% block content %}
@@ -8,7 +8,7 @@
   <div style="background:var(--success-50);color:var(--success-500);padding:10px 14px;border-radius:var(--radius-sm);font-size:13px;margin-bottom:14px;">{{ message }}</div>
 {% endfor %}
 
-<a class="btn btn-secondary" href="{{ path('admin_formation_show', {id: formation.id}) }}" style="margin-bottom:16px;">← Retour à la formation</a>
+<a class="btn btn-secondary" href="{{ backUrl }}" style="margin-bottom:16px;">← Retour</a>
 
 <div class="card" style="margin-bottom:24px;">
   <div class="card-body">
@@ -18,7 +18,7 @@
         <ul style="margin:0;padding-left:18px;">{% for e in errors %}<li>{{ e }}</li>{% endfor %}</ul>
       </div>
     {% endif %}
-    <form action="{{ path('admin_formation_cours', {id: formation.id}) }}" method="post" style="display:flex;flex-direction:column;gap:14px;margin-top:12px;max-width:600px;">
+    <form action="{{ path(addRoute, {id: formation.id}) }}" method="post" style="display:flex;flex-direction:column;gap:14px;margin-top:12px;max-width:600px;">
       <div style="display:flex;gap:14px;">
         <div class="field" style="flex:3;">
           <label class="field-label" for="titre">Titre du cours</label>
@@ -54,7 +54,7 @@
             <td>{{ c.titre }}</td>
             <td><a href="{{ c.videoUrl }}" target="_blank" rel="noopener" style="font-size:13px;">Voir la vidéo ↗</a></td>
             <td>
-              <form action="{{ path('admin_cours_delete', {id: c.id}) }}" method="post" style="display:inline;" onsubmit="return confirm('Supprimer ce cours ?');">
+              <form action="{{ path(deleteRoute, {id: c.id}) }}" method="post" style="display:inline;" onsubmit="return confirm('Supprimer ce cours ?');">
                 <input type="hidden" name="_csrf_token" value="{{ csrf_token('delete_cours_' ~ c.id) }}">
                 <button class="btn btn-destructive btn-sm" type="submit">Supprimer</button>
               </form>

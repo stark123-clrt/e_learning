@@ -22,44 +22,65 @@ final class CoursController extends AbstractController
     #[IsGranted('ROLE_ADMIN')]
     public function gerer(Formation $formation, Request $request, DocumentManager $dm): Response
     {
-        $errors = [];
-
-        if ($request->isMethod('POST')) {
-            if (!$this->isCsrfTokenValid('cours_form', (string) $request->request->get('_csrf_token'))) {
-                $errors[] = 'Jeton de sécurité invalide.';
-            }
-            $titre = trim((string) $request->request->get('titre'));
-            $videoUrl = trim((string) $request->request->get('videoUrl'));
-            $description = trim((string) $request->request->get('description'));
-            $ordre = (int) $request->request->get('ordre');
-
-            if ('' === $titre) {
-                $errors[] = 'Le titre du cours est obligatoire.';
-            }
-            if ('' === $videoUrl) {
-                $errors[] = 'Le lien de la vidéo est obligatoire.';
-            }
-
-            if (!$errors) {
-                $cours = new Cours();
-                $cours->setTitre($titre);
-                $cours->setDescription($description);
-                $cours->setVideoUrl($videoUrl);
-                $cours->setOrdre($ordre > 0 ? $ordre : 1);
-                $cours->setFormation($formation);
-                $dm->persist($cours);
-                $dm->flush();
-                $this->addFlash('success', 'Cours ajouté.');
-
-                return $this->redirectToRoute('admin_formation_cours', ['id' => $formation->getId()]);
-            }
+        $errors = $this->traiterAjoutCours($formation, $request, $dm, 'admin_formation_cours');
+        if ($errors instanceof Response) {
+            return $errors;
         }
 
         return $this->render('cours/gerer.html.twig', [
             'formation' => $formation,
             'cours' => $dm->getRepository(Cours::class)->findBy(['formation' => $formation], ['ordre' => 'asc']),
             'errors' => $errors,
+            'shell' => 'layout/_shell_admin.html.twig',
+            'navActif' => 'formations',
+            'addRoute' => 'admin_formation_cours',
+            'deleteRoute' => 'admin_cours_delete',
+            'backUrl' => $this->generateUrl('admin_formation_show', ['id' => $formation->getId()]),
         ]);
+    }
+
+    // FORMATEUR : gérer les cours de SES formations
+    #[Route('/formateur/formation/{id}/cours', name: 'formateur_formation_cours')]
+    #[IsGranted('ROLE_FORMATEUR')]
+    public function gererFormateur(Formation $formation, Request $request, DocumentManager $dm): Response
+    {
+        $this->verifierProprietaire($dm, $formation);
+
+        $errors = $this->traiterAjoutCours($formation, $request, $dm, 'formateur_formation_cours');
+        if ($errors instanceof Response) {
+            return $errors;
+        }
+
+        return $this->render('cours/gerer.html.twig', [
+            'formation' => $formation,
+            'cours' => $dm->getRepository(Cours::class)->findBy(['formation' => $formation], ['ordre' => 'asc']),
+            'errors' => $errors,
+            'shell' => 'layout/_shell_formateur.html.twig',
+            'navActif' => 'formations',
+            'addRoute' => 'formateur_formation_cours',
+            'deleteRoute' => 'formateur_cours_delete',
+            'backUrl' => $this->generateUrl('formateur_formations'),
+        ]);
+    }
+
+    #[Route('/formateur/cours/{id}/delete', name: 'formateur_cours_delete', methods: ['POST'])]
+    #[IsGranted('ROLE_FORMATEUR')]
+    public function deleteFormateur(Cours $cours, Request $request, DocumentManager $dm): Response
+    {
+        $formation = $cours->getFormation();
+        if (null !== $formation) {
+            $this->verifierProprietaire($dm, $formation);
+        }
+        if ($this->isCsrfTokenValid('delete_cours_' . $cours->getId(), (string) $request->request->get('_csrf_token'))) {
+            foreach ($dm->getRepository(Progression::class)->findBy(['cours' => $cours]) as $p) {
+                $dm->remove($p);
+            }
+            $dm->remove($cours);
+            $dm->flush();
+            $this->addFlash('success', 'Cours supprimé.');
+        }
+
+        return $this->redirectToRoute('formateur_formation_cours', ['id' => $formation?->getId()]);
     }
 
     #[Route('/admin/cours/{id}/delete', name: 'admin_cours_delete', methods: ['POST'])]
@@ -136,6 +157,57 @@ final class CoursController extends AbstractController
         $this->addFlash('success', 'Cours marqué comme terminé.');
 
         return $this->redirectToRoute('etudiant_formation_cours', ['id' => $formation->getId()]);
+    }
+
+    /**
+     * @return string[]|Response Liste d'erreurs, ou une redirection en cas de succès.
+     */
+    private function traiterAjoutCours(Formation $formation, Request $request, DocumentManager $dm, string $redirectRoute): array|Response
+    {
+        if (!$request->isMethod('POST')) {
+            return [];
+        }
+
+        $errors = [];
+        if (!$this->isCsrfTokenValid('cours_form', (string) $request->request->get('_csrf_token'))) {
+            $errors[] = 'Jeton de sécurité invalide.';
+        }
+        $titre = trim((string) $request->request->get('titre'));
+        $videoUrl = trim((string) $request->request->get('videoUrl'));
+        $description = trim((string) $request->request->get('description'));
+        $ordre = (int) $request->request->get('ordre');
+
+        if ('' === $titre) {
+            $errors[] = 'Le titre du cours est obligatoire.';
+        }
+        if ('' === $videoUrl) {
+            $errors[] = 'Le lien de la vidéo est obligatoire.';
+        }
+
+        if (!$errors) {
+            $cours = new Cours();
+            $cours->setTitre($titre);
+            $cours->setDescription($description);
+            $cours->setVideoUrl($videoUrl);
+            $cours->setOrdre($ordre > 0 ? $ordre : 1);
+            $cours->setFormation($formation);
+            $dm->persist($cours);
+            $dm->flush();
+            $this->addFlash('success', 'Cours ajouté.');
+
+            return $this->redirectToRoute($redirectRoute, ['id' => $formation->getId()]);
+        }
+
+        return $errors;
+    }
+
+    private function verifierProprietaire(DocumentManager $dm, Formation $formation): void
+    {
+        $u = $this->getUser();
+        $formateurId = $u instanceof Utilisateur ? $u->getProfilId() : null;
+        if (null === $formation->getFormateur() || $formation->getFormateur()->getId() !== $formateurId) {
+            throw $this->createAccessDeniedException('Cette formation ne vous est pas attribuée.');
+        }
     }
 
     private function estInscrit(DocumentManager $dm, Etudiant $etudiant, Formation $formation): bool
