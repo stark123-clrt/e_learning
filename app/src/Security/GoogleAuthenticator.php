@@ -68,7 +68,7 @@ final class GoogleAuthenticator extends OAuth2Authenticator
                 $utilisateur = new Utilisateur();
                 $utilisateur->setEmail($email);
                 $utilisateur->setRole('ETUDIANT');
-                $utilisateur->setStatut('ACTIF');
+                $utilisateur->setStatut('EN_ATTENTE');
                 $utilisateur->setProfilId($etudiant->getId());
                 // Mot de passe aléatoire : le compte se connecte via Google, pas par formulaire.
                 $utilisateur->setMotDePasse(

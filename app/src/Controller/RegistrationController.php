@@ -71,7 +71,7 @@ final class RegistrationController extends AbstractController
                 $utilisateur = new Utilisateur();
                 $utilisateur->setEmail($data['email']);
                 $utilisateur->setRole('ETUDIANT');
-                $utilisateur->setStatut('ACTIF');
+                $utilisateur->setStatut('EN_ATTENTE');
                 $utilisateur->setProfilId($etudiant->getId());
                 $utilisateur->setMotDePasse($passwordHasher->hashPassword($utilisateur, $password));
                 $documentManager->persist($utilisateur);
