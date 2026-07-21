@@ -4,18 +4,22 @@
 {% block page_subtitle %}Moyennes par formation{% endblock %}
 {% block content %}
 
-<div class="formation-grid">
-  <div class="card">
-    <div class="card-body">
-      <div class="card-title" style="font-size:15px;">Développement Web Full-Stack</div>
-      <div style="font-size:13px;color:var(--text-muted);margin-top:4px;">Moyenne générale : <strong style="color:var(--text-primary);">16/20</strong></div>
-      <div class="histogram-row">
-        <div class="histogram-col"><div class="histogram-count">0</div><div class="bar" style="height:4%;"></div><div class="histogram-label">0-9</div></div>
-        <div class="histogram-col"><div class="histogram-count">0</div><div class="bar" style="height:4%;"></div><div class="histogram-label">10-13</div></div>
-        <div class="histogram-col"><div class="histogram-count">1</div><div class="bar" style="height:60%;"></div><div class="histogram-label">14-16</div></div>
-        <div class="histogram-col"><div class="histogram-count">1</div><div class="bar" style="height:60%;"></div><div class="histogram-label">17-20</div></div>
-      </div>
-    </div>
+<div class="card">
+  <div class="table-wrap">
+    <table class="table">
+      <thead><tr><th>Formation</th><th>Notes saisies</th><th>Moyenne</th></tr></thead>
+      <tbody>
+        {% for ligne in lignes %}
+          <tr>
+            <td>{{ ligne.titre }}</td>
+            <td>{{ ligne.nbNotes }}</td>
+            <td>{% if ligne.moyenne %}<strong>{{ ligne.moyenne }}/20</strong>{% else %}<span style="color:var(--text-muted);">—</span>{% endif %}</td>
+          </tr>
+        {% else %}
+          <tr><td colspan="3" class="text-center">Aucune formation ne vous est attribuée.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
   </div>
 </div>
 

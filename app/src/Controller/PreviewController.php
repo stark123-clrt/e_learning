@@ -26,18 +26,6 @@ final class PreviewController extends AbstractController
         return $this->render('formation/catalogue_show.html.twig');
     }
 
-    #[Route('/etudiant/notes', name: 'app_preview_etudiant_notes')]
-    public function etudiantNotes(): Response
-    {
-        return $this->render('etudiant/mes_notes.html.twig');
-    }
-
-    #[Route('/etudiant/moyenne', name: 'app_preview_etudiant_moyenne')]
-    public function etudiantMoyenne(): Response
-    {
-        return $this->render('etudiant/ma_moyenne.html.twig');
-    }
-
     #[Route('/etudiant/profil', name: 'app_preview_etudiant_profil')]
     public function etudiantProfil(): Response
     {
@@ -48,24 +36,6 @@ final class PreviewController extends AbstractController
     public function formateurShow(): Response
     {
         return $this->render('formateur/show.html.twig');
-    }
-
-    #[Route('/formateur/formations', name: 'app_preview_formateur_formations')]
-    public function formateurFormations(): Response
-    {
-        return $this->render('formateur/mes_formations.html.twig');
-    }
-
-    #[Route('/formateur/notes', name: 'app_preview_formateur_notes')]
-    public function formateurNotes(): Response
-    {
-        return $this->render('formateur/notes.html.twig');
-    }
-
-    #[Route('/formateur/moyennes', name: 'app_preview_formateur_moyennes')]
-    public function formateurMoyennes(): Response
-    {
-        return $this->render('formateur/moyennes.html.twig');
     }
 
     #[Route('/formateur/profil', name: 'app_preview_formateur_profil')]

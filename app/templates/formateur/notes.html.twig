@@ -4,34 +4,40 @@
 {% block page_subtitle %}Saisie des notes de vos étudiants{% endblock %}
 {% block content %}
 
-<div class="card">
-  <div class="card-body">
-    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
-      <div class="card-title">Développement Web Full-Stack — saisie des notes</div>
-      <div style="font-size:14px;color:var(--text-secondary);">Moyenne : <strong style="color:var(--text-primary);">16/20</strong></div>
-    </div>
-    <form style="display:flex;flex-direction:column;gap:12px;margin-top:16px;">
-      <div style="display:flex;align-items:center;gap:16px;padding:10px 0;border-bottom:1px solid var(--border);">
-        <label style="flex:1;font-size:14px;color:var(--text-primary);" for="note-sm">Sophie Martin</label>
-        <input class="input input-number" type="number" id="note-sm" min="0" max="20" placeholder="—">
-      </div>
-      <div style="display:flex;align-items:center;gap:16px;padding:10px 0;border-bottom:1px solid var(--border);">
-        <label style="flex:1;font-size:14px;color:var(--text-primary);" for="note-md">Marie Dupont</label>
-        <input class="input input-number" type="number" id="note-md" min="0" max="20" value="15">
-      </div>
-      <div style="display:flex;align-items:center;gap:16px;padding:10px 0;border-bottom:1px solid var(--border);">
-        <label style="flex:1;font-size:14px;color:var(--text-primary);" for="note-hf">Hugo Fontaine</label>
-        <input class="input input-number" type="number" id="note-hf" min="0" max="20" placeholder="—">
-      </div>
-      <div style="display:flex;align-items:center;gap:16px;padding:10px 0;">
-        <label style="flex:1;font-size:14px;color:var(--text-primary);" for="note-ld">Léa Dubois</label>
-        <input class="input input-number" type="number" id="note-ld" min="0" max="20" value="17">
-      </div>
-    </form>
-    <div style="display:flex;justify-content:flex-end;margin-top:16px;">
-      <button class="btn btn-primary" type="button">Enregistrer les notes</button>
+{% for message in app.flashes('success') %}
+  <div style="background:var(--success-50);color:var(--success-500);padding:10px 14px;border-radius:var(--radius-sm);font-size:13px;margin-bottom:14px;">{{ message }}</div>
+{% endfor %}
+{% for message in app.flashes('danger') %}
+  <div style="background:var(--error-50);color:var(--error-500);padding:10px 14px;border-radius:var(--radius-sm);font-size:13px;margin-bottom:14px;">{{ message }}</div>
+{% endfor %}
+
+{% for bloc in blocs %}
+  <div class="card" style="margin-bottom:20px;">
+    <div class="card-body">
+      <form action="{{ path('formateur_notes_save', {id: bloc.formation.id}) }}" method="post">
+        <div class="card-title" style="margin-bottom:14px;">{{ bloc.formation.titre }} — saisie des notes</div>
+        {% if bloc.inscriptions is empty %}
+          <div style="font-size:14px;color:var(--text-muted);">Aucun étudiant inscrit à cette formation.</div>
+        {% else %}
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            {% for inscription in bloc.inscriptions %}
+              <div style="display:flex;align-items:center;gap:16px;padding:8px 0;border-bottom:1px solid var(--border);">
+                <label style="flex:1;font-size:14px;color:var(--text-primary);" for="note-{{ inscription.id }}">{{ inscription.etudiant ? inscription.etudiant.prenom ~ ' ' ~ inscription.etudiant.nom : '—' }}</label>
+                <input class="input input-number" type="number" step="0.5" min="0" max="20" id="note-{{ inscription.id }}" name="notes[{{ inscription.id }}]" value="{{ inscription.note is not null ? inscription.note : '' }}" placeholder="—" style="width:90px;">
+                <span style="font-size:13px;color:var(--text-muted);">/20</span>
+              </div>
+            {% endfor %}
+          </div>
+          <input type="hidden" name="_csrf_token" value="{{ csrf_token('notes_' ~ bloc.formation.id) }}">
+          <div style="display:flex;justify-content:flex-end;margin-top:16px;">
+            <button class="btn btn-primary" type="submit">Enregistrer les notes</button>
+          </div>
+        {% endif %}
+      </form>
     </div>
   </div>
-</div>
+{% else %}
+  <div class="card"><div class="card-body"><div style="font-size:14px;color:var(--text-muted);">Aucune formation ne vous est attribuée.</div></div></div>
+{% endfor %}
 
 {% endblock %}
