@@ -26,6 +26,9 @@ class Etudiant
     #[ODM\Field(type: 'bool')]
     private bool $actif = true;
 
+    #[ODM\ReferenceOne(targetDocument: Classe::class, storeAs: 'id', nullable: true)]
+    private ?Classe $classe = null;
+
     public function getId(): ?string
     {
         return $this->id;
@@ -87,6 +90,18 @@ class Etudiant
     public function setActif(bool $actif): self
     {
         $this->actif = $actif;
+
+        return $this;
+    }
+
+    public function getClasse(): ?Classe
+    {
+        return $this->classe;
+    }
+
+    public function setClasse(?Classe $classe): self
+    {
+        $this->classe = $classe;
 
         return $this;
     }

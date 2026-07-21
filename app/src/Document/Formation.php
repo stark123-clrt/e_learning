@@ -43,9 +43,23 @@ class Formation
     #[ODM\Field(type: 'string')]
     private string $statut = 'OUVERTE';
 
+    #[ODM\ReferenceOne(targetDocument: Classe::class, storeAs: 'id', nullable: true)]
+    private ?Classe $classe = null;
+
     public function getId(): ?string
     {
         return $this->id;
+    }
+
+    public function getClasse(): ?Classe
+    {
+        return $this->classe;
+    }
+
+    public function setClasse(?Classe $classe): self
+    {
+        $this->classe = $classe;
+        return $this;
     }
 
     public function getTitre(): string

@@ -35,7 +35,7 @@
   <div class="table-wrap">
     <table class="table">
       <thead>
-        <tr><th>Nom</th><th>Prénom</th><th>Email</th><th>Niveau</th><th>Statut</th><th>Actions</th></tr>
+        <tr><th>Nom</th><th>Prénom</th><th>Email</th><th>Niveau</th><th>Classe</th><th>Statut</th><th>Actions</th></tr>
       </thead>
       <tbody>
         {% for etudiant in etudiants %}
@@ -44,6 +44,7 @@
             <td>{{ etudiant.prenom }}</td>
             <td>{{ etudiant.email }}</td>
             <td>{% if etudiant.niveau %}<span class="tag tag-sm" style="cursor:default;">{{ etudiant.niveau }}</span>{% else %}—{% endif %}</td>
+            <td>{{ etudiant.classe ? etudiant.classe.nom : '—' }}</td>
             <td><span class="badge {{ etudiant.actif ? 'badge-success' : 'badge-neutral' }}">{{ etudiant.actif ? 'Actif' : 'Inactif' }}</span></td>
             <td><div class="table-actions">
               <a class="icon-btn" href="{{ path('app_etudiant_show', {id: etudiant.id}) }}" aria-label="Voir {{ etudiant.prenom }} {{ etudiant.nom }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></a>
@@ -55,7 +56,7 @@
             </div></td>
           </tr>
         {% else %}
-          <tr><td colspan="6" class="text-center">Aucun étudiant trouvé.</td></tr>
+          <tr><td colspan="7" class="text-center">Aucun étudiant trouvé.</td></tr>
         {% endfor %}
       </tbody>
     </table>

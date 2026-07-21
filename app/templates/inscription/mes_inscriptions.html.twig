@@ -16,10 +16,13 @@
             <td><span class="badge {{ inscription.statut == 'ACTIVE' ? 'badge-success' : 'badge-neutral' }}">{{ inscription.statut|capitalize }}</span></td>
             <td>{{ inscription.note is not null ? inscription.note ~ '/20' : '—' }}</td>
             <td>
-              <form action="{{ path('annuler_inscription', {id: inscription.id}) }}" method="post" style="display:inline;">
-                <input type="hidden" name="_csrf_token" value="{{ csrf_token('annuler_inscription') }}">
-                <button class="btn btn-destructive btn-sm" type="submit">Annuler</button>
-              </form>
+              <div style="display:flex;gap:6px;">
+                {% if inscription.formation %}<a class="btn btn-secondary btn-sm" href="{{ path('etudiant_formation_cours', {id: inscription.formation.id}) }}">Suivre les cours</a>{% endif %}
+                <form action="{{ path('annuler_inscription', {id: inscription.id}) }}" method="post" style="display:inline;">
+                  <input type="hidden" name="_csrf_token" value="{{ csrf_token('annuler_inscription') }}">
+                  <button class="btn btn-destructive btn-sm" type="submit">Annuler</button>
+                </form>
+              </div>
             </td>
           </tr>
         {% else %}

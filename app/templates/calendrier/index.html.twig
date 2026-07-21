@@ -1,0 +1,32 @@
+{% extends shell %}
+{% set active_nav = 'calendrier' %}
+{% block page_title %}Calendrier{% endblock %}
+{% block page_subtitle %}Planning des formations{% endblock %}
+{% block content %}
+
+{% for bloc in mois %}
+  <div class="section-title" style="font-size:18px;{{ loop.first ? '' : 'margin-top:28px;' }}">{{ bloc.label }}</div>
+  <div class="card">
+    <div class="table-wrap">
+      <table class="table">
+        <thead><tr><th>Formation</th><th>Catégorie</th><th>Formateur</th><th>Début</th><th>Fin</th><th>Statut</th></tr></thead>
+        <tbody>
+          {% for f in bloc.formations %}
+            <tr>
+              <td>{{ f.titre }}</td>
+              <td>{% if f.categorie %}<span class="tag tag-sm" style="cursor:default;">{{ f.categorie }}</span>{% else %}—{% endif %}</td>
+              <td>{{ f.formateur ? f.formateur.prenom ~ ' ' ~ f.formateur.nom : '—' }}</td>
+              <td>{{ f.dateDebut|date('d/m/Y') }}</td>
+              <td>{{ f.dateFin|date('d/m/Y') }}</td>
+              <td><span class="badge {{ f.statut|upper == 'OUVERTE' ? 'badge-success' : 'badge-neutral' }}">{{ f.statut|capitalize }}</span></td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+{% else %}
+  <div class="card"><div class="card-body"><div style="font-size:14px;color:var(--text-muted);">Aucune formation planifiée pour le moment.</div></div></div>
+{% endfor %}
+
+{% endblock %}

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Document\Classe;
 use App\Document\Formateur;
 use App\Document\Formation;
 use App\Document\Inscription;
@@ -115,10 +116,10 @@ final class FormationController extends AbstractController
         $data = $this->donneesVides();
 
         if ($request->isMethod('POST')) {
-            [$data, $errors, $formateur] = $this->lireEtValider($request, $dm);
+            [$data, $errors, $formateur, $classe] = $this->lireEtValider($request, $dm);
             if (!$errors) {
                 $formation = new Formation();
-                $this->appliquer($formation, $data, $formateur);
+                $this->appliquer($formation, $data, $formateur, $classe);
                 $dm->persist($formation);
                 $dm->flush();
                 $this->addFlash('success', 'Formation créée.');
@@ -144,15 +145,16 @@ final class FormationController extends AbstractController
             'duree' => (string) $formation->getDuree(),
             'capaciteMax' => (string) $formation->getCapaciteMax(),
             'formateur' => $formation->getFormateur()?->getId() ?? '',
+            'classe' => $formation->getClasse()?->getId() ?? '',
             'dateDebut' => $formation->getDateDebut()->format('Y-m-d'),
             'dateFin' => $formation->getDateFin()->format('Y-m-d'),
             'statut' => $formation->getStatut(),
         ];
 
         if ($request->isMethod('POST')) {
-            [$data, $errors, $formateur] = $this->lireEtValider($request, $dm);
+            [$data, $errors, $formateur, $classe] = $this->lireEtValider($request, $dm);
             if (!$errors) {
-                $this->appliquer($formation, $data, $formateur);
+                $this->appliquer($formation, $data, $formateur, $classe);
                 $dm->flush();
                 $this->addFlash('success', 'Formation mise à jour.');
 
@@ -194,12 +196,12 @@ final class FormationController extends AbstractController
     {
         return [
             'titre' => '', 'description' => '', 'categorie' => '', 'prix' => '', 'duree' => '',
-            'capaciteMax' => '', 'formateur' => '', 'dateDebut' => '', 'dateFin' => '', 'statut' => 'OUVERTE',
+            'capaciteMax' => '', 'formateur' => '', 'classe' => '', 'dateDebut' => '', 'dateFin' => '', 'statut' => 'OUVERTE',
         ];
     }
 
     /**
-     * @return array{0: array<string,string>, 1: string[], 2: ?Formateur}
+     * @return array{0: array<string,string>, 1: string[], 2: ?Formateur, 3: ?Classe}
      */
     private function lireEtValider(Request $request, DocumentManager $dm): array
     {
@@ -216,6 +218,7 @@ final class FormationController extends AbstractController
             'duree' => trim((string) $request->request->get('duree')),
             'capaciteMax' => trim((string) $request->request->get('capaciteMax')),
             'formateur' => trim((string) $request->request->get('formateur')),
+            'classe' => trim((string) $request->request->get('classe')),
             'dateDebut' => trim((string) $request->request->get('dateDebut')),
             'dateFin' => trim((string) $request->request->get('dateFin')),
             'statut' => trim((string) $request->request->get('statut')),
@@ -247,13 +250,18 @@ final class FormationController extends AbstractController
         if ('' !== $data['formateur']) {
             $formateur = $dm->getRepository(Formateur::class)->find($data['formateur']);
         }
+        $classe = null;
+        if ('' !== $data['classe']) {
+            $classe = $dm->getRepository(Classe::class)->find($data['classe']);
+        }
 
-        return [$data, $errors, $formateur];
+        return [$data, $errors, $formateur, $classe];
     }
 
     /** @param array<string,string> $data */
-    private function appliquer(Formation $formation, array $data, ?Formateur $formateur): void
+    private function appliquer(Formation $formation, array $data, ?Formateur $formateur, ?Classe $classe): void
     {
+        $formation->setClasse($classe);
         $formation->setTitre($data['titre']);
         $formation->setDescription($data['description']);
         $formation->setCategorie($data['categorie']);
@@ -282,6 +290,7 @@ final class FormationController extends AbstractController
             'categories' => self::CATEGORIES,
             'statuts' => self::STATUTS,
             'formateurs' => $dm->getRepository(Formateur::class)->findBy([], ['nom' => 'asc']),
+            'classes' => $dm->getRepository(Classe::class)->findBy([], ['nom' => 'asc']),
         ];
     }
 }

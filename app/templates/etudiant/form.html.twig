@@ -35,14 +35,25 @@
     <input class="input" type="email" id="email" name="email" value="{{ etudiantData.email }}" required>
   </div>
 
-  <div class="field">
-    <label class="field-label" for="niveau">Niveau</label>
-    <select class="select" id="niveau" name="niveau" required>
-      <option value="" {{ etudiantData.niveau == '' ? 'selected' : '' }}>— Sélectionner —</option>
-      {% for niv in niveaux %}
-        <option value="{{ niv }}" {{ etudiantData.niveau == niv ? 'selected' : '' }}>{{ niv }}</option>
-      {% endfor %}
-    </select>
+  <div style="display:flex;gap:16px;">
+    <div class="field" style="flex:1;">
+      <label class="field-label" for="niveau">Niveau</label>
+      <select class="select" id="niveau" name="niveau" required>
+        <option value="" {{ etudiantData.niveau == '' ? 'selected' : '' }}>— Sélectionner —</option>
+        {% for niv in niveaux %}
+          <option value="{{ niv }}" {{ etudiantData.niveau == niv ? 'selected' : '' }}>{{ niv }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="field" style="flex:1;">
+      <label class="field-label" for="classe">Classe</label>
+      <select class="select" id="classe" name="classe">
+        <option value="">— Aucune —</option>
+        {% for c in classes %}
+          <option value="{{ c.id }}" {{ etudiantData.classe|default('') == c.id ? 'selected' : '' }}>{{ c.nom }}</option>
+        {% endfor %}
+      </select>
+    </div>
   </div>
 
   <input type="hidden" name="_csrf_token" value="{{ csrf_token('etudiant_form') }}">

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Document\Classe;
 use App\Document\Etudiant;
 use App\Document\Inscription;
 use App\Document\Utilisateur;
@@ -67,6 +68,7 @@ final class EtudiantController extends AbstractController
                 $etudiant->setEmail($data['email']);
                 $etudiant->setNiveau($data['niveau']);
                 $etudiant->setActif(true);
+                $etudiant->setClasse($this->resoudreClasse($dm, $data['classe']));
                 $dm->persist($etudiant);
                 $dm->flush();
 
@@ -82,6 +84,7 @@ final class EtudiantController extends AbstractController
             'etudiant' => null,
             'etudiantData' => $data,
             'niveaux' => self::NIVEAUX,
+            'classes' => $dm->getRepository(Classe::class)->findBy([], ['nom' => 'asc']),
             'errors' => $errors,
             'formAction' => 'Ajouter',
             'formRoute' => 'app_etudiant_new',
@@ -98,6 +101,7 @@ final class EtudiantController extends AbstractController
             'prenom' => $etudiant->getPrenom(),
             'email' => $etudiant->getEmail(),
             'niveau' => $etudiant->getNiveau(),
+            'classe' => $etudiant->getClasse()?->getId() ?? '',
         ];
 
         if ($request->isMethod('POST')) {
@@ -108,6 +112,7 @@ final class EtudiantController extends AbstractController
                 $etudiant->setPrenom($data['prenom']);
                 $etudiant->setEmail($data['email']);
                 $etudiant->setNiveau($data['niveau']);
+                $etudiant->setClasse($this->resoudreClasse($dm, $data['classe']));
                 $dm->flush();
 
                 $this->addFlash('success', 'Étudiant mis à jour.');
@@ -120,6 +125,7 @@ final class EtudiantController extends AbstractController
             'etudiant' => $etudiant,
             'etudiantData' => $data,
             'niveaux' => self::NIVEAUX,
+            'classes' => $dm->getRepository(Classe::class)->findBy([], ['nom' => 'asc']),
             'errors' => $errors,
             'formAction' => 'Modifier',
             'formRoute' => 'app_etudiant_edit',
@@ -189,6 +195,7 @@ final class EtudiantController extends AbstractController
             'prenom' => trim((string) $request->request->get('prenom')),
             'email' => mb_strtolower(trim((string) $request->request->get('email'))),
             'niveau' => trim((string) $request->request->get('niveau')),
+            'classe' => trim((string) $request->request->get('classe')),
         ];
 
         if ('' === $data['nom'] || '' === $data['prenom']) {
@@ -209,5 +216,10 @@ final class EtudiantController extends AbstractController
         }
 
         return [$data, $errors];
+    }
+
+    private function resoudreClasse(DocumentManager $dm, string $classeId): ?Classe
+    {
+        return '' !== $classeId ? $dm->getRepository(Classe::class)->find($classeId) : null;
     }
 }

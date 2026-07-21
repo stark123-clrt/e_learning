@@ -48,12 +48,21 @@
       <input class="input" type="number" step="1" min="1" id="capaciteMax" name="capaciteMax" value="{{ formationData.capaciteMax }}" required>
     </div>
   </div>
-  <div class="field">
-    <label class="field-label" for="formateur">Formateur responsable</label>
-    <select class="select" id="formateur" name="formateur">
-      <option value="">— Aucun —</option>
-      {% for f in formateurs %}<option value="{{ f.id }}" {{ formationData.formateur == f.id ? 'selected' : '' }}>{{ f.prenom }} {{ f.nom }}</option>{% endfor %}
-    </select>
+  <div style="display:flex;gap:16px;">
+    <div class="field" style="flex:1;">
+      <label class="field-label" for="formateur">Formateur responsable</label>
+      <select class="select" id="formateur" name="formateur">
+        <option value="">— Aucun —</option>
+        {% for f in formateurs %}<option value="{{ f.id }}" {{ formationData.formateur == f.id ? 'selected' : '' }}>{{ f.prenom }} {{ f.nom }}</option>{% endfor %}
+      </select>
+    </div>
+    <div class="field" style="flex:1;">
+      <label class="field-label" for="classe">Classe</label>
+      <select class="select" id="classe" name="classe">
+        <option value="">— Aucune —</option>
+        {% for c in classes %}<option value="{{ c.id }}" {{ formationData.classe|default('') == c.id ? 'selected' : '' }}>{{ c.nom }}</option>{% endfor %}
+      </select>
+    </div>
   </div>
   <div style="display:flex;gap:16px;">
     <div class="field" style="flex:1;">

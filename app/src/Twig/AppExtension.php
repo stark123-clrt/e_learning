@@ -24,7 +24,20 @@ final class AppExtension extends AbstractExtension
             new TwigFunction('current_user_name', [$this, 'nom']),
             new TwigFunction('current_user_initials', [$this, 'initiales']),
             new TwigFunction('current_user_role_label', [$this, 'roleLabel']),
+            new TwigFunction('youtube_embed', [$this, 'youtubeEmbed']),
         ];
+    }
+
+    /**
+     * Transforme un lien YouTube en URL intégrable (iframe). Renvoie null si non reconnu.
+     */
+    public function youtubeEmbed(string $url): ?string
+    {
+        if (preg_match('~(?:youtube\.com/(?:watch\?v=|embed/)|youtu\.be/)([A-Za-z0-9_-]{11})~', $url, $m)) {
+            return 'https://www.youtube.com/embed/' . $m[1];
+        }
+
+        return null;
     }
 
     public function nom(): string
