@@ -14,6 +14,12 @@
   </div>
 {% endif %}
 
+{% if formateur is null %}
+  <div style="background:var(--color-primary-wash);color:var(--color-primary-hover);padding:10px 14px;border-radius:var(--radius-sm);font-size:13px;margin-bottom:16px;max-width:540px;">
+    Un email d'invitation sera envoyé au formateur pour qu'il définisse son mot de passe.
+  </div>
+{% endif %}
+
 <form action="{{ path(formRoute, formateur is not null ? {'id': formateur.id} : {}) }}" method="post" style="display:flex;flex-direction:column;gap:16px;max-width:540px;">
   <div class="field">
     <label class="field-label" for="nom">Nom</label>

@@ -42,7 +42,7 @@ final class FormateurController extends AbstractController
 
     #[Route('/admin/formateurs/new', name: 'admin_formateur_new')]
     #[IsGranted('ROLE_ADMIN')]
-    public function new(Request $request, DocumentManager $dm): Response
+    public function new(Request $request, DocumentManager $dm, \App\Service\InvitationService $invitations): Response
     {
         $errors = [];
         $formateurData = [
@@ -78,8 +78,8 @@ final class FormateurController extends AbstractController
 
             if (!$errors) {
                 $emailExists = $dm->getRepository(Formateur::class)->findOneBy(['email' => $formateurData['email']]);
-                if ($emailExists !== null) {
-                    $errors[] = 'Un formateur existe déjà avec cet email.';
+                if ($emailExists !== null || $invitations->emailDejaUtilise($formateurData['email'])) {
+                    $errors[] = 'Un compte utilise déjà cet email.';
                 }
             }
 
@@ -94,7 +94,14 @@ final class FormateurController extends AbstractController
                 $dm->persist($formateur);
                 $dm->flush();
 
-                $this->addFlash('success', 'Formateur créé avec succès.');
+                $invitations->inviter(
+                    $formateurData['email'],
+                    'FORMATEUR',
+                    $formateur->getId(),
+                    trim($formateurData['prenom'] . ' ' . $formateurData['nom'])
+                );
+
+                $this->addFlash('success', 'Formateur créé. Un email d\'invitation lui a été envoyé pour définir son mot de passe.');
 
                 return $this->redirectToRoute('admin_formateurs');
             }
