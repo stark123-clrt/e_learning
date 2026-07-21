@@ -20,7 +20,12 @@
 
   <div class="field">
     <label class="field-label" for="niveau">Niveau</label>
-    <input class="input" type="text" id="niveau" name="niveau" value="{{ classeData.niveau }}" placeholder="Ex : L1, L2, M1…">
+    <select class="select" id="niveau" name="niveau">
+      <option value="" {{ classeData.niveau == '' ? 'selected' : '' }}>— Sélectionner —</option>
+      {% for niv in ['L1', 'L2', 'L3', 'M1', 'M2', 'D1', 'D2'] %}
+        <option value="{{ niv }}" {{ classeData.niveau == niv ? 'selected' : '' }}>{{ niv }}</option>
+      {% endfor %}
+    </select>
   </div>
 
   <div class="field">

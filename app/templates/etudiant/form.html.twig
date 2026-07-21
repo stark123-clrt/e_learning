@@ -1,0 +1,55 @@
+{% extends 'layout/_shell_admin.html.twig' %}
+{% set active_nav = 'etudiants' %}
+{% block page_title %}{{ formAction }} un étudiant{% endblock %}
+{% block page_subtitle %}Gestion des informations de l'étudiant{% endblock %}
+{% block content %}
+
+{% if errors is not empty %}
+  <div style="background:var(--error-50);color:var(--error-500);padding:10px 14px;border-radius:var(--radius-sm);font-size:13px;margin-bottom:14px;">
+    <ul style="margin:0;padding-left:18px;">
+      {% for error in errors %}<li>{{ error }}</li>{% endfor %}
+    </ul>
+  </div>
+{% endif %}
+
+{% if etudiant is null %}
+  <div style="background:var(--color-primary-wash);color:var(--color-primary-hover);padding:10px 14px;border-radius:var(--radius-sm);font-size:13px;margin-bottom:16px;max-width:540px;">
+    Un email d'invitation sera envoyé à l'étudiant pour qu'il définisse son mot de passe.
+  </div>
+{% endif %}
+
+<form action="{{ path(formRoute, etudiant is not null ? {'id': etudiant.id} : {}) }}" method="post" style="display:flex;flex-direction:column;gap:16px;max-width:540px;">
+  <div style="display:flex;gap:16px;">
+    <div class="field" style="flex:1;">
+      <label class="field-label" for="nom">Nom</label>
+      <input class="input" type="text" id="nom" name="nom" value="{{ etudiantData.nom }}" required>
+    </div>
+    <div class="field" style="flex:1;">
+      <label class="field-label" for="prenom">Prénom</label>
+      <input class="input" type="text" id="prenom" name="prenom" value="{{ etudiantData.prenom }}" required>
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="field-label" for="email">Email</label>
+    <input class="input" type="email" id="email" name="email" value="{{ etudiantData.email }}" required>
+  </div>
+
+  <div class="field">
+    <label class="field-label" for="niveau">Niveau</label>
+    <select class="select" id="niveau" name="niveau" required>
+      <option value="" {{ etudiantData.niveau == '' ? 'selected' : '' }}>— Sélectionner —</option>
+      {% for niv in niveaux %}
+        <option value="{{ niv }}" {{ etudiantData.niveau == niv ? 'selected' : '' }}>{{ niv }}</option>
+      {% endfor %}
+    </select>
+  </div>
+
+  <input type="hidden" name="_csrf_token" value="{{ csrf_token('etudiant_form') }}">
+  <div style="display:flex;gap:10px;">
+    <button class="btn btn-primary" type="submit">{{ formAction }}</button>
+    <a class="btn btn-secondary" href="{{ path('app_etudiant') }}">Annuler</a>
+  </div>
+</form>
+
+{% endblock %}

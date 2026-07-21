@@ -6,19 +6,22 @@
 
 <div class="detail-header">
   <div class="detail-header-identity">
-    <div class="avatar avatar-lg" aria-hidden="true">SM</div>
+    <div class="avatar avatar-lg" aria-hidden="true">{{ etudiant.prenom|slice(0,1)|upper }}{{ etudiant.nom|slice(0,1)|upper }}</div>
     <div>
-      <div class="detail-name">Sophie Martin</div>
+      <div class="detail-name">{{ etudiant.prenom }} {{ etudiant.nom }}</div>
       <div class="detail-badges">
-        <span class="badge badge-success">Actif</span>
-        <span class="tag tag-sm" style="cursor:default;">L3</span>
+        <span class="badge {{ etudiant.actif ? 'badge-success' : 'badge-neutral' }}">{{ etudiant.actif ? 'Actif' : 'Inactif' }}</span>
+        {% if etudiant.niveau %}<span class="tag tag-sm" style="cursor:default;">{{ etudiant.niveau }}</span>{% endif %}
       </div>
     </div>
   </div>
   <div class="detail-actions">
-    <a class="btn btn-secondary" href="/admin/etudiants">Retour</a>
-    <button class="btn btn-secondary" type="button">Modifier</button>
-    <button class="btn btn-destructive" type="button">Supprimer</button>
+    <a class="btn btn-secondary" href="{{ path('app_etudiant') }}">Retour</a>
+    <a class="btn btn-secondary" href="{{ path('app_etudiant_edit', {id: etudiant.id}) }}">Modifier</a>
+    <form action="{{ path('app_etudiant_delete', {id: etudiant.id}) }}" method="post" style="display:inline;" onsubmit="return confirm('Supprimer cet étudiant ?');">
+      <input type="hidden" name="_csrf_token" value="{{ csrf_token('delete_etudiant_' ~ etudiant.id) }}">
+      <button class="btn btn-destructive" type="submit">Supprimer</button>
+    </form>
   </div>
 </div>
 
@@ -27,14 +30,14 @@
     <div class="card-body">
       <div class="card-title">Informations personnelles</div>
       <div class="info-list">
-        <div><span class="label">Email : </span>sophie.martin@email.fr</div>
-        <div><span class="label">Créé le : </span>12/09/2025</div>
+        <div><span class="label">Email : </span>{{ etudiant.email }}</div>
+        <div><span class="label">Niveau : </span>{{ etudiant.niveau ?: '—' }}</div>
       </div>
     </div>
   </div>
   <div class="card"><div class="stat-card-body-primary">
     <div class="kpi-label">Moyenne générale</div>
-    <div class="stat-big-value-primary">15,0<span style="font-size:16px;font-weight:500;">/20</span></div>
+    <div class="stat-big-value-primary">{{ moyenne ?? '—' }}{% if moyenne %}<span style="font-size:16px;font-weight:500;">/20</span>{% endif %}</div>
   </div></div>
 </div>
 
@@ -42,14 +45,17 @@
   <div class="card-body">
     <div class="card-title">Inscriptions</div>
     <div style="display:flex;flex-direction:column;margin-top:12px;">
-      <div class="list-row">
-        <div style="font-size:14px;">Développement Web Full-Stack</div>
-        <div class="row-actions-inline"><span style="font-size:13px;color:var(--text-muted);">—</span><span class="badge badge-success">Confirmée</span></div>
-      </div>
-      <div class="list-row">
-        <div style="font-size:14px;">Management de Projet Agile</div>
-        <div class="row-actions-inline"><span style="font-size:13px;color:var(--text-muted);">15/20</span><span class="badge badge-success">Confirmée</span></div>
-      </div>
+      {% for inscription in inscriptions %}
+        <div class="list-row">
+          <div style="font-size:14px;">{{ inscription.formation ? inscription.formation.titre : '—' }}</div>
+          <div class="row-actions-inline">
+            <span style="font-size:13px;color:var(--text-muted);">{{ inscription.note is not null ? inscription.note ~ '/20' : '—' }}</span>
+            <span class="badge {{ inscription.statut|upper == 'ACTIVE' ? 'badge-success' : 'badge-neutral' }}">{{ inscription.statut|capitalize }}</span>
+          </div>
+        </div>
+      {% else %}
+        <div style="font-size:14px;color:var(--text-muted);">Aucune inscription.</div>
+      {% endfor %}
     </div>
   </div>
 </div>
