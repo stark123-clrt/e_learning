@@ -30,7 +30,7 @@
         <div style="margin-top:8px;"><span class="tag tag-sm" style="cursor:default;">{{ formation.categorie }}</span></div>
         <div style="font-size:13px;color:var(--text-secondary);margin-top:10px;">{{ formation.duree }} semaines · {{ formation.capaciteMax }} places max</div>
         <div style="font-size:15px;font-weight:700;margin-top:6px;">{{ formation.prix|number_format(0, ',', ' ') }} €</div>
-        <div style="margin-top:12px;"><a class="btn btn-primary btn-block" href="{{ path('etudiant_inscription', {id: formation.id}) }}">S'inscrire</a></div>
+        <div style="margin-top:12px;"><a class="btn btn-primary btn-block" href="{{ path('etudiant_catalogue_show', {id: formation.id}) }}">Voir la formation</a></div>
       </div>
     </div>
   {% else %}

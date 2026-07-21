@@ -4,135 +4,59 @@
 {% block page_subtitle %}Indicateurs clés de la plateforme{% endblock %}
 {% block content %}
 
-<div class="toolbar">
-  <button class="tag" type="button">7 jours</button>
-  <button class="tag active" type="button" aria-pressed="true">30 jours</button>
-  <button class="tag" type="button">Année</button>
-</div>
-
 <div class="kpi-grid">
-  <div class="card"><div class="kpi-card-body">
-    <div class="kpi-icon-wrap" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-    <div><div class="kpi-label">Total étudiants</div><div class="kpi-value">8</div></div>
-  </div></div>
-  <div class="card"><div class="kpi-card-body">
-    <div class="kpi-icon-wrap" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
-    <div><div class="kpi-label">Total formations</div><div class="kpi-value">8</div></div>
-  </div></div>
-  <div class="card"><div class="kpi-card-body">
-    <div class="kpi-icon-wrap" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg></div>
-    <div><div class="kpi-label">Total inscriptions</div><div class="kpi-value">15</div></div>
-  </div></div>
-  <div class="card"><div class="kpi-card-body">
-    <div class="kpi-icon-wrap" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
-    <div><div class="kpi-label">Prix moyen</div><div class="kpi-value">1 385 €</div></div>
-  </div></div>
-</div>
-
-<div class="grid-3col" style="margin-top:24px;">
-  <div class="card">
-    <div class="card-body">
-      <div class="card-title">Évolution des inscriptions</div>
-      <div class="line-chart-wrap">
-        <svg width="100%" height="140" viewBox="0 0 560 140" preserveAspectRatio="none" role="img" aria-label="Évolution mensuelle des inscriptions de janvier à juillet 2026">
-          <polyline points="0,130 93,82 187,106 280,130 373,10 467,34 560,58" fill="none" stroke="var(--color-primary)" stroke-width="2.5"></polyline>
-        </svg>
-        <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--text-muted);margin-top:4px;">
-          <span>Jan</span><span>Fév</span><span>Mar</span><span>Avr</span><span>Mai</span><span>Juin</span><span>Juil</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-body">
-      <div class="card-title">Répartition par niveau</div>
-      <div style="display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:10px;">
-        <div class="donut" style="background:conic-gradient(var(--indigo-500) 0 12.5%, var(--success-500) 12.5% 37.5%, var(--warning-500) 37.5% 62.5%, #A855F7 62.5% 87.5%, var(--gray-500) 87.5% 100%);" role="img" aria-label="Répartition des étudiants par niveau"></div>
-        <div class="donut-legend">
-          <div class="donut-legend-row"><span class="dot" style="background:var(--indigo-500);"></span><span class="label">L1</span><span class="count">· 1</span></div>
-          <div class="donut-legend-row"><span class="dot" style="background:var(--success-500);"></span><span class="label">L2</span><span class="count">· 2</span></div>
-          <div class="donut-legend-row"><span class="dot" style="background:var(--warning-500);"></span><span class="label">L3</span><span class="count">· 2</span></div>
-          <div class="donut-legend-row"><span class="dot" style="background:#A855F7;"></span><span class="label">M1</span><span class="count">· 2</span></div>
-          <div class="donut-legend-row"><span class="dot" style="background:var(--gray-500);"></span><span class="label">M2</span><span class="count">· 1</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-narrow">
-    <div class="card"><div class="stat-card-body-primary">
-      <div class="kpi-label">Taux de remplissage moyen</div>
-      <div class="stat-big-value-primary">74<span style="font-size:16px;font-weight:500;">%</span></div>
-      <div class="track"><div class="track-fill" style="width:74%;"></div></div>
-    </div></div>
-    <div class="card"><div class="stat-card-body">
-      <div class="kpi-label">Note moyenne générale</div>
-      <div class="stat-big-value">15,2<span style="font-size:16px;font-weight:500;">/20</span></div>
-    </div></div>
-  </div>
+  <div class="card"><div class="stat-card-body"><div class="kpi-label">Étudiants</div><div class="stat-big-value">{{ totalEtudiants }}</div></div></div>
+  <div class="card"><div class="stat-card-body"><div class="kpi-label">Formateurs</div><div class="stat-big-value">{{ totalFormateurs }}</div></div></div>
+  <div class="card"><div class="stat-card-body"><div class="kpi-label">Formations</div><div class="stat-big-value">{{ totalFormations }}</div></div></div>
+  <div class="card"><div class="stat-card-body"><div class="kpi-label">Inscriptions</div><div class="stat-big-value">{{ totalInscriptions }}</div></div></div>
 </div>
 
 <div class="grid-2col" style="margin-top:24px;">
-  <div class="card">
-    <div class="card-body">
-      <div class="card-title">Inscriptions par formation</div>
-      <div class="bar-chart-row">
-        <div class="bar-col"><div style="font-size:12px;font-weight:600;">4</div><div class="bar" style="height:80%;"></div><div class="bar-label">Full-Stack</div></div>
-        <div class="bar-col"><div style="font-size:12px;font-weight:600;">3</div><div class="bar" style="height:60%;"></div><div class="bar-label">Mgmt Agile</div></div>
-        <div class="bar-col"><div style="font-size:12px;font-weight:600;">2</div><div class="bar" style="height:40%;"></div><div class="bar-label">Data Analyse</div></div>
-        <div class="bar-col"><div style="font-size:12px;font-weight:600;">2</div><div class="bar" style="height:40%;"></div><div class="bar-label">Cybersécurité</div></div>
-        <div class="bar-col"><div style="font-size:12px;font-weight:600;">1</div><div class="bar" style="height:20%;"></div><div class="bar-label">Data Science</div></div>
-        <div class="bar-col"><div style="font-size:12px;font-weight:600;">1</div><div class="bar" style="height:20%;"></div><div class="bar-label">UX Design</div></div>
-        <div class="bar-col"><div style="font-size:12px;font-weight:600;">1</div><div class="bar" style="height:20%;"></div><div class="bar-label">Sécu Réseaux</div></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-body">
-      <div class="card-title">Comparatif prix / popularité</div>
-      <div class="scatter-box" role="img" aria-label="Nuage de points comparant le prix des formations à leur nombre d'inscriptions">
-        <div class="scatter-dot" style="left:71.4%;bottom:100%;" title="Développement Web Full-Stack : 1 490 €, 4 inscriptions"></div>
-        <div class="scatter-dot" style="left:100%;bottom:25%;" title="Data Science avec Python : 1 690 €, 1 inscription"></div>
-        <div class="scatter-dot" style="left:0%;bottom:75%;" title="Management de Projet Agile : 990 €, 3 inscriptions"></div>
-        <div class="scatter-dot" style="left:42.9%;bottom:50%;" title="Cybersécurité Fondamentaux : 1 290 €, 2 inscriptions"></div>
-        <div class="scatter-dot" style="left:57.1%;bottom:25%;" title="UX/UI Design : 1 390 €, 1 inscription"></div>
-        <div class="scatter-dot" style="left:85.7%;bottom:2%;" title="DevOps &amp; Cloud : 1 590 €, 0 inscription"></div>
-        <div class="scatter-dot" style="left:28.6%;bottom:50%;" title="Data Analyse &amp; Visualisation : 1 190 €, 2 inscriptions"></div>
-        <div class="scatter-dot" style="left:65.7%;bottom:25%;" title="Sécurité des Réseaux Avancée : 1 450 €, 1 inscription"></div>
-      </div>
-      <div class="axis-label-row"><span>Prix : 990€</span><span>→ 1 690€</span></div>
-    </div>
-  </div>
+  <div class="card"><div class="stat-card-body"><div class="kpi-label">Prix moyen des formations</div><div class="stat-big-value">{{ prixMoyen }} €</div></div></div>
+  <div class="card"><div class="stat-card-body-primary"><div class="kpi-label">Note moyenne générale</div><div class="stat-big-value-primary">{{ noteMoyenne }}<span style="font-size:16px;font-weight:500;">/20</span></div></div></div>
 </div>
 
 <div class="grid-2col" style="margin-top:24px;">
-  <div class="card">
-    <div class="card-body">
-      <div class="card-title">Top 5 des formations les plus inscrites</div>
-      <div style="display:flex;flex-direction:column;gap:14px;margin-top:14px;">
-        <div style="display:flex;align-items:center;gap:12px;"><div class="rank-badge">1</div><div style="flex:1;min-width:0;"><div style="font-size:13px;font-weight:500;">Développement Web Full-Stack</div><div class="track"><div class="track-fill" style="width:100%;"></div></div></div><div style="font-size:13px;font-weight:600;">4</div></div>
-        <div style="display:flex;align-items:center;gap:12px;"><div class="rank-badge">2</div><div style="flex:1;min-width:0;"><div style="font-size:13px;font-weight:500;">Management de Projet Agile</div><div class="track"><div class="track-fill" style="width:75%;"></div></div></div><div style="font-size:13px;font-weight:600;">3</div></div>
-        <div style="display:flex;align-items:center;gap:12px;"><div class="rank-badge">3</div><div style="flex:1;min-width:0;"><div style="font-size:13px;font-weight:500;">Data Analyse &amp; Visualisation</div><div class="track"><div class="track-fill" style="width:50%;"></div></div></div><div style="font-size:13px;font-weight:600;">2</div></div>
-        <div style="display:flex;align-items:center;gap:12px;"><div class="rank-badge">4</div><div style="flex:1;min-width:0;"><div style="font-size:13px;font-weight:500;">Cybersécurité Fondamentaux</div><div class="track"><div class="track-fill" style="width:50%;"></div></div></div><div style="font-size:13px;font-weight:600;">2</div></div>
-        <div style="display:flex;align-items:center;gap:12px;"><div class="rank-badge">5</div><div style="flex:1;min-width:0;"><div style="font-size:13px;font-weight:500;">Data Science avec Python</div><div class="track"><div class="track-fill" style="width:25%;"></div></div></div><div style="font-size:13px;font-weight:600;">1</div></div>
-      </div>
+  <div class="card"><div class="card-body">
+    <div class="card-title">Inscriptions par formation</div>
+    <div style="display:flex;flex-direction:column;gap:12px;margin-top:14px;">
+      {% for f in inscriptionsParFormation %}
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div style="flex:1;min-width:0;"><div style="font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{{ f.titre }}</div><div class="track"><div class="track-fill" style="width:{{ f.width }}%;"></div></div></div>
+          <div style="font-size:13px;font-weight:600;">{{ f.count }}</div>
+        </div>
+      {% else %}<div style="font-size:13px;color:var(--text-muted);">Aucune inscription.</div>{% endfor %}
     </div>
-  </div>
+  </div></div>
 
-  <div class="card">
-    <div class="card-body">
-      <div class="card-title">Top 5 des meilleurs étudiants</div>
-      <div style="display:flex;flex-direction:column;gap:12px;margin-top:14px;">
-        <div style="display:flex;align-items:center;gap:12px;"><div class="rank-badge">1</div><div class="avatar avatar-sm" aria-hidden="true">LD</div><div style="flex:1;font-size:13px;font-weight:500;">Léa Dubois</div><div style="font-size:13px;font-weight:700;color:var(--success-500);">17/20</div></div>
-        <div style="display:flex;align-items:center;gap:12px;"><div class="rank-badge">2</div><div class="avatar avatar-sm" aria-hidden="true">CR</div><div style="flex:1;font-size:13px;font-weight:500;">Chloé Roux</div><div style="font-size:13px;font-weight:700;color:var(--success-500);">17/20</div></div>
-        <div style="display:flex;align-items:center;gap:12px;"><div class="rank-badge">3</div><div class="avatar avatar-sm" aria-hidden="true">SM</div><div style="flex:1;font-size:13px;font-weight:500;">Sophie Martin</div><div style="font-size:13px;font-weight:700;color:var(--success-500);">15/20</div></div>
-        <div style="display:flex;align-items:center;gap:12px;"><div class="rank-badge">4</div><div class="avatar avatar-sm" aria-hidden="true">MD</div><div style="flex:1;font-size:13px;font-weight:500;">Marie Dupont</div><div style="font-size:13px;font-weight:700;color:var(--success-500);">14,5/20</div></div>
-        <div style="display:flex;align-items:center;gap:12px;"><div class="rank-badge">5</div><div class="avatar avatar-sm" aria-hidden="true">HF</div><div style="flex:1;font-size:13px;font-weight:500;">Hugo Fontaine</div><div style="font-size:13px;font-weight:700;color:var(--success-500);">13/20</div></div>
-      </div>
+  <div class="card"><div class="card-body">
+    <div class="card-title">Formations par catégorie</div>
+    <div style="display:flex;flex-direction:column;gap:10px;margin-top:14px;">
+      {% for categorie, count in formationsParCategorie %}
+        <div style="display:flex;justify-content:space-between;font-size:14px;"><span>{{ categorie }}</span><strong>{{ count }}</strong></div>
+      {% else %}<div style="font-size:13px;color:var(--text-muted);">Aucune formation.</div>{% endfor %}
     </div>
-  </div>
+  </div></div>
+</div>
+
+<div class="grid-2col" style="margin-top:24px;">
+  <div class="card"><div class="card-body">
+    <div class="card-title">Top 5 des formations les plus inscrites</div>
+    <div style="display:flex;flex-direction:column;gap:10px;margin-top:14px;">
+      {% for f in topFormations %}
+        <div style="display:flex;justify-content:space-between;font-size:14px;"><span>{{ f.titre }}</span><strong>{{ f.count }}</strong></div>
+      {% else %}<div style="font-size:13px;color:var(--text-muted);">Aucune donnée.</div>{% endfor %}
+    </div>
+  </div></div>
+
+  <div class="card"><div class="card-body">
+    <div class="card-title">Top 5 des meilleurs étudiants</div>
+    <div style="display:flex;flex-direction:column;gap:10px;margin-top:14px;">
+      {% for s in topStudents %}
+        <div style="display:flex;justify-content:space-between;font-size:14px;"><span>{{ s.rang }}. {{ s.nom }}</span><strong style="color:var(--success-500);">{{ s.moyenne }}/20</strong></div>
+      {% else %}<div style="font-size:13px;color:var(--text-muted);">Aucune note attribuée.</div>{% endfor %}
+    </div>
+  </div></div>
 </div>
 
 {% endblock %}

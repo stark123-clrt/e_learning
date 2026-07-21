@@ -16,6 +16,78 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 final class EspaceController extends AbstractController
 {
+    private const NIVEAUX = ['L1', 'L2', 'L3', 'M1', 'M2', 'D1', 'D2'];
+
+    // ---------- Profils ----------
+
+    #[Route('/etudiant/profil', name: 'etudiant_profil')]
+    #[IsGranted('ROLE_ETUDIANT')]
+    public function etudiantProfil(Request $request, DocumentManager $dm, \Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface $hasher): Response
+    {
+        $etudiant = $this->etudiantCourant($dm);
+        if (!$etudiant instanceof Etudiant) {
+            throw $this->createNotFoundException();
+        }
+
+        if ($request->isMethod('POST') && $this->isCsrfTokenValid('profil', (string) $request->request->get('_csrf_token'))) {
+            $etudiant->setNom(trim((string) $request->request->get('nom')) ?: $etudiant->getNom());
+            $etudiant->setPrenom(trim((string) $request->request->get('prenom')) ?: $etudiant->getPrenom());
+            $niveau = trim((string) $request->request->get('niveau'));
+            if (in_array($niveau, self::NIVEAUX, true)) {
+                $etudiant->setNiveau($niveau);
+            }
+            $this->changerMotDePasse($request, $dm, $hasher);
+            $dm->flush();
+            $this->addFlash('success', 'Profil mis à jour.');
+
+            return $this->redirectToRoute('etudiant_profil');
+        }
+
+        return $this->render('utilisateur/profil_etudiant.html.twig', [
+            'etudiant' => $etudiant,
+            'niveaux' => self::NIVEAUX,
+        ]);
+    }
+
+    #[Route('/formateur/profil', name: 'formateur_profil')]
+    #[IsGranted('ROLE_FORMATEUR')]
+    public function formateurProfil(Request $request, DocumentManager $dm, \Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface $hasher): Response
+    {
+        $formateur = $this->formateurCourant($dm);
+        if (!$formateur instanceof Formateur) {
+            throw $this->createNotFoundException();
+        }
+
+        if ($request->isMethod('POST') && $this->isCsrfTokenValid('profil', (string) $request->request->get('_csrf_token'))) {
+            $formateur->setNom(trim((string) $request->request->get('nom')) ?: $formateur->getNom());
+            $formateur->setPrenom(trim((string) $request->request->get('prenom')) ?: $formateur->getPrenom());
+            $specialite = trim((string) $request->request->get('specialite'));
+            if ('' !== $specialite) {
+                $formateur->setSpecialite($specialite);
+            }
+            $this->changerMotDePasse($request, $dm, $hasher);
+            $dm->flush();
+            $this->addFlash('success', 'Profil mis à jour.');
+
+            return $this->redirectToRoute('formateur_profil');
+        }
+
+        return $this->render('utilisateur/profil_formateur.html.twig', [
+            'formateur' => $formateur,
+        ]);
+    }
+
+    private function changerMotDePasse(Request $request, DocumentManager $dm, \Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface $hasher): void
+    {
+        $nouveau = (string) $request->request->get('password');
+        if (strlen($nouveau) >= 8) {
+            $utilisateur = $this->getUser();
+            if ($utilisateur instanceof Utilisateur) {
+                $utilisateur->setMotDePasse($hasher->hashPassword($utilisateur, $nouveau));
+            }
+        }
+    }
+
     // ---------- Espace formateur ----------
 
     #[Route('/formateur/formations', name: 'formateur_formations')]
