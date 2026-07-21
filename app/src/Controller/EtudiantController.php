@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Controller;
-
 use App\Document\Etudiant;
 use Doctrine\ODM\MongoDB\DocumentManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
