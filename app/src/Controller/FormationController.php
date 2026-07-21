@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Document\Classe;
+use App\Document\Cours;
 use App\Document\Formateur;
 use App\Document\Formation;
 use App\Document\Inscription;
@@ -48,9 +49,17 @@ final class FormationController extends AbstractController
                 'statut'=>'OUVERTE'
             ]);
 
+        $cartes = [];
+        foreach ($formations as $formation) {
+            $premierCours = $dm->getRepository(Cours::class)->findOneBy(['formation' => $formation], ['ordre' => 'asc']);
+            $cartes[] = [
+                'formation' => $formation,
+                'apercu' => $premierCours?->getVideoUrl(),
+            ];
+        }
 
         return $this->render('formation/catalogue.html.twig', [
-            'formations'=>$formations
+            'cartes' => $cartes,
         ]);
     }
 
@@ -184,10 +193,12 @@ final class FormationController extends AbstractController
     public function catalogueShow(Formation $formation, DocumentManager $dm): Response
     {
         $nbInscrits = count($dm->getRepository(Inscription::class)->findBy(['formation' => $formation]));
+        $premierCours = $dm->getRepository(Cours::class)->findOneBy(['formation' => $formation], ['ordre' => 'asc']);
 
         return $this->render('formation/catalogue_show.html.twig', [
             'formation' => $formation,
             'placesRestantes' => max(0, $formation->getCapaciteMax() - $nbInscrits),
+            'apercu' => $premierCours?->getVideoUrl(),
         ]);
     }
 

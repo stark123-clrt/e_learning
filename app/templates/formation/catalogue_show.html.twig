@@ -10,6 +10,12 @@
   <div class="card"><div class="card-body">
     <div style="margin-bottom:8px;">{% if formation.categorie %}<span class="tag tag-sm" style="cursor:default;">{{ formation.categorie }}</span>{% endif %}</div>
     <div class="detail-name" style="font-size:22px;">{{ formation.titre }}</div>
+    {% set embed = apercu ? youtube_embed(apercu) : null %}
+    {% if embed %}
+      <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:var(--radius-md);margin-top:14px;">
+        <iframe src="{{ embed }}" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allowfullscreen title="Aperçu {{ formation.titre }}"></iframe>
+      </div>
+    {% endif %}
     <div style="font-size:14px;color:var(--text-secondary);line-height:1.6;margin-top:12px;">{{ formation.description ?: 'Aucune description.' }}</div>
     <div style="font-size:13px;color:var(--text-muted);margin-top:16px;">Formateur : {{ formation.formateur ? formation.formateur.prenom ~ ' ' ~ formation.formateur.nom : '—' }}</div>
     <div style="font-size:13px;color:var(--text-muted);margin-top:4px;">{{ formation.duree }} semaines · du {{ formation.dateDebut|date('d/m/Y') }} au {{ formation.dateFin|date('d/m/Y') }}</div>

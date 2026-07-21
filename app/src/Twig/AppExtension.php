@@ -25,7 +25,20 @@ final class AppExtension extends AbstractExtension
             new TwigFunction('current_user_initials', [$this, 'initiales']),
             new TwigFunction('current_user_role_label', [$this, 'roleLabel']),
             new TwigFunction('youtube_embed', [$this, 'youtubeEmbed']),
+            new TwigFunction('youtube_thumbnail', [$this, 'youtubeThumbnail']),
         ];
+    }
+
+    /**
+     * Renvoie l'URL de la miniature d'une vidéo YouTube, ou null si non reconnue.
+     */
+    public function youtubeThumbnail(string $url): ?string
+    {
+        if (preg_match('~(?:youtube\.com/(?:watch\?v=|embed/)|youtu\.be/)([A-Za-z0-9_-]{11})~', $url, $m)) {
+            return 'https://img.youtube.com/vi/' . $m[1] . '/hqdefault.jpg';
+        }
+
+        return null;
     }
 
     /**
