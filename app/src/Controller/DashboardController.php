@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Document\Cours;
 use App\Document\Etudiant;
 use App\Document\Formateur;
 use App\Document\Formation;
@@ -196,14 +197,21 @@ final class DashboardController extends AbstractController
         $notes = [];
         $prochaine = null;
         $prochaineDate = null;
+        $apercus = [];
         $maintenant = new \DateTimeImmutable();
         foreach ($mesInscriptions as $i) {
             if (null !== $i->getNote()) {
                 $notes[] = $i->getNote();
             }
             $formation = $i->getFormation();
-            if (null !== $formation && $formation->getDateDebut() > $maintenant) {
-                if (null === $prochaineDate || $formation->getDateDebut() < $prochaineDate) {
+            if (null !== $formation) {
+                // Aperçu = 1re vidéo de cours de la formation (comme dans le catalogue).
+                if (!array_key_exists($formation->getId(), $apercus)) {
+                    $premierCours = $dm->getRepository(Cours::class)->findOneBy(['formation' => $formation], ['ordre' => 'asc']);
+                    $apercus[$formation->getId()] = $premierCours?->getVideoUrl();
+                }
+                if ($formation->getDateDebut() > $maintenant
+                    && (null === $prochaineDate || $formation->getDateDebut() < $prochaineDate)) {
                     $prochaineDate = $formation->getDateDebut();
                     $prochaine = $formation;
                 }
@@ -216,6 +224,7 @@ final class DashboardController extends AbstractController
             'moyenne' => $notes ? $this->fmtNote(array_sum($notes) / count($notes)) : '—',
             'prochaineFormation' => $prochaine,
             'inscriptions' => $mesInscriptions,
+            'apercus' => $apercus,
         ]);
     }
 
