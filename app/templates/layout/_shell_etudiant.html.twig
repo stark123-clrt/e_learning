@@ -52,6 +52,15 @@
     </header>
 
     <main class="content">
+      {% if app.user and app.user.statut|upper == 'EN_ATTENTE' %}
+        <div style="display:flex;gap:12px;align-items:flex-start;background:var(--warning-50);border:1px solid var(--warning-500);border-radius:var(--radius-md);padding:14px 18px;margin-bottom:18px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--warning-500)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="flex:none;margin-top:1px;" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <div style="font-size:14px;line-height:1.5;color:var(--text-secondary);">
+            <strong style="color:var(--warning-500);">Compte en cours de validation.</strong>
+            Vous pouvez explorer votre espace, mais vous ne pourrez <strong>vous inscrire aux formations</strong> qu'une fois votre compte validé par un administrateur.
+          </div>
+        </div>
+      {% endif %}
       {% block content %}{% endblock %}
     </main>
   </div>

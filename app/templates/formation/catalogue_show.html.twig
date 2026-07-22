@@ -24,7 +24,9 @@
     <div class="stat-big-value">{{ formation.prix|number_format(0, ',', ' ') }} €</div>
     <div style="font-size:13px;color:var(--text-muted);margin-top:8px;">{{ placesRestantes }} place(s) restante(s) sur {{ formation.capaciteMax }}</div>
     <div style="margin-top:16px;">
-      {% if dejaInscrit %}
+      {% if app.user and app.user.statut|upper != 'ACTIF' %}
+        <button class="btn btn-secondary btn-block" type="button" disabled style="height:44px;">Inscription après validation du compte</button>
+      {% elseif dejaInscrit %}
         <button class="btn btn-secondary btn-block" type="button" disabled style="height:44px;">Déjà inscrit</button>
         <a class="btn btn-primary btn-block" href="{{ path('etudiant_inscriptions') }}" style="height:44px;margin-top:8px;">Voir mes inscriptions</a>
       {% elseif placesRestantes > 0 %}

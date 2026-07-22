@@ -17,13 +17,10 @@ final class AccountChecker implements UserCheckerInterface
 
         $statut = strtoupper($user->getStatut());
 
-        if ('EN_ATTENTE' === $statut) {
-            throw new CustomUserMessageAccountStatusException(
-                'Votre compte est en attente de validation par un administrateur.'
-            );
-        }
-
-        if ('ACTIF' !== $statut) {
+        // Un compte EN_ATTENTE peut se connecter et consulter son espace, mais
+        // ses actions sont limitées (il ne peut pas s'inscrire) tant que l'admin
+        // ne l'a pas validé. Seuls les comptes désactivés sont refusés.
+        if (!in_array($statut, ['ACTIF', 'EN_ATTENTE'], true)) {
             throw new CustomUserMessageAccountStatusException(
                 'Votre compte n\'est pas actif. Contactez un administrateur.'
             );

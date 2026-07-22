@@ -38,6 +38,17 @@ final class InscriptionController extends AbstractController
         DocumentManager $dm
     ): Response {
 
+        // Un compte non encore validé par l'admin peut voir son espace mais pas s'inscrire.
+        $utilisateur = $this->getUser();
+        if ($utilisateur instanceof Utilisateur && strtoupper($utilisateur->getStatut()) !== 'ACTIF') {
+            $this->addFlash(
+                'danger',
+                'Votre compte est en cours de validation. Vous pourrez vous inscrire aux formations une fois validé par un administrateur.'
+            );
+
+            return $this->redirectToRoute('etudiant_catalogue');
+        }
+
         $etudiant = $this->getEtudiantCourant($dm);
 
         if ($etudiant === null) {
