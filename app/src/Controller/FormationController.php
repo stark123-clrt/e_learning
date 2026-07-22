@@ -4,9 +4,11 @@ namespace App\Controller;
 
 use App\Document\Classe;
 use App\Document\Cours;
+use App\Document\Etudiant;
 use App\Document\Formateur;
 use App\Document\Formation;
 use App\Document\Inscription;
+use App\Document\Utilisateur;
 use Doctrine\ODM\MongoDB\DocumentManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -49,12 +51,15 @@ final class FormationController extends AbstractController
                 'statut'=>'OUVERTE'
             ]);
 
+        $dejaInscrit = $this->formationsInscrites($dm);
+
         $cartes = [];
         foreach ($formations as $formation) {
             $premierCours = $dm->getRepository(Cours::class)->findOneBy(['formation' => $formation], ['ordre' => 'asc']);
             $cartes[] = [
                 'formation' => $formation,
                 'apercu' => $premierCours?->getVideoUrl(),
+                'inscrit' => isset($dejaInscrit[$formation->getId()]),
             ];
         }
 
@@ -195,11 +200,48 @@ final class FormationController extends AbstractController
         $nbInscrits = count($dm->getRepository(Inscription::class)->findBy(['formation' => $formation]));
         $premierCours = $dm->getRepository(Cours::class)->findOneBy(['formation' => $formation], ['ordre' => 'asc']);
 
+        $etudiant = $this->getEtudiantCourant($dm);
+        $dejaInscrit = $etudiant !== null && null !== $dm->getRepository(Inscription::class)
+            ->findOneBy(['etudiant' => $etudiant, 'formation' => $formation]);
+
         return $this->render('formation/catalogue_show.html.twig', [
             'formation' => $formation,
             'placesRestantes' => max(0, $formation->getCapaciteMax() - $nbInscrits),
             'apercu' => $premierCours?->getVideoUrl(),
+            'dejaInscrit' => $dejaInscrit,
         ]);
+    }
+
+    /**
+     * Identifiants des formations auxquelles l'étudiant courant est déjà inscrit.
+     *
+     * @return array<string,true>
+     */
+    private function formationsInscrites(DocumentManager $dm): array
+    {
+        $etudiant = $this->getEtudiantCourant($dm);
+        if ($etudiant === null) {
+            return [];
+        }
+
+        $ids = [];
+        foreach ($dm->getRepository(Inscription::class)->findBy(['etudiant' => $etudiant]) as $inscription) {
+            if ($inscription->getFormation() !== null) {
+                $ids[$inscription->getFormation()->getId()] = true;
+            }
+        }
+
+        return $ids;
+    }
+
+    private function getEtudiantCourant(DocumentManager $dm): ?Etudiant
+    {
+        $utilisateur = $this->getUser();
+        if (!$utilisateur instanceof Utilisateur || $utilisateur->getProfilId() === null) {
+            return null;
+        }
+
+        return $dm->getRepository(Etudiant::class)->find($utilisateur->getProfilId());
     }
 
     /** @return array<string,string> */

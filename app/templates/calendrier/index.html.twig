@@ -26,9 +26,9 @@
           </div>
           <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px;">
             {% if f.categorie %}<span class="tag tag-sm" style="cursor:default;">{{ f.categorie }}</span>{% endif %}
-            <span style="font-size:13px;color:var(--text-secondary);">👤 {{ f.formateur ? f.formateur.prenom ~ ' ' ~ f.formateur.nom : 'Aucun formateur' }}</span>
+            <span style="font-size:13px;color:var(--text-secondary);">Formateur : {{ f.formateur ? f.formateur.prenom ~ ' ' ~ f.formateur.nom : 'Aucun formateur' }}</span>
           </div>
-          <div style="font-size:13px;color:var(--text-muted);margin-top:8px;">📅 Du {{ f.dateDebut|date('d/m/Y') }} au {{ f.dateFin|date('d/m/Y') }} · {{ f.duree }} semaines</div>
+          <div style="font-size:13px;color:var(--text-muted);margin-top:8px;">Du {{ f.dateDebut|date('d/m/Y') }} au {{ f.dateFin|date('d/m/Y') }} · {{ f.duree }} semaines</div>
         </div>
       </div></div>
     {% endfor %}
