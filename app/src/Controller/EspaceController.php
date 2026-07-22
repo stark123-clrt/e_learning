@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Document\Cours;
 use App\Document\Etudiant;
 use App\Document\Formateur;
 use App\Document\Formation;
@@ -98,9 +99,11 @@ final class EspaceController extends AbstractController
         $formations = [];
         if ($formateur instanceof Formateur) {
             foreach ($dm->getRepository(Formation::class)->findBy(['formateur' => $formateur]) as $f) {
+                $premierCours = $dm->getRepository(Cours::class)->findOneBy(['formation' => $f], ['ordre' => 'asc']);
                 $formations[] = [
                     'formation' => $f,
                     'nbInscrits' => count($dm->getRepository(Inscription::class)->findBy(['formation' => $f])),
+                    'apercu' => $premierCours?->getVideoUrl(),
                 ];
             }
         }

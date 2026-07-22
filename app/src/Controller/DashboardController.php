@@ -169,10 +169,13 @@ final class DashboardController extends AbstractController
         }
 
         $formationsActives = 0;
+        $apercus = [];
         foreach ($mesFormations as $f) {
             if ('OUVERTE' === strtoupper($f->getStatut())) {
                 ++$formationsActives;
             }
+            $premierCours = $dm->getRepository(Cours::class)->findOneBy(['formation' => $f], ['ordre' => 'asc']);
+            $apercus[$f->getId()] = $premierCours?->getVideoUrl();
         }
 
         return $this->render('dashboard/formateur.html.twig', [
@@ -180,6 +183,7 @@ final class DashboardController extends AbstractController
             'totalEtudiants' => count($etudiantsUniques),
             'noteMoyenne' => $notes ? $this->fmtNote(array_sum($notes) / count($notes)) : '—',
             'formations' => $mesFormations,
+            'apercus' => $apercus,
         ]);
     }
 
