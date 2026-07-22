@@ -2,6 +2,12 @@
 framework:
     secret: '%env(APP_SECRET)%'
 
+    # Derrière le proxy de Coolify (Traefik), on fait confiance au réseau privé
+    # et on lit les en-têtes X-Forwarded-* : Symfony détecte alors le HTTPS et
+    # génère des URLs absolues en https (indispensable pour le redirect_uri Google).
+    trusted_proxies: 'private_ranges'
+    trusted_headers: ['x-forwarded-for', 'x-forwarded-host', 'x-forwarded-proto', 'x-forwarded-port', 'x-forwarded-prefix']
+
     # Note that the session will be started ONLY if you read or write from it.
     session: true
 
