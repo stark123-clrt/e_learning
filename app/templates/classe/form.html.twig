@@ -1,0 +1,43 @@
+{% extends 'layout/_shell_admin.html.twig' %}
+{% set active_nav = 'classes' %}
+{% block page_title %}{{ formAction }} une classe{% endblock %}
+{% block page_subtitle %}Gestion des informations de la classe{% endblock %}
+{% block content %}
+
+{% if errors is not empty %}
+  <div style="background:var(--error-50);color:var(--error-500);padding:10px 14px;border-radius:var(--radius-sm);font-size:13px;margin-bottom:14px;">
+    <ul style="margin:0;padding-left:18px;">
+      {% for error in errors %}<li>{{ error }}</li>{% endfor %}
+    </ul>
+  </div>
+{% endif %}
+
+<form action="{{ path(formRoute, classe is not null ? {'id': classe.id} : {}) }}" method="post" style="display:flex;flex-direction:column;gap:16px;max-width:540px;">
+  <div class="field">
+    <label class="field-label" for="nom">Nom de la classe</label>
+    <input class="input" type="text" id="nom" name="nom" value="{{ classeData.nom }}" placeholder="Ex : L1 Informatique" required>
+  </div>
+
+  <div class="field">
+    <label class="field-label" for="niveau">Niveau</label>
+    <select class="select" id="niveau" name="niveau">
+      <option value="" {{ classeData.niveau == '' ? 'selected' : '' }}>— Sélectionner —</option>
+      {% for niv in ['L1', 'L2', 'L3', 'M1', 'M2', 'D1', 'D2'] %}
+        <option value="{{ niv }}" {{ classeData.niveau == niv ? 'selected' : '' }}>{{ niv }}</option>
+      {% endfor %}
+    </select>
+  </div>
+
+  <div class="field">
+    <label class="field-label" for="description">Description</label>
+    <input class="input" type="text" id="description" name="description" value="{{ classeData.description }}" placeholder="Optionnel">
+  </div>
+
+  <input type="hidden" name="_csrf_token" value="{{ csrf_token('classe_form') }}">
+  <div style="display:flex;gap:10px;">
+    <button class="btn btn-primary" type="submit">{{ formAction }}</button>
+    <a class="btn btn-secondary" href="{{ path('admin_classes') }}">Annuler</a>
+  </div>
+</form>
+
+{% endblock %}

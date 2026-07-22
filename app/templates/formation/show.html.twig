@@ -1,0 +1,56 @@
+{% extends 'layout/_shell_admin.html.twig' %}
+{% set active_nav = 'formations' %}
+{% block page_title %}Fiche formation{% endblock %}
+{% block page_subtitle %}Détail, capacité et liste des inscrits{% endblock %}
+{% block content %}
+
+<div class="detail-header">
+  <div>
+    <div style="display:flex;gap:8px;margin-bottom:8px;">
+      {% if formation.categorie %}<span class="tag tag-sm" style="cursor:default;">{{ formation.categorie }}</span>{% endif %}
+      <span class="badge {{ formation.statut|upper == 'OUVERTE' ? 'badge-success' : 'badge-neutral' }}">{{ formation.statut|capitalize }}</span>
+    </div>
+    <div class="detail-name">{{ formation.titre }}</div>
+  </div>
+  <div class="detail-actions">
+    <a class="btn btn-secondary" href="{{ path('admin_formations') }}">Retour</a>
+    <a class="btn btn-secondary" href="{{ path('admin_formation_cours', {id: formation.id}) }}">Gérer les cours</a>
+    <a class="btn btn-secondary" href="{{ path('admin_formation_edit', {id: formation.id}) }}">Modifier</a>
+  </div>
+</div>
+
+<div class="grid-2col">
+  <div class="card"><div class="card-body">
+    <div class="card-title">Description</div>
+    <div style="font-size:14px;color:var(--text-secondary);line-height:1.6;margin-top:10px;">{{ formation.description ?: '—' }}</div>
+    <div style="font-size:13px;color:var(--text-muted);margin-top:16px;">Formateur : <strong style="color:var(--text-primary);">{{ formation.formateur ? formation.formateur.prenom ~ ' ' ~ formation.formateur.nom : '—' }}</strong></div>
+    <div style="font-size:13px;color:var(--text-muted);margin-top:4px;">Du {{ formation.dateDebut|date('d/m/Y') }} au {{ formation.dateFin|date('d/m/Y') }} · {{ formation.duree }} semaines</div>
+  </div></div>
+  <div class="card"><div class="stat-card-body">
+    <div class="kpi-label">Prix</div><div class="stat-big-value">{{ formation.prix|number_format(0, ',', ' ') }} €</div>
+    <div class="kpi-label" style="margin-top:14px;">Inscrits</div>
+    <div style="font-size:15px;font-weight:600;">{{ inscriptions|length }} / {{ formation.capaciteMax }}</div>
+  </div></div>
+</div>
+
+<div class="card" style="margin-top:24px;">
+  <div class="table-wrap">
+    <table class="table">
+      <thead><tr><th>Étudiant</th><th>Date d'inscription</th><th>Statut</th><th>Note</th></tr></thead>
+      <tbody>
+        {% for inscription in inscriptions %}
+          <tr>
+            <td>{{ inscription.etudiant ? inscription.etudiant.prenom ~ ' ' ~ inscription.etudiant.nom : '—' }}</td>
+            <td>{{ inscription.dateInscription|date('d/m/Y') }}</td>
+            <td><span class="badge {{ inscription.statut|upper == 'ACTIVE' ? 'badge-success' : 'badge-neutral' }}">{{ inscription.statut|capitalize }}</span></td>
+            <td>{{ inscription.note is not null ? inscription.note ~ '/20' : '—' }}</td>
+          </tr>
+        {% else %}
+          <tr><td colspan="4" class="text-center">Aucun inscrit.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends shell %}
+{% set active_nav = 'calendrier' %}
+{% block page_title %}Calendrier{% endblock %}
+{% block page_subtitle %}Planning des formations{% endblock %}
+{% block content %}
+
+{% for bloc in mois %}
+  <div style="display:flex;align-items:center;gap:12px;{{ loop.first ? '' : 'margin-top:32px;' }}margin-bottom:16px;">
+    <div style="width:6px;height:26px;border-radius:9999px;background:var(--color-primary);"></div>
+    <div style="font-family:var(--font-display);font-weight:700;font-size:20px;letter-spacing:var(--tracking-heading);">{{ bloc.label }}</div>
+    <div style="flex:1;height:1px;background:var(--border);"></div>
+    <div style="font-size:13px;color:var(--text-muted);">{{ bloc.formations|length }} formation(s)</div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:14px;">
+    {% for f in bloc.formations %}
+      <div class="card"><div style="display:flex;align-items:stretch;gap:0;">
+        <div style="flex:none;width:88px;background:var(--color-primary-wash);border-radius:var(--radius-lg) 0 0 var(--radius-lg);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px 0;">
+          <div style="font-family:var(--font-display);font-weight:700;font-size:30px;line-height:1;color:var(--color-primary-hover);">{{ f.dateDebut|date('d') }}</div>
+          <div style="font-size:11px;color:var(--color-primary-hover);text-transform:uppercase;letter-spacing:var(--tracking-overline);margin-top:4px;">{{ f.dateDebut|date('m/Y') }}</div>
+        </div>
+        <div style="flex:1;padding:16px 18px;min-width:0;">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;">
+            <div style="font-family:var(--font-display);font-weight:700;font-size:16px;">{{ f.titre }}</div>
+            <span class="badge {{ f.statut|upper == 'OUVERTE' ? 'badge-success' : 'badge-neutral' }}" style="flex:none;">{{ f.statut|capitalize }}</span>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px;">
+            {% if f.categorie %}<span class="tag tag-sm" style="cursor:default;">{{ f.categorie }}</span>{% endif %}
+            <span style="font-size:13px;color:var(--text-secondary);">Formateur : {{ f.formateur ? f.formateur.prenom ~ ' ' ~ f.formateur.nom : 'Aucun formateur' }}</span>
+          </div>
+          <div style="font-size:13px;color:var(--text-muted);margin-top:8px;">Du {{ f.dateDebut|date('d/m/Y') }} au {{ f.dateFin|date('d/m/Y') }} · {{ f.duree }} semaines</div>
+        </div>
+      </div></div>
+    {% endfor %}
+  </div>
+{% else %}
+  <div class="card"><div class="card-body"><div style="font-size:14px;color:var(--text-muted);">Aucune formation planifiée pour le moment.</div></div></div>
+{% endfor %}
+
+{% endblock %}

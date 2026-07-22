@@ -1,0 +1,71 @@
+{% extends shell %}
+{% set active_nav = navActif %}
+{% block page_title %}Cours — {{ formation.titre }}{% endblock %}
+{% block page_subtitle %}Gérer les vidéos de la formation{% endblock %}
+{% block content %}
+
+{% for message in app.flashes('success') %}
+  <div style="background:var(--success-50);color:var(--success-500);padding:10px 14px;border-radius:var(--radius-sm);font-size:13px;margin-bottom:14px;">{{ message }}</div>
+{% endfor %}
+
+<a class="btn btn-secondary" href="{{ backUrl }}" style="margin-bottom:16px;">← Retour</a>
+
+<div class="card" style="margin-bottom:24px;">
+  <div class="card-body">
+    <div class="card-title">Ajouter un cours</div>
+    {% if errors is not empty %}
+      <div style="background:var(--error-50);color:var(--error-500);padding:10px 14px;border-radius:var(--radius-sm);font-size:13px;margin:12px 0;">
+        <ul style="margin:0;padding-left:18px;">{% for e in errors %}<li>{{ e }}</li>{% endfor %}</ul>
+      </div>
+    {% endif %}
+    <form action="{{ path(addRoute, {id: formation.id}) }}" method="post" style="display:flex;flex-direction:column;gap:14px;margin-top:12px;max-width:600px;">
+      <div style="display:flex;gap:14px;">
+        <div class="field" style="flex:3;">
+          <label class="field-label" for="titre">Titre du cours</label>
+          <input class="input" type="text" id="titre" name="titre" required>
+        </div>
+        <div class="field" style="flex:1;">
+          <label class="field-label" for="ordre">Ordre</label>
+          <input class="input" type="number" min="1" id="ordre" name="ordre" value="1">
+        </div>
+      </div>
+      <div class="field">
+        <label class="field-label" for="videoUrl">Lien de la vidéo (YouTube)</label>
+        <input class="input" type="url" id="videoUrl" name="videoUrl" placeholder="https://www.youtube.com/watch?v=..." required>
+      </div>
+      <div class="field">
+        <label class="field-label" for="description">Description</label>
+        <input class="input" type="text" id="description" name="description">
+      </div>
+      <input type="hidden" name="_csrf_token" value="{{ csrf_token('cours_form') }}">
+      <div><button class="btn btn-primary" type="submit">Ajouter le cours</button></div>
+    </form>
+  </div>
+</div>
+
+<div class="card">
+  <div class="table-wrap">
+    <table class="table">
+      <thead><tr><th>#</th><th>Titre</th><th>Vidéo</th><th>Actions</th></tr></thead>
+      <tbody>
+        {% for c in cours %}
+          <tr>
+            <td>{{ c.ordre }}</td>
+            <td>{{ c.titre }}</td>
+            <td><a href="{{ c.videoUrl }}" target="_blank" rel="noopener" style="font-size:13px;">Voir la vidéo ↗</a></td>
+            <td>
+              <form action="{{ path(deleteRoute, {id: c.id}) }}" method="post" style="display:inline;" onsubmit="return confirm('Supprimer ce cours ?');">
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('delete_cours_' ~ c.id) }}">
+                <button class="btn btn-destructive btn-sm" type="submit">Supprimer</button>
+              </form>
+            </td>
+          </tr>
+        {% else %}
+          <tr><td colspan="4" class="text-center">Aucun cours. Ajoutez-en un ci-dessus.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% endblock %}

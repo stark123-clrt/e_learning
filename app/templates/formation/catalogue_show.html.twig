@@ -1,0 +1,41 @@
+{% extends 'layout/_shell_etudiant.html.twig' %}
+{% set active_nav = 'catalogue' %}
+{% block page_title %}Détail de la formation{% endblock %}
+{% block page_subtitle %}Consultez le programme et inscrivez-vous{% endblock %}
+{% block content %}
+
+<a class="btn btn-secondary" href="{{ path('etudiant_catalogue') }}">← Retour au catalogue</a>
+
+<div class="grid-2col" style="margin-top:16px;">
+  <div class="card"><div class="card-body">
+    <div style="margin-bottom:8px;">{% if formation.categorie %}<span class="tag tag-sm" style="cursor:default;">{{ formation.categorie }}</span>{% endif %}</div>
+    <div class="detail-name" style="font-size:22px;">{{ formation.titre }}</div>
+    {% set embed = apercu ? youtube_embed(apercu) : null %}
+    {% if embed %}
+      <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:var(--radius-md);margin-top:14px;">
+        <iframe src="{{ embed }}" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allowfullscreen title="Aperçu {{ formation.titre }}"></iframe>
+      </div>
+    {% endif %}
+    <div style="font-size:14px;color:var(--text-secondary);line-height:1.6;margin-top:12px;">{{ formation.description ?: 'Aucune description.' }}</div>
+    <div style="font-size:13px;color:var(--text-muted);margin-top:16px;">Formateur : {{ formation.formateur ? formation.formateur.prenom ~ ' ' ~ formation.formateur.nom : '—' }}</div>
+    <div style="font-size:13px;color:var(--text-muted);margin-top:4px;">{{ formation.duree }} semaines · du {{ formation.dateDebut|date('d/m/Y') }} au {{ formation.dateFin|date('d/m/Y') }}</div>
+  </div></div>
+  <div class="card"><div class="stat-card-body">
+    <div class="stat-big-value">{{ formation.prix|number_format(0, ',', ' ') }} €</div>
+    <div style="font-size:13px;color:var(--text-muted);margin-top:8px;">{{ placesRestantes }} place(s) restante(s) sur {{ formation.capaciteMax }}</div>
+    <div style="margin-top:16px;">
+      {% if app.user and app.user.statut|upper != 'ACTIF' %}
+        <button class="btn btn-secondary btn-block" type="button" disabled style="height:44px;">Inscription après validation du compte</button>
+      {% elseif dejaInscrit %}
+        <button class="btn btn-secondary btn-block" type="button" disabled style="height:44px;">Déjà inscrit</button>
+        <a class="btn btn-primary btn-block" href="{{ path('etudiant_inscriptions') }}" style="height:44px;margin-top:8px;">Voir mes inscriptions</a>
+      {% elseif placesRestantes > 0 %}
+        <a class="btn btn-primary btn-block" href="{{ path('etudiant_inscription', {id: formation.id}) }}" style="height:44px;">S'inscrire</a>
+      {% else %}
+        <button class="btn btn-secondary btn-block" type="button" disabled style="height:44px;">Complet</button>
+      {% endif %}
+    </div>
+  </div></div>
+</div>
+
+{% endblock %}

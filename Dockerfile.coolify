@@ -1,0 +1,42 @@
+FROM php:8.4-apache
+
+ENV APP_ENV=prod
+
+RUN apt-get update \
+    && apt-get install -y \
+        git \
+        unzip \
+        libzip-dev \
+        libpng-dev \
+        libwebp-dev \
+        libssl-dev \
+        pkg-config \
+    && MAKEFLAGS="-j$(nproc)" docker-php-ext-install zip gd \
+    && MAKEFLAGS="-j$(nproc)" pecl install mongodb \
+    && docker-php-ext-enable mongodb \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY --from=composer:2 /usr/bin/composer /usr/local/bin/composer
+
+RUN a2enmod rewrite
+
+ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
+
+RUN sed -ri \
+    -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' \
+    /etc/apache2/sites-available/000-default.conf \
+    && echo '<Directory /var/www/html/public>' >> /etc/apache2/apache2.conf \
+    && echo '    AllowOverride All' >> /etc/apache2/apache2.conf \
+    && echo '    Require all granted' >> /etc/apache2/apache2.conf \
+    && echo '</Directory>' >> /etc/apache2/apache2.conf
+
+WORKDIR /var/www/html
+
+COPY app/ ./
+
+RUN composer install --optimize-autoloader --no-interaction --no-scripts \
+    && mkdir -p var/cache var/log public/assets \
+    && php bin/console asset-map:compile \
+    && chown -R www-data:www-data var public/assets
+
+EXPOSE 80

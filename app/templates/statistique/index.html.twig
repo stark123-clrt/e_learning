@@ -1,0 +1,62 @@
+{% extends 'layout/_shell_admin.html.twig' %}
+{% set active_nav = 'statistiques' %}
+{% block page_title %}Statistiques{% endblock %}
+{% block page_subtitle %}Indicateurs clés de la plateforme{% endblock %}
+{% block content %}
+
+<div class="kpi-grid">
+  <div class="card"><div class="stat-card-body"><div class="kpi-label">Étudiants</div><div class="stat-big-value">{{ totalEtudiants }}</div></div></div>
+  <div class="card"><div class="stat-card-body"><div class="kpi-label">Formateurs</div><div class="stat-big-value">{{ totalFormateurs }}</div></div></div>
+  <div class="card"><div class="stat-card-body"><div class="kpi-label">Formations</div><div class="stat-big-value">{{ totalFormations }}</div></div></div>
+  <div class="card"><div class="stat-card-body"><div class="kpi-label">Inscriptions</div><div class="stat-big-value">{{ totalInscriptions }}</div></div></div>
+</div>
+
+<div class="grid-2col" style="margin-top:24px;">
+  <div class="card"><div class="stat-card-body"><div class="kpi-label">Prix moyen des formations</div><div class="stat-big-value">{{ prixMoyen }} €</div></div></div>
+  <div class="card"><div class="stat-card-body-primary"><div class="kpi-label">Note moyenne générale</div><div class="stat-big-value-primary">{{ noteMoyenne }}<span style="font-size:16px;font-weight:500;">/20</span></div></div></div>
+</div>
+
+<div class="grid-2col" style="margin-top:24px;">
+  <div class="card"><div class="card-body">
+    <div class="card-title">Inscriptions par formation</div>
+    <div style="display:flex;flex-direction:column;gap:12px;margin-top:14px;">
+      {% for f in inscriptionsParFormation %}
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div style="flex:1;min-width:0;"><div style="font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{{ f.titre }}</div><div class="track"><div class="track-fill" style="width:{{ f.width }}%;"></div></div></div>
+          <div style="font-size:13px;font-weight:600;">{{ f.count }}</div>
+        </div>
+      {% else %}<div style="font-size:13px;color:var(--text-muted);">Aucune inscription.</div>{% endfor %}
+    </div>
+  </div></div>
+
+  <div class="card"><div class="card-body">
+    <div class="card-title">Formations par catégorie</div>
+    <div style="display:flex;flex-direction:column;gap:10px;margin-top:14px;">
+      {% for categorie, count in formationsParCategorie %}
+        <div style="display:flex;justify-content:space-between;font-size:14px;"><span>{{ categorie }}</span><strong>{{ count }}</strong></div>
+      {% else %}<div style="font-size:13px;color:var(--text-muted);">Aucune formation.</div>{% endfor %}
+    </div>
+  </div></div>
+</div>
+
+<div class="grid-2col" style="margin-top:24px;">
+  <div class="card"><div class="card-body">
+    <div class="card-title">Top 5 des formations les plus inscrites</div>
+    <div style="display:flex;flex-direction:column;gap:10px;margin-top:14px;">
+      {% for f in topFormations %}
+        <div style="display:flex;justify-content:space-between;font-size:14px;"><span>{{ f.titre }}</span><strong>{{ f.count }}</strong></div>
+      {% else %}<div style="font-size:13px;color:var(--text-muted);">Aucune donnée.</div>{% endfor %}
+    </div>
+  </div></div>
+
+  <div class="card"><div class="card-body">
+    <div class="card-title">Top 5 des meilleurs étudiants</div>
+    <div style="display:flex;flex-direction:column;gap:10px;margin-top:14px;">
+      {% for s in topStudents %}
+        <div style="display:flex;justify-content:space-between;font-size:14px;"><span>{{ s.rang }}. {{ s.nom }}</span><strong style="color:var(--success-500);">{{ s.moyenne }}/20</strong></div>
+      {% else %}<div style="font-size:13px;color:var(--text-muted);">Aucune note attribuée.</div>{% endfor %}
+    </div>
+  </div></div>
+</div>
+
+{% endblock %}

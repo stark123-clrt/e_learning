@@ -1,0 +1,46 @@
+{% extends 'layout/_shell_formateur.html.twig' %}
+{% set active_nav = 'profil' %}
+{% block page_title %}Profil{% endblock %}
+{% block page_subtitle %}Vos informations personnelles{% endblock %}
+{% block content %}
+
+{% for message in app.flashes('success') %}
+  <div style="background:var(--success-50);color:var(--success-500);padding:10px 14px;border-radius:var(--radius-sm);font-size:13px;margin-bottom:14px;max-width:480px;">{{ message }}</div>
+{% endfor %}
+
+<div class="card" style="max-width:480px;">
+  <div class="card-body">
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px;">
+      <div class="avatar avatar-lg" aria-hidden="true">{{ formateur.prenom|slice(0,1)|upper }}{{ formateur.nom|slice(0,1)|upper }}</div>
+      <div><div style="font-family:var(--font-display);font-weight:700;font-size:18px;">{{ formateur.prenom }} {{ formateur.nom }}</div><div style="font-size:13px;color:var(--text-muted);">{{ formateur.email }}</div></div>
+    </div>
+    <form action="{{ path('formateur_profil') }}" method="post" style="display:flex;flex-direction:column;gap:14px;">
+      <div class="field">
+        <label class="field-label" for="f-nom">Nom</label>
+        <input class="input" type="text" id="f-nom" name="nom" value="{{ formateur.nom }}" required>
+      </div>
+      <div class="field">
+        <label class="field-label" for="f-prenom">Prénom</label>
+        <input class="input" type="text" id="f-prenom" name="prenom" value="{{ formateur.prenom }}" required>
+      </div>
+      <div class="field">
+        <label class="field-label" for="f-email">Email</label>
+        <input class="input" type="email" id="f-email" value="{{ formateur.email }}" readonly>
+      </div>
+      <div class="field">
+        <label class="field-label" for="f-specialite">Spécialité</label>
+        <input class="input" type="text" id="f-specialite" name="specialite" value="{{ formateur.specialite }}" required>
+      </div>
+      <div class="field">
+        <label class="field-label" for="f-password">Nouveau mot de passe (optionnel)</label>
+        <input class="input" type="password" id="f-password" name="password" placeholder="Laisser vide pour ne pas changer" minlength="8">
+      </div>
+      <div style="display:flex;justify-content:flex-end;">
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('profil') }}">
+        <button class="btn btn-primary" type="submit">Enregistrer</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

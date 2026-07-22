@@ -1,0 +1,43 @@
+{% extends 'layout/_shell_formateur.html.twig' %}
+{% set active_nav = 'notes' %}
+{% block page_title %}Notes{% endblock %}
+{% block page_subtitle %}Saisie des notes de vos étudiants{% endblock %}
+{% block content %}
+
+{% for message in app.flashes('success') %}
+  <div style="background:var(--success-50);color:var(--success-500);padding:10px 14px;border-radius:var(--radius-sm);font-size:13px;margin-bottom:14px;">{{ message }}</div>
+{% endfor %}
+{% for message in app.flashes('danger') %}
+  <div style="background:var(--error-50);color:var(--error-500);padding:10px 14px;border-radius:var(--radius-sm);font-size:13px;margin-bottom:14px;">{{ message }}</div>
+{% endfor %}
+
+{% for bloc in blocs %}
+  <div class="card" style="margin-bottom:20px;">
+    <div class="card-body">
+      <form action="{{ path('formateur_notes_save', {id: bloc.formation.id}) }}" method="post">
+        <div class="card-title" style="margin-bottom:14px;">{{ bloc.formation.titre }} — saisie des notes</div>
+        {% if bloc.inscriptions is empty %}
+          <div style="font-size:14px;color:var(--text-muted);">Aucun étudiant inscrit à cette formation.</div>
+        {% else %}
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            {% for inscription in bloc.inscriptions %}
+              <div style="display:flex;align-items:center;gap:16px;padding:8px 0;border-bottom:1px solid var(--border);">
+                <label style="flex:1;font-size:14px;color:var(--text-primary);" for="note-{{ inscription.id }}">{{ inscription.etudiant ? inscription.etudiant.prenom ~ ' ' ~ inscription.etudiant.nom : '—' }}{% if inscription.etudiant and inscription.etudiant.classe %} <span class="tag tag-sm" style="cursor:default;margin-left:6px;">{{ inscription.etudiant.classe.nom }}</span>{% endif %}</label>
+                <input class="input input-number" type="number" step="0.5" min="0" max="20" id="note-{{ inscription.id }}" name="notes[{{ inscription.id }}]" value="{{ inscription.note is not null ? inscription.note : '' }}" placeholder="—" style="width:90px;">
+                <span style="font-size:13px;color:var(--text-muted);">/20</span>
+              </div>
+            {% endfor %}
+          </div>
+          <input type="hidden" name="_csrf_token" value="{{ csrf_token('notes_' ~ bloc.formation.id) }}">
+          <div style="display:flex;justify-content:flex-end;margin-top:16px;">
+            <button class="btn btn-primary" type="submit">Enregistrer les notes</button>
+          </div>
+        {% endif %}
+      </form>
+    </div>
+  </div>
+{% else %}
+  <div class="card"><div class="card-body"><div style="font-size:14px;color:var(--text-muted);">Aucune formation ne vous est attribuée.</div></div></div>
+{% endfor %}
+
+{% endblock %}

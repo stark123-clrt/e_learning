@@ -1,0 +1,84 @@
+{% extends 'layout/_shell_admin.html.twig' %}
+{% set active_nav = 'formations' %}
+{% block page_title %}{{ formAction }} une formation{% endblock %}
+{% block page_subtitle %}Informations de la formation{% endblock %}
+{% block content %}
+
+{% if errors is not empty %}
+  <div style="background:var(--error-50);color:var(--error-500);padding:10px 14px;border-radius:var(--radius-sm);font-size:13px;margin-bottom:14px;max-width:600px;">
+    <ul style="margin:0;padding-left:18px;">{% for error in errors %}<li>{{ error }}</li>{% endfor %}</ul>
+  </div>
+{% endif %}
+
+<form action="{{ path(formRoute, formation is not null ? {'id': formation.id} : {}) }}" method="post" style="display:flex;flex-direction:column;gap:16px;max-width:600px;">
+  <div class="field">
+    <label class="field-label" for="titre">Titre</label>
+    <input class="input" type="text" id="titre" name="titre" value="{{ formationData.titre }}" required>
+  </div>
+  <div class="field">
+    <label class="field-label" for="description">Description</label>
+    <input class="input" type="text" id="description" name="description" value="{{ formationData.description }}">
+  </div>
+  <div style="display:flex;gap:16px;">
+    <div class="field" style="flex:1;">
+      <label class="field-label" for="categorie">Catégorie</label>
+      <select class="select" id="categorie" name="categorie" required>
+        <option value="">— Sélectionner —</option>
+        {% for cat in categories %}<option value="{{ cat }}" {{ formationData.categorie == cat ? 'selected' : '' }}>{{ cat }}</option>{% endfor %}
+      </select>
+    </div>
+    <div class="field" style="flex:1;">
+      <label class="field-label" for="statut">Statut</label>
+      <select class="select" id="statut" name="statut" required>
+        {% for st in statuts %}<option value="{{ st }}" {{ formationData.statut == st ? 'selected' : '' }}>{{ st|capitalize }}</option>{% endfor %}
+      </select>
+    </div>
+  </div>
+  <div style="display:flex;gap:16px;">
+    <div class="field" style="flex:1;">
+      <label class="field-label" for="prix">Prix (€)</label>
+      <input class="input" type="number" step="1" min="0" id="prix" name="prix" value="{{ formationData.prix }}" required>
+    </div>
+    <div class="field" style="flex:1;">
+      <label class="field-label" for="duree">Durée (semaines)</label>
+      <input class="input" type="number" step="1" min="1" id="duree" name="duree" value="{{ formationData.duree }}" required>
+    </div>
+    <div class="field" style="flex:1;">
+      <label class="field-label" for="capaciteMax">Capacité max</label>
+      <input class="input" type="number" step="1" min="1" id="capaciteMax" name="capaciteMax" value="{{ formationData.capaciteMax }}" required>
+    </div>
+  </div>
+  <div style="display:flex;gap:16px;">
+    <div class="field" style="flex:1;">
+      <label class="field-label" for="formateur">Formateur responsable</label>
+      <select class="select" id="formateur" name="formateur">
+        <option value="">— Aucun —</option>
+        {% for f in formateurs %}<option value="{{ f.id }}" {{ formationData.formateur == f.id ? 'selected' : '' }}>{{ f.prenom }} {{ f.nom }}</option>{% endfor %}
+      </select>
+    </div>
+    <div class="field" style="flex:1;">
+      <label class="field-label" for="classe">Classe</label>
+      <select class="select" id="classe" name="classe">
+        <option value="">— Aucune —</option>
+        {% for c in classes %}<option value="{{ c.id }}" {{ formationData.classe|default('') == c.id ? 'selected' : '' }}>{{ c.nom }}</option>{% endfor %}
+      </select>
+    </div>
+  </div>
+  <div style="display:flex;gap:16px;">
+    <div class="field" style="flex:1;">
+      <label class="field-label" for="dateDebut">Date de début</label>
+      <input class="input" type="date" id="dateDebut" name="dateDebut" value="{{ formationData.dateDebut }}" required>
+    </div>
+    <div class="field" style="flex:1;">
+      <label class="field-label" for="dateFin">Date de fin</label>
+      <input class="input" type="date" id="dateFin" name="dateFin" value="{{ formationData.dateFin }}" required>
+    </div>
+  </div>
+  <input type="hidden" name="_csrf_token" value="{{ csrf_token('formation_form') }}">
+  <div style="display:flex;gap:10px;">
+    <button class="btn btn-primary" type="submit">{{ formAction }}</button>
+    <a class="btn btn-secondary" href="{{ path('admin_formations') }}">Annuler</a>
+  </div>
+</form>
+
+{% endblock %}

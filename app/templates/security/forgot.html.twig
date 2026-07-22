@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mot de passe oublié — e-learning{% endblock %}
+
+{% block body %}
+<div class="auth-page">
+  <div class="auth-card">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:10px;margin-bottom:24px;">
+      <a href="/" class="brand-mark" aria-label="Retour à l'accueil" style="text-decoration:none;"><img src="/logo.png" alt="e-learning"></a>
+      <div style="font-family:var(--font-display);font-weight:700;font-size:20px;">Mot de passe oublié</div>
+      <div style="font-size:13px;color:var(--text-muted);text-align:center;">Indiquez votre email : un lien de réinitialisation vous sera envoyé.</div>
+    </div>
+    {% for message in app.flashes('error') %}
+      <div style="background:var(--error-50);color:var(--error-500);padding:10px 14px;border-radius:var(--radius-sm);font-size:13px;margin-bottom:14px;">{{ message }}</div>
+    {% endfor %}
+    <form style="display:flex;flex-direction:column;gap:14px;" action="{{ path('app_forgot_password') }}" method="post">
+      <div class="field">
+        <label class="field-label" for="email">Email</label>
+        <input class="input" type="email" id="email" name="email" placeholder="vous@email.fr" autocomplete="username" required>
+      </div>
+      <input type="hidden" name="_csrf_token" value="{{ csrf_token('forgot_password') }}">
+      <button type="submit" class="btn btn-primary btn-block" style="height:44px;">Envoyer le lien</button>
+    </form>
+    <div style="font-size:13px;color:var(--text-muted);text-align:center;margin-top:20px;">
+      <a href="/login">Retour à la connexion</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

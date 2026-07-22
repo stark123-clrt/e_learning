@@ -1,0 +1,26 @@
+{% extends 'layout/_shell_etudiant.html.twig' %}
+{% set active_nav = 'notes' %}
+{% block page_title %}Mes notes{% endblock %}
+{% block page_subtitle %}Notes obtenues par formation{% endblock %}
+{% block content %}
+
+<div class="card">
+  <div class="table-wrap">
+    <table class="table">
+      <thead><tr><th>Formation</th><th>Statut</th><th>Note</th></tr></thead>
+      <tbody>
+        {% for inscription in inscriptions %}
+          <tr>
+            <td>{{ inscription.formation ? inscription.formation.titre : '—' }}</td>
+            <td><span class="badge {{ inscription.statut|upper == 'ACTIVE' ? 'badge-success' : 'badge-neutral' }}">{{ inscription.statut|capitalize }}</span></td>
+            <td>{% if inscription.note is not null %}<strong>{{ inscription.note }}/20</strong>{% else %}<span style="color:var(--text-muted);">Pas encore noté</span>{% endif %}</td>
+          </tr>
+        {% else %}
+          <tr><td colspan="3" class="text-center">Vous n'avez aucune note pour le moment.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% endblock %}

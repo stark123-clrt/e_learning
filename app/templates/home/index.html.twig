@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}e-learning — Plateforme de gestion de formations{% endblock %}
+
+{% block body %}
+<div class="landing-page">
+
+  <header class="landing-header">
+    <div style="display:flex;align-items:center;gap:10px;">
+      <div class="brand-mark" aria-hidden="true"><img src="/logo.png" alt="e-learning"></div>
+      <span style="font-family:var(--font-display);font-weight:700;font-size:16px;">e-learning</span>
+    </div>
+    <a href="/login" class="btn btn-primary">Se connecter</a>
+  </header>
+
+  <section class="landing-hero">
+    <div style="font-family:var(--font-display);font-weight:700;font-size:44px;letter-spacing:var(--tracking-display);max-width:640px;line-height:1.1;">Formez les talents de demain, sans friction administrative.</div>
+    <div style="font-size:16px;color:var(--text-secondary);max-width:520px;margin-top:16px;">Une seule plateforme pour gérer étudiants, formateurs, formations et inscriptions.</div>
+    <div style="display:flex;gap:12px;margin-top:28px;">
+      <a href="/login" class="btn btn-primary" style="height:44px;">Se connecter</a>
+      <a href="/inscription-compte" class="btn btn-secondary" style="height:44px;">Créer un compte</a>
+    </div>
+  </section>
+
+  <section class="landing-roles-row">
+    <div class="card">
+      <div class="stat-card-body">
+        <div class="kpi-icon-wrap" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+        <div style="font-weight:700;margin-top:12px;">Étudiant</div>
+        <div style="font-size:13px;color:var(--text-muted);margin-top:4px;">Suivez vos formations, notes et inscriptions.</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="stat-card-body">
+        <div class="kpi-icon-wrap" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><polyline points="17 11 19 13 23 9"/></svg></div>
+        <div style="font-weight:700;margin-top:12px;">Formateur</div>
+        <div style="font-size:13px;color:var(--text-muted);margin-top:4px;">Gérez vos formations et attribuez les notes.</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="stat-card-body">
+        <div class="kpi-icon-wrap" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div style="font-weight:700;margin-top:12px;">Administrateur</div>
+        <div style="font-size:13px;color:var(--text-muted);margin-top:4px;">Pilotez l'ensemble de l'école.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="landing-stats-row">
+    <div><div class="stat-big-value">100+</div><div class="kpi-label">étudiants</div></div>
+    <div><div class="stat-big-value">30</div><div class="kpi-label">formations</div></div>
+    <div><div class="stat-big-value">20</div><div class="kpi-label">formateurs</div></div>
+  </section>
+
+  <footer class="landing-footer">© 2026 e-learning</footer>
+
+</div>
+{% endblock %}

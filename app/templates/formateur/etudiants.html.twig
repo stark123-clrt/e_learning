@@ -1,0 +1,30 @@
+{% extends 'layout/_shell_formateur.html.twig' %}
+{% set active_nav = 'formations' %}
+{% block page_title %}{{ formation.titre }}{% endblock %}
+{% block page_subtitle %}Étudiants inscrits à cette formation{% endblock %}
+{% block content %}
+
+<div class="card">
+  <div class="table-wrap">
+    <table class="table">
+      <thead><tr><th>Nom</th><th>Prénom</th><th>Email</th><th>Statut</th><th>Note</th></tr></thead>
+      <tbody>
+        {% for inscription in inscriptions %}
+          <tr>
+            <td>{{ inscription.etudiant.nom }}</td>
+            <td>{{ inscription.etudiant.prenom }}</td>
+            <td>{{ inscription.etudiant.email }}</td>
+            <td><span class="badge {{ inscription.statut == 'ACTIVE' ? 'badge-success' : 'badge-neutral' }}">{{ inscription.statut|capitalize }}</span></td>
+            <td>{{ inscription.note is not null ? inscription.note ~ '/20' : '—' }}</td>
+          </tr>
+        {% else %}
+          <tr>
+            <td colspan="5" class="text-center">Aucun étudiant inscrit à cette formation.</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'layout/_shell_etudiant.html.twig' %}
+{% set active_nav = 'moyenne' %}
+{% block page_title %}Ma moyenne{% endblock %}
+{% block page_subtitle %}Votre performance globale{% endblock %}
+{% block content %}
+
+<div class="card">
+  <div class="stat-card-body-primary" style="text-align:center;padding:28px;">
+    <div class="kpi-label">Votre moyenne générale</div>
+    <div style="font-family:var(--font-display);font-weight:700;font-size:48px;letter-spacing:var(--tracking-heading);color:var(--color-primary-hover);margin-top:8px;">{{ moyenne }}{% if moyenne != '—' %}<span style="font-size:20px;font-weight:500;">/20</span>{% endif %}</div>
+  </div>
+</div>
+
+<div class="card" style="margin-top:20px;">
+  <div class="card-body">
+    <div class="card-title">Notes par formation</div>
+    {% if details is empty %}
+      <div style="font-size:14px;color:var(--text-muted);margin-top:12px;">Aucune note pour le moment.</div>
+    {% else %}
+      <div style="display:flex;align-items:flex-end;gap:24px;margin-top:16px;min-height:150px;border-bottom:1px solid var(--border);padding-bottom:4px;">
+        {% for d in details %}
+          <div style="display:flex;flex-direction:column;align-items:center;gap:6px;flex:1;">
+            <div style="font-size:12px;font-weight:600;">{{ d.note }}</div>
+            <div style="width:70%;max-width:60px;height:{{ d.hauteur }}%;min-height:4px;background:var(--color-primary);border-radius:4px 4px 0 0;"></div>
+            <div style="font-size:11px;color:var(--text-muted);text-align:center;">{{ d.formation }}</div>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% endblock %}

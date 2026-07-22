@@ -1,0 +1,38 @@
+{% extends 'layout/_shell_etudiant.html.twig' %}
+{% set active_nav = 'inscriptions' %}
+{% block page_title %}Mes inscriptions{% endblock %}
+{% block page_subtitle %}Historique de vos inscriptions aux formations{% endblock %}
+{% block content %}
+
+<div class="card">
+  <div class="table-wrap">
+    <table class="table">
+      <thead><tr><th>Formation</th><th>Date</th><th>Statut</th><th>Note</th><th>Actions</th></tr></thead>
+      <tbody>
+        {% for inscription in inscriptions %}
+          <tr>
+            <td>{{ inscription.formation.titre }}</td>
+            <td>{{ inscription.dateInscription|date('d/m/Y') }}</td>
+            <td><span class="badge {{ inscription.statut == 'ACTIVE' ? 'badge-success' : 'badge-neutral' }}">{{ inscription.statut|capitalize }}</span></td>
+            <td>{{ inscription.note is not null ? inscription.note ~ '/20' : '—' }}</td>
+            <td>
+              <div style="display:flex;gap:6px;">
+                {% if inscription.formation %}<a class="btn btn-secondary btn-sm" href="{{ path('etudiant_formation_cours', {id: inscription.formation.id}) }}">Suivre les cours</a>{% endif %}
+                <form action="{{ path('annuler_inscription', {id: inscription.id}) }}" method="post" style="display:inline;">
+                  <input type="hidden" name="_csrf_token" value="{{ csrf_token('annuler_inscription') }}">
+                  <button class="btn btn-destructive btn-sm" type="submit">Annuler</button>
+                </form>
+              </div>
+            </td>
+          </tr>
+        {% else %}
+          <tr>
+            <td colspan="5" class="text-center">Vous n'êtes inscrit à aucune formation pour le moment.</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% endblock %}

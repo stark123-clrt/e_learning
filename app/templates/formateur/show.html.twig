@@ -1,0 +1,62 @@
+{% extends 'layout/_shell_admin.html.twig' %}
+{% set active_nav = 'formateurs' %}
+{% block page_title %}Fiche formateur{% endblock %}
+{% block page_subtitle %}Détail du profil et des formations{% endblock %}
+{% block content %}
+
+<div class="detail-header">
+  <div class="detail-header-identity">
+    <div class="avatar avatar-lg" aria-hidden="true">{{ formateur.prenom|slice(0,1)|upper }}{{ formateur.nom|slice(0,1)|upper }}</div>
+    <div>
+      <div class="detail-name">{{ formateur.prenom }} {{ formateur.nom }}</div>
+      <div class="detail-badges">
+        <span class="badge {{ formateur.statut == 'ACTIF' ? 'badge-success' : 'badge-neutral' }}">{{ formateur.statut|capitalize }}</span>
+        <span class="tag tag-sm" style="cursor:default;">{{ formateur.specialite }}</span>
+      </div>
+    </div>
+  </div>
+  <div class="detail-actions">
+    <a class="btn btn-secondary" href="{{ path('admin_formateurs') }}">Retour</a>
+    <a class="btn btn-secondary" href="{{ path('admin_formateur_edit', {'id': formateur.id}) }}">Modifier</a>
+    <form action="{{ path('admin_formateur_delete', {'id': formateur.id}) }}" method="post" style="display:inline;">
+      <input type="hidden" name="_csrf_token" value="{{ csrf_token('delete_formateur') }}">
+      <button class="btn btn-destructive" type="submit">Supprimer</button>
+    </form>
+  </div>
+</div>
+
+<div class="grid-2col" style="margin-bottom:24px;">
+  <div class="card">
+    <div class="card-body">
+      <div class="card-title">Informations personnelles</div>
+      <div class="info-list">
+        <div><span class="label">Email : </span>{{ formateur.email }}</div>
+        <div><span class="label">Statut : </span>{{ formateur.statut|capitalize }}</div>
+      </div>
+    </div>
+  </div>
+  <div class="card"><div class="stat-card-body">
+    <div class="kpi-label">Note moyenne donnée</div>
+    <div class="stat-big-value">{{ noteMoyenne is not null ? noteMoyenne : '—' }}<span style="font-size:16px;font-weight:500;">/20</span></div>
+  </div></div>
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <div class="card-title">Formations en cours</div>
+    <div style="display:flex;flex-direction:column;margin-top:12px;">
+      {% if formations is not empty %}
+        {% for formation in formations %}
+          <div class="list-row">
+            <div style="font-size:14px;">{{ formation.titre }}</div>
+            <div style="font-size:13px;color:var(--text-muted);">Capacité : {{ formation.capaciteMax }}</div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <div class="empty-text">Aucune formation attribuée à ce formateur.</div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}

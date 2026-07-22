@@ -1,0 +1,1500 @@
+[{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5ac"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a57a"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a566"
+  },
+  "dateInscription": {
+    "$date": "2024-12-31T23:00:00.000Z"
+  },
+  "note": null
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5ad"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a57b"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a569"
+  },
+  "dateInscription": {
+    "$date": "2026-02-01T23:00:00.000Z"
+  },
+  "note": 9
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5ae"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a57c"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a56c"
+  },
+  "dateInscription": {
+    "$date": "2025-03-02T23:00:00.000Z"
+  },
+  "note": 10
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5af"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a57d"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a56f"
+  },
+  "dateInscription": {
+    "$date": "2026-04-03T22:00:00.000Z"
+  },
+  "note": 11
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5b0"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a57e"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a572"
+  },
+  "dateInscription": {
+    "$date": "2025-05-04T22:00:00.000Z"
+  },
+  "note": 12
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5b1"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a57f"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a575"
+  },
+  "dateInscription": {
+    "$date": "2026-06-05T22:00:00.000Z"
+  },
+  "note": 13
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5b2"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a580"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a578"
+  },
+  "dateInscription": {
+    "$date": "2025-07-06T22:00:00.000Z"
+  },
+  "note": null
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5b3"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a581"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a567"
+  },
+  "dateInscription": {
+    "$date": "2026-08-07T22:00:00.000Z"
+  },
+  "note": 15
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5b4"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a582"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a56a"
+  },
+  "dateInscription": {
+    "$date": "2025-09-08T22:00:00.000Z"
+  },
+  "note": 16
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5b5"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a583"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a56d"
+  },
+  "dateInscription": {
+    "$date": "2026-10-09T22:00:00.000Z"
+  },
+  "note": 17
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5b6"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a584"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a570"
+  },
+  "dateInscription": {
+    "$date": "2025-11-10T23:00:00.000Z"
+  },
+  "note": 18
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5b7"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a585"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a573"
+  },
+  "dateInscription": {
+    "$date": "2026-12-11T23:00:00.000Z"
+  },
+  "note": 19
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5b8"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a586"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a576"
+  },
+  "dateInscription": {
+    "$date": "2025-01-12T23:00:00.000Z"
+  },
+  "note": null
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5b9"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a587"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a579"
+  },
+  "dateInscription": {
+    "$date": "2026-02-13T23:00:00.000Z"
+  },
+  "note": 8
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5ba"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a588"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a568"
+  },
+  "dateInscription": {
+    "$date": "2025-03-14T23:00:00.000Z"
+  },
+  "note": 9
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5bb"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a589"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a56b"
+  },
+  "dateInscription": {
+    "$date": "2026-04-15T22:00:00.000Z"
+  },
+  "note": 10
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5bc"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a58a"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a56e"
+  },
+  "dateInscription": {
+    "$date": "2025-05-16T22:00:00.000Z"
+  },
+  "note": 11
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5bd"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a58b"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a571"
+  },
+  "dateInscription": {
+    "$date": "2026-06-17T22:00:00.000Z"
+  },
+  "note": 12
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5be"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a58c"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a574"
+  },
+  "dateInscription": {
+    "$date": "2025-07-18T22:00:00.000Z"
+  },
+  "note": null
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5bf"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a58d"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a577"
+  },
+  "dateInscription": {
+    "$date": "2026-08-19T22:00:00.000Z"
+  },
+  "note": 14
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5c0"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a58e"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a566"
+  },
+  "dateInscription": {
+    "$date": "2025-09-20T22:00:00.000Z"
+  },
+  "note": 15
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5c1"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a58f"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a569"
+  },
+  "dateInscription": {
+    "$date": "2026-10-21T22:00:00.000Z"
+  },
+  "note": 16
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5c2"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a590"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a56c"
+  },
+  "dateInscription": {
+    "$date": "2025-11-22T23:00:00.000Z"
+  },
+  "note": 17
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5c3"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a591"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a56f"
+  },
+  "dateInscription": {
+    "$date": "2026-12-23T23:00:00.000Z"
+  },
+  "note": 18
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5c4"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a592"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a572"
+  },
+  "dateInscription": {
+    "$date": "2025-01-24T23:00:00.000Z"
+  },
+  "note": null
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5c5"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a593"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a575"
+  },
+  "dateInscription": {
+    "$date": "2026-02-25T23:00:00.000Z"
+  },
+  "note": 20
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5c6"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a594"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a578"
+  },
+  "dateInscription": {
+    "$date": "2025-03-26T23:00:00.000Z"
+  },
+  "note": 8
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5c7"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a595"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a567"
+  },
+  "dateInscription": {
+    "$date": "2026-04-27T22:00:00.000Z"
+  },
+  "note": 9
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5c8"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a596"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a56a"
+  },
+  "dateInscription": {
+    "$date": "2025-04-30T22:00:00.000Z"
+  },
+  "note": 10
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5c9"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a597"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a56d"
+  },
+  "dateInscription": {
+    "$date": "2026-06-01T22:00:00.000Z"
+  },
+  "note": 11
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5ca"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a598"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a570"
+  },
+  "dateInscription": {
+    "$date": "2025-07-02T22:00:00.000Z"
+  },
+  "note": null
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5cb"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a599"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a573"
+  },
+  "dateInscription": {
+    "$date": "2026-08-03T22:00:00.000Z"
+  },
+  "note": 13
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5cc"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a59a"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a576"
+  },
+  "dateInscription": {
+    "$date": "2025-09-04T22:00:00.000Z"
+  },
+  "note": 14
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5cd"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a59b"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a579"
+  },
+  "dateInscription": {
+    "$date": "2026-10-05T22:00:00.000Z"
+  },
+  "note": 15
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5ce"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a59c"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a568"
+  },
+  "dateInscription": {
+    "$date": "2025-11-06T23:00:00.000Z"
+  },
+  "note": 16
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5cf"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a59d"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a56b"
+  },
+  "dateInscription": {
+    "$date": "2026-12-07T23:00:00.000Z"
+  },
+  "note": 17
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5d0"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a59e"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a56e"
+  },
+  "dateInscription": {
+    "$date": "2025-01-08T23:00:00.000Z"
+  },
+  "note": null
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5d1"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a59f"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a571"
+  },
+  "dateInscription": {
+    "$date": "2026-02-09T23:00:00.000Z"
+  },
+  "note": 19
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5d2"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a5a0"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a574"
+  },
+  "dateInscription": {
+    "$date": "2025-03-10T23:00:00.000Z"
+  },
+  "note": 20
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5d3"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a5a1"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a577"
+  },
+  "dateInscription": {
+    "$date": "2026-04-11T22:00:00.000Z"
+  },
+  "note": 8
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5d4"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a5a2"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a566"
+  },
+  "dateInscription": {
+    "$date": "2025-05-12T22:00:00.000Z"
+  },
+  "note": 9
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5d5"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a5a3"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a569"
+  },
+  "dateInscription": {
+    "$date": "2026-06-13T22:00:00.000Z"
+  },
+  "note": 10
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5d6"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a5a4"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a56c"
+  },
+  "dateInscription": {
+    "$date": "2025-07-14T22:00:00.000Z"
+  },
+  "note": null
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5d7"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a5a5"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a56f"
+  },
+  "dateInscription": {
+    "$date": "2026-08-15T22:00:00.000Z"
+  },
+  "note": 12
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5d8"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a5a6"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a572"
+  },
+  "dateInscription": {
+    "$date": "2025-09-16T22:00:00.000Z"
+  },
+  "note": 13
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5d9"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a5a7"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a575"
+  },
+  "dateInscription": {
+    "$date": "2026-10-17T22:00:00.000Z"
+  },
+  "note": 14
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5da"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a5a8"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a578"
+  },
+  "dateInscription": {
+    "$date": "2025-11-18T23:00:00.000Z"
+  },
+  "note": 15
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5db"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a5a9"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a567"
+  },
+  "dateInscription": {
+    "$date": "2026-12-19T23:00:00.000Z"
+  },
+  "note": 16
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5dc"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a5aa"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a56a"
+  },
+  "dateInscription": {
+    "$date": "2025-01-20T23:00:00.000Z"
+  },
+  "note": null
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5dd"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a5ab"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a56d"
+  },
+  "dateInscription": {
+    "$date": "2026-02-21T23:00:00.000Z"
+  },
+  "note": 18
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5de"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a57a"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a571"
+  },
+  "dateInscription": {
+    "$date": "2025-03-22T23:00:00.000Z"
+  },
+  "note": 19
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5df"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a57b"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a574"
+  },
+  "dateInscription": {
+    "$date": "2026-04-23T22:00:00.000Z"
+  },
+  "note": 20
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5e0"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a57c"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a577"
+  },
+  "dateInscription": {
+    "$date": "2025-05-24T22:00:00.000Z"
+  },
+  "note": 8
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5e1"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a57d"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a566"
+  },
+  "dateInscription": {
+    "$date": "2026-06-25T22:00:00.000Z"
+  },
+  "note": 9
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5e2"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a57e"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a569"
+  },
+  "dateInscription": {
+    "$date": "2025-07-26T22:00:00.000Z"
+  },
+  "note": null
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5e3"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a57f"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a56c"
+  },
+  "dateInscription": {
+    "$date": "2026-08-27T22:00:00.000Z"
+  },
+  "note": 11
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5e4"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a580"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a56f"
+  },
+  "dateInscription": {
+    "$date": "2025-08-31T22:00:00.000Z"
+  },
+  "note": 12
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5e5"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a581"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a572"
+  },
+  "dateInscription": {
+    "$date": "2026-10-01T22:00:00.000Z"
+  },
+  "note": 13
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5e6"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a582"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a575"
+  },
+  "dateInscription": {
+    "$date": "2025-11-02T23:00:00.000Z"
+  },
+  "note": 14
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5e7"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a583"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a578"
+  },
+  "dateInscription": {
+    "$date": "2026-12-03T23:00:00.000Z"
+  },
+  "note": 15
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5e8"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a584"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a567"
+  },
+  "dateInscription": {
+    "$date": "2025-01-04T23:00:00.000Z"
+  },
+  "note": null
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5e9"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a585"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a56a"
+  },
+  "dateInscription": {
+    "$date": "2026-02-05T23:00:00.000Z"
+  },
+  "note": 17
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5ea"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a586"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a56d"
+  },
+  "dateInscription": {
+    "$date": "2025-03-06T23:00:00.000Z"
+  },
+  "note": 18
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5eb"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a587"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a570"
+  },
+  "dateInscription": {
+    "$date": "2026-04-07T22:00:00.000Z"
+  },
+  "note": 19
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5ec"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a588"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a573"
+  },
+  "dateInscription": {
+    "$date": "2025-05-08T22:00:00.000Z"
+  },
+  "note": 20
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5ed"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a589"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a576"
+  },
+  "dateInscription": {
+    "$date": "2026-06-09T22:00:00.000Z"
+  },
+  "note": 8
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5ee"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a58a"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a579"
+  },
+  "dateInscription": {
+    "$date": "2025-07-10T22:00:00.000Z"
+  },
+  "note": null
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5ef"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a58b"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a568"
+  },
+  "dateInscription": {
+    "$date": "2026-08-11T22:00:00.000Z"
+  },
+  "note": 10
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5f0"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a58c"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a56b"
+  },
+  "dateInscription": {
+    "$date": "2025-09-12T22:00:00.000Z"
+  },
+  "note": 11
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5f1"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a58d"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a56e"
+  },
+  "dateInscription": {
+    "$date": "2026-10-13T22:00:00.000Z"
+  },
+  "note": 12
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5f2"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a58e"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a571"
+  },
+  "dateInscription": {
+    "$date": "2025-11-14T23:00:00.000Z"
+  },
+  "note": 13
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5f3"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a58f"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a574"
+  },
+  "dateInscription": {
+    "$date": "2026-12-15T23:00:00.000Z"
+  },
+  "note": 14
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5f4"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a590"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a577"
+  },
+  "dateInscription": {
+    "$date": "2025-01-16T23:00:00.000Z"
+  },
+  "note": null
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5f5"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a591"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a566"
+  },
+  "dateInscription": {
+    "$date": "2026-02-17T23:00:00.000Z"
+  },
+  "note": 16
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5f6"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a592"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a569"
+  },
+  "dateInscription": {
+    "$date": "2025-03-18T23:00:00.000Z"
+  },
+  "note": 17
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5f7"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a593"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a56c"
+  },
+  "dateInscription": {
+    "$date": "2026-04-19T22:00:00.000Z"
+  },
+  "note": 18
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5f8"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a594"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a56f"
+  },
+  "dateInscription": {
+    "$date": "2025-05-20T22:00:00.000Z"
+  },
+  "note": 19
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5f9"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a595"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a572"
+  },
+  "dateInscription": {
+    "$date": "2026-06-21T22:00:00.000Z"
+  },
+  "note": 20
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5fa"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a596"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a575"
+  },
+  "dateInscription": {
+    "$date": "2025-07-22T22:00:00.000Z"
+  },
+  "note": null
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5fb"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a597"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a578"
+  },
+  "dateInscription": {
+    "$date": "2026-08-23T22:00:00.000Z"
+  },
+  "note": 9
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5fc"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a598"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a567"
+  },
+  "dateInscription": {
+    "$date": "2025-09-24T22:00:00.000Z"
+  },
+  "note": 10
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5fd"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a599"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a56a"
+  },
+  "dateInscription": {
+    "$date": "2026-10-25T23:00:00.000Z"
+  },
+  "note": 11
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5fe"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a59a"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a56d"
+  },
+  "dateInscription": {
+    "$date": "2025-11-26T23:00:00.000Z"
+  },
+  "note": 12
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a5ff"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a59b"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a570"
+  },
+  "dateInscription": {
+    "$date": "2026-12-27T23:00:00.000Z"
+  },
+  "note": 13
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a600"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a59c"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a573"
+  },
+  "dateInscription": {
+    "$date": "2024-12-31T23:00:00.000Z"
+  },
+  "note": null
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a601"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a59d"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a576"
+  },
+  "dateInscription": {
+    "$date": "2026-02-01T23:00:00.000Z"
+  },
+  "note": 15
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a602"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a59e"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a579"
+  },
+  "dateInscription": {
+    "$date": "2025-03-02T23:00:00.000Z"
+  },
+  "note": 16
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a603"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a59f"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a568"
+  },
+  "dateInscription": {
+    "$date": "2026-04-03T22:00:00.000Z"
+  },
+  "note": 17
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a604"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a5a0"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a56b"
+  },
+  "dateInscription": {
+    "$date": "2025-05-04T22:00:00.000Z"
+  },
+  "note": 18
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a605"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a5a1"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a56e"
+  },
+  "dateInscription": {
+    "$date": "2026-06-05T22:00:00.000Z"
+  },
+  "note": 19
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a606"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a5a2"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a571"
+  },
+  "dateInscription": {
+    "$date": "2025-07-06T22:00:00.000Z"
+  },
+  "note": null
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a607"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a5a3"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a574"
+  },
+  "dateInscription": {
+    "$date": "2026-08-07T22:00:00.000Z"
+  },
+  "note": 8
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a608"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a5a4"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a577"
+  },
+  "dateInscription": {
+    "$date": "2025-09-08T22:00:00.000Z"
+  },
+  "note": 9
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a609"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a5a5"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a566"
+  },
+  "dateInscription": {
+    "$date": "2026-10-09T22:00:00.000Z"
+  },
+  "note": 10
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a60a"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a5a6"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a569"
+  },
+  "dateInscription": {
+    "$date": "2025-11-10T23:00:00.000Z"
+  },
+  "note": 11
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a60b"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a5a7"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a56c"
+  },
+  "dateInscription": {
+    "$date": "2026-12-11T23:00:00.000Z"
+  },
+  "note": 12
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a60c"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a5a8"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a56f"
+  },
+  "dateInscription": {
+    "$date": "2025-01-12T23:00:00.000Z"
+  },
+  "note": null
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a60d"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a5a9"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a572"
+  },
+  "dateInscription": {
+    "$date": "2026-02-13T23:00:00.000Z"
+  },
+  "note": 14
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a60e"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a5aa"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a575"
+  },
+  "dateInscription": {
+    "$date": "2025-03-14T23:00:00.000Z"
+  },
+  "note": 15
+},
+{
+  "_id": {
+    "$oid": "6a4b5c822d1c7f707fa9a60f"
+  },
+  "idEtudiant": {
+    "$oid": "6a4b5bf82d1c7f707fa9a5ab"
+  },
+  "idFormation": {
+    "$oid": "6a4b5aa02d1c7f707fa9a578"
+  },
+  "dateInscription": {
+    "$date": "2026-04-15T22:00:00.000Z"
+  },
+  "note": 16
+}]
